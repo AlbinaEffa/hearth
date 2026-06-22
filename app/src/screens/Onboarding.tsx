@@ -103,6 +103,10 @@ export function SignUp() {
         <PasswordField id="p" label="Пароль" placeholder="Минимум 8 символов" value={password} onChange={setPassword} />
         <button className="btn btn-primary btn-block" type="submit">Далее</button>
       </form>
+      <div className="row" style={{ gap: 10 }}>
+        <button className="btn btn-secondary" style={{ flex: 1 }} onClick={() => nav('/setup-profile')}>Google</button>
+        <button className="btn btn-secondary" style={{ flex: 1 }} onClick={() => nav('/setup-profile')}>По телефону</button>
+      </div>
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6, paddingTop: 8, borderTop: '1px solid var(--line-soft)' }}>
         <span className="caption">Уже есть аккаунт?</span>
         <Link to="/login" className="btn btn-ghost btn-sm">Войти</Link>
@@ -139,25 +143,45 @@ export function SetupProfile() {
 }
 
 /* ---------------- Create home (step 3: name + actually sign up) ---------------- */
+const GUARDIANS = ['🐶', '🐱', '🦊', '🦉', '🌿', '🏠']
+const THEMES: { key: string; color: string }[] = [
+  { key: 'hearth', color: 'var(--primary)' }, { key: 'sage', color: 'var(--sage)' }, { key: 'honey', color: 'var(--honey-line)' },
+]
 export function CreateHome() {
   const nav = useNavigate()
   const signup = useStore((s) => s.signup)
   const [home, setHome] = useState('')
+  const [guardian, setGuardian] = useState(GUARDIANS[0])
+  const [theme, setTheme] = useState('hearth')
   const [busy, setBusy] = useState(false)
   const [err, setErr] = useState<string | null>(null)
   const create = async (e: React.FormEvent) => {
     e.preventDefault(); setBusy(true); setErr(null)
     try {
-      await signup({ name: draft.name!, email: draft.email!, password: draft.password!, householdName: home || `Семья ${draft.name}` })
+      await signup({ name: draft.name!, email: draft.email!, password: draft.password!, householdName: home || `Семья ${draft.name}`, guardian, theme, avatar_color: draft.color })
       nav('/invite')
     } catch (e: any) { setErr(e.message || 'Не удалось создать'); setBusy(false) }
   }
   return (
     <div className="page" style={centered}>
       <BackBtn />
-      <Header icon="add_home" title="Создать дом" sub="Дайте семье уютное имя." />
+      <Header icon="add_home" title="Создать дом" sub="Имя, хранитель очага и тема." />
       <form className="stack" style={{ gap: 16 }} onSubmit={create}>
         <div className="field"><label htmlFor="h">Название дома</label><input className="input" id="h" value={home} onChange={(e) => setHome(e.target.value)} placeholder="Например: Ивановы" /></div>
+        <div className="field"><label>Хранитель очага</label>
+          <div className="row" style={{ gap: 8, flexWrap: 'wrap' }}>
+            {GUARDIANS.map((g) => (
+              <button type="button" key={g} onClick={() => setGuardian(g)} style={{ width: 48, height: 48, borderRadius: 'var(--r-md)', fontSize: 24, cursor: 'pointer', background: guardian === g ? 'var(--primary-container)' : 'var(--surface-2)', border: guardian === g ? '2px solid var(--primary)' : '1px solid var(--line)' }}>{g}</button>
+            ))}
+          </div>
+        </div>
+        <div className="field"><label>Тема</label>
+          <div className="row" style={{ gap: 12 }}>
+            {THEMES.map((t) => (
+              <button type="button" key={t.key} onClick={() => setTheme(t.key)} aria-label={t.key} style={{ width: 44, height: 44, borderRadius: '50%', background: t.color, cursor: 'pointer', border: theme === t.key ? '3px solid var(--text-1)' : '3px solid transparent' }} />
+            ))}
+          </div>
+        </div>
         <Err msg={err} />
         <button className={'btn btn-primary btn-block' + (busy ? ' is-loading' : '')} type="submit" disabled={busy}>Создать</button>
       </form>
@@ -184,7 +208,8 @@ export function Invite() {
   }
   return (
     <div className="page screen" style={{ paddingTop: 56, paddingBottom: 40 }}>
-      <Header icon="celebration" tone="sage" title="Дом создан!" sub={`Пригласите близких, ${homeName ?? ''} — каждый откроет свою ссылку и создаст вход.`} />
+      <div style={{ textAlign: 'center' }}><span className="door-anim">🚪</span></div>
+      <Header icon="celebration" tone="sage" title="Добро пожаловать домой! 🎉" sub={`Дом готов, ${homeName ?? ''}. Пригласите близких — каждый откроет свою ссылку и создаст вход.`} />
       <div className="list">
         <div className="list-row">
           <div className="avatar" style={{ width: 38, height: 38, background: 'var(--primary-soft)', fontSize: 14 }}>{(homeName?.[0] ?? 'Я').toUpperCase()}</div>

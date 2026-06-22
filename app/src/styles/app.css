@@ -31,3 +31,7 @@ a { color: inherit; }
 
 /* constrain the fixed bottom nav to the mobile column (centered on desktop) */
 .bottom-nav { left: 50%; transform: translateX(-50%); max-width: 440px; }
+
+/* "door opens" celebration */
+.door-anim { font-size: 56px; line-height: 1; display: inline-block; animation: door-pop 700ms var(--ease) both; }
+@keyframes door-pop { 0% { transform: scale(.4) rotate(-8deg); opacity: 0; } 60% { transform: scale(1.15) rotate(3deg); opacity: 1; } 100% { transform: scale(1) rotate(0); } }
