@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0" name="viewport"/>
+<title>Вход — Hearth</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../assets/hearth.css"/>
+</head>
+<body>
+<main style="min-height:100dvh; display:flex; flex-direction:column; justify-content:center; padding:32px 24px; gap:28px;">
+
+  <!-- Brand -->
+  <div style="display:flex; flex-direction:column; align-items:center; gap:14px; text-align:center;">
+    <div class="brand-mark" style="width:64px; height:64px;">
+      <span class="material-symbols-outlined" style="font-size:34px;">local_fire_department</span>
+    </div>
+    <div>
+      <h1 class="h1" style="margin-bottom:6px;">С возвращением</h1>
+      <p class="body muted">Семейный очаг ждёт вас дома.</p>
+    </div>
+  </div>
+
+  <!-- Form -->
+  <form class="stack" style="gap:16px;" onsubmit="return false;">
+    <div class="field">
+      <label for="email">Эл. почта</label>
+      <input class="input" id="email" type="email" placeholder="hello@hearth.com" autocomplete="email"/>
+    </div>
+
+    <div class="field">
+      <div class="between">
+        <label for="password" style="margin:0;">Пароль</label>
+        <a href="#" class="caption" style="color:var(--primary); font-weight:600; text-decoration:none;">Забыли пароль?</a>
+      </div>
+      <div style="position:relative;">
+        <input class="input" id="password" type="password" placeholder="••••••••" autocomplete="current-password" style="padding-right:48px;"/>
+        <button type="button" aria-label="Показать пароль" onclick="var p=document.getElementById('password');var i=this.querySelector('span');if(p.type==='password'){p.type='text';i.textContent='visibility_off';}else{p.type='password';i.textContent='visibility';}" style="position:absolute; right:8px; top:50%; transform:translateY(-50%); width:36px; height:36px; border:none; background:transparent; cursor:pointer; color:var(--text-3); display:flex; align-items:center; justify-content:center;">
+          <span class="material-symbols-outlined" style="font-size:20px;">visibility</span>
+        </button>
+      </div>
+    </div>
+
+    <button class="btn btn-primary btn-block" type="submit" style="margin-top:6px;">Войти</button>
+  </form>
+
+  <!-- Secondary -->
+  <div style="display:flex; flex-direction:column; align-items:center; gap:6px; padding-top:8px; border-top:1px solid var(--line-soft);">
+    <span class="caption">Впервые в Hearth?</span>
+    <a href="../sign_up/code.html" class="btn btn-ghost btn-sm" style="gap:6px;">
+      Создать аккаунт
+      <span class="material-symbols-outlined" style="font-size:18px;">arrow_forward</span>
+    </a>
+  </div>
+
+</main>
+</body>
+</html>

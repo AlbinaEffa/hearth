@@ -1,0 +1,188 @@
+/* ============================================================
+   Hearth — shared design system (DESIGN.md v2)
+   Single source of truth for all screens. Link with:
+   <link rel="stylesheet" href="../assets/hearth.css">
+   ============================================================ */
+
+:root {
+  /* Surfaces */
+  --surface: #fdf9f3;
+  --surface-1: #faf6f0;
+  --surface-2: #f4efe8;
+  --surface-3: #ede8e0;
+  --white: #ffffff;
+
+  /* Text & lines */
+  --text-1: #211d1a;        /* primary text */
+  --text-2: #54433d;        /* secondary text (AA) */
+  --text-3: #6e635c;        /* muted captions, >=12px */
+  --line: #dac1b9;          /* borders */
+  --line-soft: #e4dcd3;     /* hairline dividers */
+
+  /* Primary — terracotta */
+  --primary: #a14a2c;
+  --primary-hover: #8c3e23;
+  --primary-soft: #d37b5b;   /* mid terracotta for solid avatar/accent fills with white text */
+  --on-primary: #ffffff;
+  --primary-container: #ffdbcf;
+  --on-primary-container: #3a1100;
+
+  /* Honey (window light) — accents only */
+  --honey: #f6e29e;
+  --honey-line: #d9c684;
+  --on-honey: #6c5d27;
+
+  /* Sage — growth / success */
+  --sage: #4a6545;
+  --sage-container: #ccebc2;
+  --on-sage: #183115;
+
+  /* Reward — in-app coins (NEVER for real money) */
+  --reward: #c79023;
+  --reward-container: #fbe9b8;
+  --on-reward: #3a2800;
+
+  /* Error */
+  --error: #b3261e;
+  --error-container: #ffdad6;
+  --on-error-container: #410002;
+
+  /* Radii */
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 16px;
+  --r-xl: 20px;
+  --r-2xl: 28px;
+  --pill: 999px;
+
+  /* Elevation — warm-neutral, low-opacity (NO terracotta tint) */
+  --elev-1: 0 1px 2px rgba(33,29,26,.05), 0 1px 3px rgba(33,29,26,.04);
+  --elev-2: 0 4px 12px rgba(33,29,26,.07), 0 2px 4px rgba(33,29,26,.04);
+  --elev-3: 0 12px 28px rgba(33,29,26,.12), 0 4px 8px rgba(33,29,26,.06);
+
+  /* Motion */
+  --dur-fast: 120ms;
+  --dur-base: 220ms;
+  --ease: cubic-bezier(0.2, 0, 0, 1);
+}
+
+* { box-sizing: border-box; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
+body { margin: 0; background: var(--surface); color: var(--text-1); min-height: 100dvh; -webkit-font-smoothing: antialiased; }
+.material-symbols-outlined { font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24; font-family: 'Material Symbols Outlined'; line-height: 1; }
+
+/* ---- Typography ---- */
+.h1 { font-size: 28px; font-weight: 800; letter-spacing: -.02em; line-height: 1.2; margin: 0; }
+.h2 { font-size: 22px; font-weight: 800; letter-spacing: -.01em; line-height: 1.25; margin: 0; }
+.h3 { font-size: 16px; font-weight: 800; margin: 0; }
+.title { font-size: 17px; font-weight: 700; margin: 0; }
+.body { font-size: 15px; font-weight: 400; line-height: 1.55; margin: 0; }
+.caption { font-size: 12px; font-weight: 500; color: var(--text-3); margin: 0; }
+.muted { color: var(--text-2); }
+.muted-2 { color: var(--text-3); }
+
+/* ---- Layout ---- */
+.screen { padding: 20px; display: flex; flex-direction: column; gap: 20px; padding-bottom: 112px; }
+.stack { display: flex; flex-direction: column; }
+.row { display: flex; align-items: center; }
+.between { display: flex; align-items: center; justify-content: space-between; }
+
+/* ---- Top bar ---- */
+.topbar { position: sticky; top: 0; z-index: 200; display: flex; justify-content: space-between; align-items: center; padding: 12px 20px; background: var(--surface); border-bottom: 1px solid var(--line-soft); }
+.brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 18px; color: var(--primary); letter-spacing: -.3px; }
+.brand-mark { width: 34px; height: 34px; border-radius: 50%; background: var(--primary-container); display: flex; align-items: center; justify-content: center; color: var(--primary); }
+.brand-mark .material-symbols-outlined { font-size: 20px; font-variation-settings: "FILL" 1; }
+.icon-btn { width: 38px; height: 38px; border-radius: 50%; border: none; background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--text-2); position: relative; }
+.dot { position: absolute; top: 7px; right: 8px; width: 8px; height: 8px; background: var(--primary); border-radius: 50%; border: 2px solid var(--surface); }
+
+/* ---- Cards ---- */
+.card { background: var(--white); border: 1px solid var(--line); border-radius: var(--r-xl); padding: 20px; box-shadow: var(--elev-1); }
+.card.tight { padding: 14px; border-radius: var(--r-lg); }
+.card.hero { border-radius: var(--r-2xl); }
+.card.flat { box-shadow: none; }
+.card.accent-reward { border-left: 3px solid var(--primary); }
+.card.accent-personal { border-left: 3px solid var(--sage); }
+
+/* ---- Avatars ---- */
+.avatar { border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 800; }
+.avatar.ring { border: 2px solid var(--primary); }
+
+/* ---- Buttons ---- */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-size: 15px; font-weight: 700; border-radius: var(--r-lg); padding: 0 18px; height: 52px; border: none; cursor: pointer; transition: transform var(--dur-fast) var(--ease), background var(--dur-fast) var(--ease); text-decoration: none; }
+.btn:active { transform: scale(.98); }
+.btn-block { width: 100%; }
+.btn-primary { background: var(--primary); color: var(--on-primary); }
+.btn-primary:hover { background: var(--primary-hover); }
+.btn-secondary { background: var(--surface-3); color: var(--text-1); }
+.btn-ghost { background: transparent; color: var(--primary); }
+.btn-sm { height: 40px; font-size: 13px; padding: 0 14px; border-radius: var(--r-md); }
+.btn:disabled, .btn[aria-disabled="true"] { opacity: .38; box-shadow: none; pointer-events: none; }
+.btn.is-loading { color: transparent !important; pointer-events: none; position: relative; }
+.btn.is-loading::after { content: ""; position: absolute; width: 18px; height: 18px; border-radius: 50%; border: 2px solid currentColor; border-top-color: transparent; color: var(--on-primary); animation: hearth-spin .7s linear infinite; }
+.btn-secondary.is-loading::after, .btn-ghost.is-loading::after { color: var(--primary); }
+@keyframes hearth-spin { to { transform: rotate(360deg); } }
+
+/* ---- Chips ---- */
+.chip { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: var(--pill); background: var(--surface-3); color: var(--text-2); }
+.chip .material-symbols-outlined { font-size: 14px; }
+.chip-primary { background: var(--primary-container); color: var(--on-primary-container); }
+.chip-honey { background: var(--honey); color: var(--on-honey); }
+.chip-sage { background: var(--sage-container); color: var(--on-sage); }
+.chip-reward { background: var(--reward-container); color: var(--on-reward); }
+.chip-error { background: var(--error-container); color: var(--on-error-container); }
+.chip.selectable { cursor: pointer; border: 1px solid transparent; transition: border-color var(--dur-fast) var(--ease), background var(--dur-fast) var(--ease); }
+.chip.selectable:hover { border-color: var(--line); }
+.chip.selected { background: var(--primary); color: var(--on-primary); }
+.chip[aria-disabled="true"] { opacity: .38; pointer-events: none; }
+
+/* ---- Coin (in-app currency) ---- */
+.coin { display: inline-flex; align-items: center; gap: 4px; background: var(--reward-container); color: var(--on-reward); font-weight: 800; padding: 4px 9px; border-radius: var(--pill); font-size: 13px; }
+.coin .material-symbols-outlined { font-size: 14px; font-variation-settings: "FILL" 1; }
+
+/* ---- Inputs ---- */
+.field { display: flex; flex-direction: column; gap: 6px; }
+.field > label { font-size: 14px; font-weight: 600; color: var(--text-2); }
+.input { width: 100%; height: 52px; padding: 0 16px; border: 1px solid var(--line); border-radius: var(--r-md); background: var(--surface-2); font-size: 16px; color: var(--text-1); }
+.input::placeholder { color: var(--text-3); }
+.input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(161,74,44,.22); background: var(--white); }
+.input:disabled { opacity: .55; cursor: not-allowed; }
+.field.error .input, .input.error { border-color: var(--error); }
+.field.error .input:focus, .input.error:focus { box-shadow: 0 0 0 3px rgba(179,38,30,.2); }
+.field.error > label { color: var(--error); }
+.error-text { font-size: 12px; font-weight: 500; color: var(--error); }
+.error-text::before { content: "error"; font-family: 'Material Symbols Outlined'; font-size: 14px; vertical-align: -2px; margin-right: 4px; }
+
+/* ---- Toggle switch ---- */
+.switch { position: relative; display: inline-block; width: 46px; height: 28px; flex-shrink: 0; }
+.switch input { position: absolute; opacity: 0; width: 0; height: 0; }
+.switch span { position: absolute; inset: 0; background: var(--surface-3); border: 1px solid var(--line); border-radius: var(--pill); cursor: pointer; transition: background var(--dur-fast) var(--ease); }
+.switch span::before { content: ""; position: absolute; width: 22px; height: 22px; left: 2px; top: 2px; background: var(--white); border-radius: 50%; box-shadow: var(--elev-1); transition: transform var(--dur-fast) var(--ease); }
+.switch input:checked + span { background: var(--primary); border-color: var(--primary); }
+.switch input:checked + span::before { transform: translateX(18px); }
+.switch input:focus-visible + span { outline: 2px solid var(--primary); outline-offset: 2px; }
+
+/* ---- Settings rows ---- */
+.list { background: var(--white); border: 1px solid var(--line); border-radius: var(--r-xl); box-shadow: var(--elev-1); overflow: hidden; }
+.list-row { display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-bottom: 1px solid var(--line-soft); }
+.list-row:last-child { border-bottom: none; }
+.list-row .grow { flex: 1; min-width: 0; }
+
+/* ---- Progress ---- */
+.track { height: 8px; border-radius: var(--pill); background: var(--surface-3); overflow: hidden; }
+.track > span { display: block; height: 100%; border-radius: var(--pill); background: var(--sage); }
+.track.reward > span { background: var(--reward); }
+
+/* ---- Bottom navigation ---- */
+.bottom-nav { position: fixed; bottom: 0; left: 0; width: 100%; z-index: 200; display: flex; justify-content: space-around; align-items: center; padding: 10px 8px 24px; background: var(--white); border-top: 1px solid var(--line-soft); box-shadow: 0 -4px 20px rgba(33,29,26,.05); }
+.nav-item { display: flex; flex-direction: column; align-items: center; gap: 3px; text-decoration: none; color: var(--text-3); font-size: 10px; font-weight: 500; border: none; background: none; cursor: pointer; }
+.nav-item .material-symbols-outlined { font-size: 24px; }
+.nav-item.active { color: var(--primary); font-weight: 700; }
+.nav-item.active .material-symbols-outlined { font-variation-settings: "FILL" 1; }
+.fab { width: 56px; height: 56px; border-radius: 50%; background: var(--primary); color: #fff; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: var(--elev-3); position: relative; top: -16px; }
+.fab .material-symbols-outlined { font-size: 28px; }
+/* Child role uses the same .bottom-nav with 4 .nav-item and no .fab:
+   Главная · Задачи · Кладовая · Кошелёк */
+
+/* ---- Accessibility: visible keyboard focus ---- */
+:where(a, button, .btn, .nav-item, .chip.selectable):focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border-radius: var(--r-sm); }
+
+@media (prefers-reduced-motion: reduce) { *, *::after, *::before { transition: none !important; animation: none !important; } }

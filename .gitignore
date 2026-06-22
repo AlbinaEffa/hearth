@@ -1,0 +1,18 @@
+# dependencies
+node_modules/
+**/node_modules/
+
+# builds & caches
+dist/
+**/dist/
+.vite/
+**/.vite/
+
+# env (keep .env.example)
+.env
+.env.local
+**/.env.local
+
+# os / editor
+.DS_Store
+*.log

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "surface-container-highest": "#e6e2dc",
+                "on-primary-fixed-variant": "#763218",
+                "surface-container": "#f1ede7",
+                "secondary-fixed-dim": "#d9c684",
+                "primary-container": "#d37b5b",
+                "outline": "#87736c",
+                "on-tertiary-fixed-variant": "#334d2f",
+                "on-primary": "#ffffff",
+                "error": "#ba1a1a",
+                "on-primary-fixed": "#380d00",
+                "on-secondary-fixed-variant": "#534611",
+                "inverse-on-surface": "#f4f0ea",
+                "on-tertiary-container": "#183115",
+                "inverse-surface": "#31302d",
+                "secondary-container": "#f6e29e",
+                "on-tertiary-fixed": "#082007",
+                "on-secondary": "#ffffff",
+                "surface-bright": "#fdf9f3",
+                "surface-dim": "#dddad4",
+                "surface-container-high": "#ebe8e2",
+                "outline-variant": "#dac1b9",
+                "on-error-container": "#93000a",
+                "tertiary-fixed": "#ccebc2",
+                "secondary-fixed": "#f6e29e",
+                "inverse-primary": "#ffb59b",
+                "surface-container-lowest": "#ffffff",
+                "primary-fixed-dim": "#ffb59b",
+                "on-tertiary": "#ffffff",
+                "on-surface": "#1c1c18",
+                "on-primary-container": "#521801",
+                "on-background": "#1c1c18",
+                "on-secondary-fixed": "#221b00",
+                "secondary": "#6c5d27",
+                "primary": "#94492d",
+                "tertiary": "#4a6545",
+                "surface-tint": "#94492d",
+                "surface-container-low": "#f7f3ed",
+                "error-container": "#ffdad6",
+                "tertiary-container": "#7d9a76",
+                "surface": "#fdf9f3",
+                "on-error": "#ffffff",
+                "background": "#fdf9f3",
+                "primary-fixed": "#ffdbcf",
+                "on-surface-variant": "#54433d",
+                "surface-variant": "#e6e2dc",
+                "tertiary-fixed-dim": "#b1cfa7",
+                "on-secondary-container": "#72632c"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+            },
+            "spacing": {
+                "md": "24px",
+                "margin": "20px",
+                "lg": "40px",
+                "sm": "12px",
+                "gutter": "16px",
+                "xs": "4px",
+                "base": "8px"
+            },
+            "fontFamily": {
+                "headline-lg": ["Plus Jakarta Sans"],
+                "caption": ["Plus Jakarta Sans"],
+                "label-md": ["Plus Jakarta Sans"],
+                "headline-md": ["Plus Jakarta Sans"],
+                "body-md": ["Plus Jakarta Sans"],
+                "body-lg": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                "caption": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                "headline-md": ["24px", {"lineHeight": "30px", "fontWeight": "600"}],
+                "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .fabric-texture {
+            background-image: radial-gradient(#87736c 0.5px, transparent 0.5px);
+            background-size: 8px 8px;
+            opacity: 0.05;
+        }
+        .stitch-border {
+            border: 2px dashed #dac1b9;
+        }
+        .fluffy-shadow {
+            box-shadow: 0 10px 30px -5px rgba(148, 73, 45, 0.15);
+        }
+        .thick-button {
+            border-bottom: 4px solid #763218;
+        }
+        .pillowy-glow {
+            box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.4), 0 4px 15px rgba(148, 73, 45, 0.1);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md min-h-screen flex flex-col items-center overflow-x-hidden">
+<!-- Top App Bar (Shared Component Logic - Suppressed because it's an onboarding/welcome screen) -->
+<!-- Applying "The Destination Rule": Navigation shell is suppressed for Transactional/Onboarding pages -->
+<main class="w-full max-w-md px-margin py-lg flex flex-col items-center justify-between min-h-[795px] relative">
+<!-- Subtle Fabric Background layer -->
+<div class="fixed inset-0 pointer-events-none fabric-texture"></div>
+<!-- Branding & Mascot Section -->
+<div class="flex flex-col items-center w-full z-10 space-y-base">
+<div class="mb-sm text-primary">
+<span class="material-symbols-outlined text-6xl" style="font-variation-settings: 'FILL' 1;">cottage</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary text-center tracking-tight">
+                Stitch Logo
+            </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant text-center px-sm mt-xs">
+                Where every family thread finds its home.
+            </p>
+</div>
+<!-- Central Illustration Section: The Round Corgi -->
+<div class="relative w-full aspect-square max-w-[280px] my-md z-10">
+<div class="absolute inset-0 bg-primary-fixed opacity-20 rounded-full blur-3xl"></div>
+<div class="relative w-full h-full rounded-[3rem] bg-surface-container-high fluffy-shadow border-4 border-surface-container overflow-hidden flex items-center justify-center p-md">
+<!-- Character Illustration -->
+<img alt="Cozy Mascot" class="w-full h-full object-contain rounded-2xl" data-alt="A charming digital illustration of a round, fluffy orange and white Corgi mascot curled up on a soft woven cream rug. The scene is set in a sunlit corner of a cozy home with warm wood textures and a palette of terracotta and beige. The lighting is soft and golden, emphasizing a gentle, supportive, and restorative digital hygge aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3pzC9gy5YStcnDvXfPP3hYrhJsGfluNDMjpaHM0Vg79BMIwZQ5jqAWndHR_ZBlUkymnLcsXe80GShbqCJjoShE-m-UDeet72bExAu9gPOif_2PneMfdYcHQMp5QPf7nK6azL16o6cwwKAXBsUItqhIW3xXgFOg6Iqtk6vQc2fFWVfKCLh-If0-fSi4DHVSsnkggvJjAqZbefd8CTWTESIsMiITVk3t0Z2megM1GLj39dxv08vyN0fM0Hm7duRU2vO4vLlpi7b8n4"/>
+</div>
+<!-- Decorative Stitch Patch -->
+<div class="absolute -bottom-4 -right-2 bg-secondary-container text-on-secondary-container px-sm py-xs rounded-xl stitch-border font-label-md text-label-md fluffy-shadow rotate-12">
+                Warmly Welcome
+            </div>
+</div>
+<!-- Action Selection Cluster -->
+<div class="w-full space-y-md z-10">
+<!-- Option 1: Start New Journey -->
+<button class="w-full group relative transition-all active:scale-[0.98]">
+<div class="bg-primary text-on-primary py-md px-lg rounded-2xl flex items-center justify-between thick-button fluffy-shadow pillowy-glow">
+<div class="flex flex-col items-start">
+<span class="font-headline-md text-headline-md">Start your family's journey</span>
+<span class="font-caption text-caption opacity-90 mt-xs">Create a new house for your loved ones</span>
+</div>
+<span class="material-symbols-outlined text-3xl group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+</button>
+<!-- Option 2: Join Existing -->
+<button class="w-full group relative transition-all active:scale-[0.98]">
+<div class="bg-surface-container text-on-surface-variant py-md px-lg rounded-2xl flex items-center justify-between border-2 border-outline-variant hover:bg-surface-variant transition-colors">
+<div class="flex flex-col items-start">
+<span class="font-headline-md text-headline-md text-on-surface">Join an existing family</span>
+<span class="font-caption text-caption mt-xs">Enter a shared code to connect with home</span>
+</div>
+<span class="material-symbols-outlined text-3xl group-hover:scale-110 transition-transform">key</span>
+</div>
+</button>
+</div>
+<!-- Footer Call-to-Action -->
+<div class="mt-lg z-10 w-full">
+<button class="w-full flex items-center justify-center gap-base py-sm text-outline hover:text-primary transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">door_open</span>
+<span class="font-label-md text-label-md">Open the Door to your dashboard</span>
+</button>
+<div class="flex justify-center items-center gap-xs mt-md">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<div class="w-2 h-2 rounded-full bg-outline-variant"></div>
+<div class="w-2 h-2 rounded-full bg-outline-variant"></div>
+</div>
+</div>
+</main>
+<!-- Navigation Shell Suppression: This page is transactional/welcome. BottomNavBar excluded per guidelines. -->
+</body></html>

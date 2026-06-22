@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0" name="viewport"/>
+<title>Доска заданий — Hearth</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../assets/hearth.css"/>
+</head>
+<body>
+
+  <header class="topbar">
+    <span class="title">Доска заданий</span>
+    <span class="coin"><span class="material-symbols-outlined">paid</span>450</span>
+  </header>
+
+  <main class="screen">
+
+    <section>
+      <h1 class="h1">Свободные задания</h1>
+      <p class="body muted">Бери задание — выполняй — получай монеты.</p>
+    </section>
+
+    <!-- Job -->
+    <section class="card accent-reward">
+      <div class="between" style="align-items:flex-start;">
+        <div style="flex:1;">
+          <span class="chip chip-reward" style="margin-bottom:8px;"><span class="material-symbols-outlined">paid</span>250 монет</span>
+          <p class="title">Полить цветы</p>
+          <p class="body muted" style="font-size:13px; margin-top:2px;">Петунии на балконе совсем сникли — им нужна вода.</p>
+        </div>
+      </div>
+      <div class="between" style="margin-top:14px;">
+        <span class="caption"><span class="material-symbols-outlined" style="font-size:14px; vertical-align:-2px;">schedule</span> до 18:00</span>
+        <button class="btn btn-primary btn-sm">Беру!</button>
+      </div>
+    </section>
+
+    <section class="card accent-reward">
+      <div class="between" style="align-items:flex-start;">
+        <div style="flex:1;">
+          <span class="chip chip-reward" style="margin-bottom:8px;"><span class="material-symbols-outlined">paid</span>100 монет</span>
+          <p class="title">Разобрать обувь в прихожей</p>
+          <p class="body muted" style="font-size:13px; margin-top:2px;">Расставь ботинки и кроссовки по местам.</p>
+        </div>
+      </div>
+      <div class="between" style="margin-top:14px;">
+        <span class="chip chip-honey">Повтор · еженедельно</span>
+        <button class="btn btn-primary btn-sm">Беру!</button>
+      </div>
+    </section>
+
+    <section class="card accent-reward">
+      <div class="between" style="align-items:flex-start;">
+        <div style="flex:1;">
+          <span class="chip chip-reward" style="margin-bottom:8px;"><span class="material-symbols-outlined">paid</span>150 монет</span>
+          <p class="title">Вынести мусор</p>
+          <p class="body muted" style="font-size:13px; margin-top:2px;">Собери пакеты и отнеси к контейнерам.</p>
+        </div>
+      </div>
+      <div class="between" style="margin-top:14px;">
+        <span class="caption"><span class="material-symbols-outlined" style="font-size:14px; vertical-align:-2px;">schedule</span> сегодня</span>
+        <button class="btn btn-primary btn-sm">Беру!</button>
+      </div>
+    </section>
+
+    <!-- Empty hint -->
+    <div class="card flat" style="text-align:center; background:var(--surface-2); border:none;">
+      <p class="caption">Это все свободные задания на сегодня. Загляни позже!</p>
+    </div>
+
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="../my_room_child_dashboard/code.html" class="nav-item"><span class="material-symbols-outlined">home</span>Главная</a>
+    <a href="../job_board/code.html" class="nav-item active"><span class="material-symbols-outlined">assignment</span>Задачи</a>
+    <a href="../the_pantry_rewards/code.html" class="nav-item"><span class="material-symbols-outlined">storefront</span>Кладовая</a>
+    <a href="../my_wallet/code.html" class="nav-item"><span class="material-symbols-outlined">savings</span>Кошелёк</a>
+  </nav>
+
+</body>
+</html>

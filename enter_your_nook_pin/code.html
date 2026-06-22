@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0" name="viewport"/>
+<title>Введите PIN — Hearth</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../assets/hearth.css"/>
+<style>
+  .pin-dots { display:flex; gap:14px; justify-content:center; }
+  .pin-dots i { width:14px; height:14px; border-radius:50%; border:2px solid var(--line); display:block; }
+  .pin-dots i.filled { background:var(--primary); border-color:var(--primary); }
+  .keypad { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; max-width:300px; margin:0 auto; width:100%; }
+  .key { height:72px; border-radius:var(--r-lg); border:1px solid var(--line); background:var(--white); font-size:26px; font-weight:700; color:var(--text-1); cursor:pointer; box-shadow:var(--elev-1); transition:transform var(--dur-fast) var(--ease); }
+  .key:active { transform:scale(.96); background:var(--surface-2); }
+  .key.blank { border:none; background:transparent; box-shadow:none; cursor:default; }
+</style>
+</head>
+<body>
+<main style="min-height:100dvh; display:flex; flex-direction:column; justify-content:center; padding:40px 24px; gap:28px;">
+
+  <a href="../who_s_home_profile_selection/code.html" class="icon-btn" style="position:absolute; top:16px; left:16px;">
+    <span class="material-symbols-outlined">arrow_back</span>
+  </a>
+
+  <div style="display:flex; flex-direction:column; align-items:center; gap:14px; text-align:center;">
+    <div class="avatar" style="width:72px; height:72px; background:var(--primary-soft); font-size:26px;">М</div>
+    <div>
+      <h1 class="h1" style="margin-bottom:4px;">С возвращением, Мама</h1>
+      <p class="body muted">Введите семейный PIN</p>
+    </div>
+    <div class="pin-dots" style="margin-top:6px;">
+      <i class="filled"></i><i class="filled"></i><i></i><i></i>
+    </div>
+  </div>
+
+  <div class="keypad">
+    <button class="key">1</button><button class="key">2</button><button class="key">3</button>
+    <button class="key">4</button><button class="key">5</button><button class="key">6</button>
+    <button class="key">7</button><button class="key">8</button><button class="key">9</button>
+    <button class="key blank"></button>
+    <button class="key">0</button>
+    <button class="key" aria-label="Стереть"><span class="material-symbols-outlined" style="font-size:24px; vertical-align:-4px;">backspace</span></button>
+  </div>
+
+  <a href="#" class="caption" style="text-align:center; color:var(--primary); font-weight:600; text-decoration:none;">Забыли PIN?</a>
+
+</main>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0" name="viewport"/>
+<title>Профиль и аватар — Hearth</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../assets/hearth.css"/>
+<style>
+  .swatch { width:48px; height:48px; border-radius:50%; border:2px solid transparent; cursor:pointer; }
+  .swatch.sel { border-color:var(--text-1); }
+</style>
+</head>
+<body style="padding-bottom:24px;">
+
+  <header class="topbar">
+    <a href="../profile/code.html" class="icon-btn"><span class="material-symbols-outlined">arrow_back</span></a>
+    <span class="title">Профиль</span>
+    <button class="btn btn-ghost btn-sm" style="height:auto;">Сохранить</button>
+  </header>
+
+  <main class="screen" style="padding-bottom:24px;">
+
+    <!-- Avatar preview -->
+    <div style="display:flex; flex-direction:column; align-items:center; gap:12px;">
+      <div style="position:relative;">
+        <div class="avatar" id="preview" style="width:104px; height:104px; background:var(--primary-soft); font-size:40px;">М</div>
+        <button class="fab" style="width:40px; height:40px; position:absolute; bottom:-4px; right:-4px; top:auto; box-shadow:var(--elev-2);">
+          <span class="material-symbols-outlined" style="font-size:20px;">photo_camera</span>
+        </button>
+      </div>
+      <p class="caption">Загрузите фото или выберите цвет и эмодзи</p>
+    </div>
+
+    <!-- Name -->
+    <div class="field">
+      <label for="name">Имя</label>
+      <input class="input" id="name" type="text" value="Мама"/>
+    </div>
+
+    <!-- Color -->
+    <div class="field">
+      <label>Цвет аватара</label>
+      <div class="row" style="gap:12px; flex-wrap:wrap;">
+        <span class="swatch sel" style="background:var(--primary-soft);"></span>
+        <span class="swatch" style="background:var(--sage);"></span>
+        <span class="swatch" style="background:var(--honey);"></span>
+        <span class="swatch" style="background:#b1cfa7;"></span>
+        <span class="swatch" style="background:var(--primary);"></span>
+        <span class="swatch" style="background:#a68b7c;"></span>
+      </div>
+    </div>
+
+    <!-- Emoji -->
+    <div class="field">
+      <label>Иконка</label>
+      <div class="row" style="gap:10px; flex-wrap:wrap;">
+        <button class="card tight" style="width:52px; height:52px; display:flex; align-items:center; justify-content:center; font-size:22px; cursor:pointer;">М</button>
+        <button class="card tight" style="width:52px; height:52px; display:flex; align-items:center; justify-content:center; font-size:22px; cursor:pointer;">🌷</button>
+        <button class="card tight" style="width:52px; height:52px; display:flex; align-items:center; justify-content:center; font-size:22px; cursor:pointer;">⭐</button>
+        <button class="card tight" style="width:52px; height:52px; display:flex; align-items:center; justify-content:center; font-size:22px; cursor:pointer;">🌿</button>
+        <button class="card tight" style="width:52px; height:52px; display:flex; align-items:center; justify-content:center; font-size:22px; cursor:pointer;">🐈</button>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="role">Роль</label>
+      <div class="row" style="gap:10px;">
+        <span class="chip chip-primary">Взрослый</span>
+        <span class="chip">Ребёнок</span>
+      </div>
+    </div>
+
+    <button class="btn btn-primary btn-block" style="margin-top:8px;">Сохранить изменения</button>
+
+  </main>
+</body>
+</html>

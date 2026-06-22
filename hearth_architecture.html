@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Hearth — Архитектура экранов</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #fdf9f3; color: #1c1c18; padding: 24px; max-width: 960px; margin: 0 auto; }
+
+h1 { font-size: 22px; font-weight: 700; color: #1c1c18; margin-bottom: 4px; }
+.subtitle { font-size: 14px; color: #87736c; margin-bottom: 24px; }
+
+.legend { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 28px; padding: 12px 16px; background: #f1ede7; border-radius: 10px; }
+.leg { display: flex; align-items: center; gap: 6px; font-size: 12px; color: #54433d; }
+.leg-dot { width: 12px; height: 12px; border-radius: 3px; flex-shrink: 0; }
+
+.section { margin-bottom: 28px; }
+.section-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: #87736c; margin-bottom: 12px; padding-bottom: 6px; border-bottom: 1px solid #e6e2dc; }
+
+/* Auth flow */
+.flow-row { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.node { display: inline-flex; flex-direction: column; border-radius: 8px; padding: 8px 12px; font-size: 12px; font-weight: 600; }
+.node-sub { font-size: 10px; font-weight: 400; color: #87736c; margin-top: 2px; }
+.arr { color: #87736c; font-size: 14px; }
+
+.c-auth   { background: #e6e2dc; color: #1c1c18; }
+.c-global { background: #ccebc2; color: #183115; }
+.c-push   { background: #f7f3ed; color: #1c1c18; border: 1px solid #dac1b9; }
+.c-modal  { background: #fff; color: #1c1c18; border: 1px dashed #87736c; }
+.c-tab-p  { background: #ffdbcf; color: #521801; border: 1.5px solid #d37b5b; }
+.c-tab-c  { background: #f6e29e; color: #221b00; border: 1.5px solid #d9c684; }
+
+/* Global row */
+.global-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.global-block { border: 1px solid #e6e2dc; border-radius: 10px; overflow: hidden; }
+.global-head { padding: 10px 14px; display: flex; align-items: center; gap: 8px; }
+.global-icon { font-size: 18px; }
+.global-name { font-size: 13px; font-weight: 700; }
+.global-body { padding: 8px 14px 12px; border-top: 1px solid #f1ede7; }
+.child-item { display: flex; align-items: center; gap: 6px; margin-bottom: 5px; font-size: 11px; }
+.badge { font-size: 10px; padding: 1px 6px; border-radius: 4px; white-space: nowrap; }
+.badge-modal { background: #fff; border: 1px dashed #87736c; color: #87736c; }
+.badge-push  { background: #f7f3ed; border: 1px solid #dac1b9; color: #54433d; }
+.badge-shared { background: #ccebc2; color: #183115; }
+
+/* Role split */
+.role-split { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.role-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; padding: 4px 10px; border-radius: 6px; display: inline-block; margin-bottom: 10px; }
+.rl-p { background: #ffdbcf; color: #521801; }
+.rl-c { background: #f6e29e; color: #221b00; }
+
+.tab-block { border: 1px solid #e6e2dc; border-radius: 10px; margin-bottom: 8px; overflow: hidden; }
+.tab-head { padding: 10px 14px; display: flex; align-items: center; gap: 8px; background: #fdf9f3; }
+.tab-icon { font-size: 16px; }
+.tab-name { font-size: 13px; font-weight: 700; }
+.tab-body { padding: 8px 14px 12px; border-top: 1px solid #f1ede7; display: flex; flex-direction: column; gap: 5px; }
+.sub-note { font-size: 10px; color: #87736c; margin-bottom: 2px; }
+
+.divider { height: 1px; background: #e6e2dc; margin: 20px 0; }
+
+.summary { background: #fff8f0; border-left: 4px solid #94492d; border-radius: 0 10px 10px 0; padding: 12px 16px; font-size: 13px; color: #54433d; line-height: 1.7; }
+.summary strong { color: #94492d; }
+</style>
+</head>
+<body>
+
+<h1>Hearth — Архитектура экранов</h1>
+<p class="subtitle">Полная карта: все экраны, переходы, роли</p>
+
+<div class="legend">
+  <div class="leg"><div class="leg-dot" style="background:#e6e2dc;"></div> Онбординг / Auth</div>
+  <div class="leg"><div class="leg-dot" style="background:#ccebc2;"></div> Глобальный (всегда доступен)</div>
+  <div class="leg"><div class="leg-dot" style="background:#ffdbcf;border:1.5px solid #d37b5b;"></div> Таб родителя</div>
+  <div class="leg"><div class="leg-dot" style="background:#f6e29e;border:1.5px solid #d9c684;"></div> Таб ребёнка</div>
+  <div class="leg"><div class="leg-dot" style="background:#f7f3ed;border:1px solid #dac1b9;"></div> Push-экран</div>
+  <div class="leg"><div class="leg-dot" style="background:#fff;border:1px dashed #87736c;"></div> Модал / шит</div>
+</div>
+
+<!-- ONBOARDING -->
+<div class="section">
+  <div class="section-title">① Онбординг и авторизация — один раз при первом входе</div>
+  <div class="flow-row">
+    <div class="node c-auth">Приветствие</div>
+    <span class="arr">→</span>
+    <div class="node c-auth">Регистрация / Вход</div>
+    <span class="arr">→</span>
+    <div class="node c-auth">Имя и аватар</div>
+    <span class="arr">→</span>
+    <div class="node c-auth">Роль<div class="node-sub">Родитель или Ребёнок</div></div>
+    <span class="arr">→</span>
+    <div class="node c-auth">Создать или вступить в дом<div class="node-sub">Родитель создаёт · Ребёнок вводит код</div></div>
+    <span class="arr">→</span>
+    <div class="node c-global">Главная ✓</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- GLOBAL -->
+<div class="section">
+  <div class="section-title">② Глобальные экраны — топ-бар и FAB (доступны с любого экрана)</div>
+  <div class="global-row">
+
+    <div class="global-block">
+      <div class="global-head" style="background:#e8f5e4;">
+        <span class="global-icon">🔔</span>
+        <div>
+          <div class="global-name">Уведомления</div>
+          <div style="font-size:10px;color:#4a6545;">Колокольчик в топ-баре</div>
+        </div>
+      </div>
+      <div class="global-body">
+        <div class="child-item">
+          <span class="arr" style="font-size:11px;">→</span>
+          <span>Детали уведомления</span>
+          <span class="badge badge-modal">модал</span>
+        </div>
+        <div style="font-size:10px;color:#87736c;margin-top:4px;">Статусы задач, Proposals, одобрение наград</div>
+      </div>
+    </div>
+
+    <div class="global-block">
+      <div class="global-head" style="background:#e8f5e4;">
+        <span class="global-icon">👤</span>
+        <div>
+          <div class="global-name">Профиль</div>
+          <div style="font-size:10px;color:#4a6545;">Аватар в топ-баре</div>
+        </div>
+      </div>
+      <div class="global-body">
+        <div class="child-item">
+          <span class="arr" style="font-size:11px;">→</span>
+          <span>Редактировать профиль</span>
+          <span class="badge badge-push">push</span>
+        </div>
+        <div class="child-item">
+          <span class="arr" style="font-size:11px;">→</span>
+          <span>Настройки аккаунта</span>
+          <span class="badge badge-push">push</span>
+        </div>
+        <div class="child-item">
+          <span class="arr" style="font-size:11px;">→</span>
+          <span>Настройки дома</span>
+          <span class="badge badge-push">push</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="global-block">
+      <div class="global-head" style="background:#e8f5e4;">
+        <span class="global-icon">➕</span>
+        <div>
+          <div class="global-name">Создать задачу</div>
+          <div style="font-size:10px;color:#4a6545;">FAB — кнопка по центру внизу</div>
+        </div>
+      </div>
+      <div class="global-body">
+        <div class="child-item">
+          <span class="arr" style="font-size:11px;">→</span>
+          <span>Конструктор задачи</span>
+          <span class="badge badge-modal">модал</span>
+        </div>
+        <div style="font-size:10px;color:#87736c;margin-top:4px;">Базовый минимум сверху + расширенные поля снизу</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- BOTTOM NAV -->
+<div class="section">
+  <div class="section-title">③ Нижнее меню — 4 вкладки, роль-адаптивные</div>
+  <div class="role-split">
+
+    <!-- PARENT -->
+    <div>
+      <div class="role-label rl-p">👩 Родитель</div>
+
+      <div class="tab-block">
+        <div class="tab-head">
+          <span class="tab-icon">🏠</span>
+          <span class="tab-name" style="color:#521801;">Главная</span>
+        </div>
+        <div class="tab-body">
+          <div style="font-size:10px;color:#87736c;">Семейный дашборд: срочное, календарь, баланс</div>
+          <div class="child-item"><span class="arr" style="font-size:11px;">→</span> Детали задачи <span class="badge badge-modal">модал</span></div>
+          <div class="child-item"><span class="arr" style="font-size:11px;">→</span> Proposal: принять/отклонить <span class="badge badge-modal">модал</span></div>
+        </div>
+      </div>
+
+      <div class="tab-block">
+        <div class="tab-head">
+          <span class="tab-icon">✅</span>
+          <span class="tab-name" style="color:#521801;">Задачи</span>
+        </div>
+        <div class="tab-body">
+          <div class="sub-note">3 вкладки: Мои · Доска · Решения</div>
+          <div class="child-item"><span class="arr" style="font-size:11px;">→</span> Детали задачи <span class="badge badge-push">push</span></div>
+          <div class="child-item"><span class="arr" style="font-size:11px;">→</span> Редактировать задачу <span class="badge badge-modal">модал</span></div>
+        </div>
+      </div>
+
+      <div class="tab-block">
+        <div class="tab-head">
+          <span class="tab-icon">📅</span>
+          <span class="tab-name" style="color:#521801;">Неделя</span>
+          <span class="badge badge-shared" style="margin-left:6px;">общий</span>
+        </div>
+        <div class="tab-body">
+          <div style="font-size:10px;color:#87736c;">Семейный календарь, travel time буфер</div>
+          <div class="child-item"><span class="arr" style="font-size:11px;">→</span> Детали события <span class="badge badge-modal">модал</span></div>
+          <div class="child-item"><span class="arr" style="font-size:11px;">→</span> Создать событие <span class="badge badge-modal">модал</span></div>
+        </div>
+      </div>
+
+      <div class="tab-block">
+        <div class="tab-head">
+          <span class="tab-icon">👥</span>
+          <span class="tab-name" style="color:#521801;">Семья</span>
+        </div>
+        <div class="tab-body">
+          <div style="font-size:10px;color:#87736c;">Участники, роли, балансы монет</div>
+          <div class="child-item"><span class="arr" style="font-size:11px;">→</span> Профиль участника <span class="badge badge-push">push</span></div>
+          <div class="child-item"><span class="arr" style="font-size:11px;">→</span> Пригласить <span class="badge badge-modal">модал</span></div>
+          <div class="child-item"><span class="arr" style="font-size:11px;">→</span> Управление ролями <span class="badge badge-modal">модал</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CHILD -->
+    <div>
+      <div class="role-label rl-c">👧 Ребёнок</div>
+
+      <div class="tab-block">
+        <div class="tab-head">
+          <span class="tab-icon">🏠</span>
+          <span class="tab-name" style="color:#221b00;">Главная</span>
+        </div>
+        <div class="tab-body">
+          <div style="font-size:10px;color:#87736c;">Мои задачи, копилка, прогресс</div>
+          <div class="child-item"><span class="arr" style="font-size:11px;">→</span> Детали задачи <span class="badge badge-modal">модал</span></div>
+          <div class="child-item"><span class="arr" style="font-size:11px;">→</span> Превью награды <span class="badge badge-modal">модал</span></div>
+        </div>
+      </div>
+
+      <div class="tab-block">
+        <div class="tab-head">
+          <span class="tab-icon">✅</span>
+          <span class="tab-name" style="color:#221b00;">Задачи</span>
+        </div>
+        <div class="tab-body">
+          <div class="sub-note">2 вкладки: Мои · Доска</div>
+          <div class="child-item"><span class="arr" style="font-size:11px;">→</span> Детали задачи <span class="badge badge-push">push</span></div>
+          <div class="child-item"><span class="arr" style="font-size:11px;">→</span> Взять задачу <span class="badge badge-modal">модал</span></div>
+        </div>
+      </div>
+
+      <div class="tab-block">
+        <div class="tab-head">
+          <span class="tab-icon">📅</span>
+          <span class="tab-name" style="color:#221b00;">Неделя</span>
+          <span class="badge badge-shared" style="margin-left:6px;">общий</span>
+        </div>
+        <div class="tab-body">
+          <div style="font-size:10px;color:#87736c;">Мои события, секции, дедлайны</div>
+          <div class="child-item"><span class="arr" style="font-size:11px;">→</span> Детали события <span class="badge badge-modal">модал</span></div>
+        </div>
+      </div>
+
+      <div class="tab-block">
+        <div class="tab-head">
+          <span class="tab-icon">🏆</span>
+          <span class="tab-name" style="color:#221b00;">Награды</span>
+        </div>
+        <div class="tab-body">
+          <div style="font-size:10px;color:#87736c;">Магазин наград, история трат</div>
+          <div class="child-item"><span class="arr" style="font-size:11px;">→</span> Магазин наград <span class="badge badge-push">push</span></div>
+          <div class="child-item"><span class="arr" style="font-size:11px;">→</span> Купить награду <span class="badge badge-modal">модал</span></div>
+          <div class="child-item"><span class="arr" style="font-size:11px;">→</span> История трат <span class="badge badge-push">push</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="summary">
+  <strong>Итого:</strong> 5 онбординг-экранов + 3 глобальных + ~22 в навигации = около <strong>30 экранов</strong>.<br>
+  Уникальных для проектирования: ~18 (остальные — вариации одного шаблона под разные роли).<br>
+  Вкладки <strong>Задачи</strong> и <strong>Неделя</strong> одинаковы для обеих ролей — пользователь не переучивается при смене профиля.<br>
+  <strong>Семья ↔ Награды</strong> — единственная замена: честно отражает разные приоритеты родителя и ребёнка.
+</div>
+
+</body>
+</html>

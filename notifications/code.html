@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0" name="viewport"/>
+<title>Уведомления — Hearth</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@400,0&display=swap" rel="stylesheet"/>
+<style>
+  * { font-family: 'Plus Jakarta Sans', sans-serif; box-sizing: border-box; margin: 0; padding: 0; }
+  .material-symbols-outlined { font-family: 'Material Symbols Outlined'; font-variation-settings: "FILL" 0, "wght" 400; }
+  body { background: var(--surface); min-height: 100dvh; padding-bottom: 40px; }
+</style>
+<link rel="stylesheet" href="../assets/hearth.css"/>
+</head>
+<body>
+
+<!-- Top bar -->
+<header style="background:var(--surface); border-bottom:1px solid var(--line); padding:12px 20px; position:sticky; top:0; z-index:50; display:flex; align-items:center; gap:14px; box-shadow:0 2px 12px rgba(33,29,26,0.07);">
+  <button style="width:36px; height:36px; border-radius:50%; border:1.5px solid var(--line); background:white; cursor:pointer; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+    <span class="material-symbols-outlined" style="font-size:20px; color:var(--text-2);">arrow_back</span>
+  </button>
+  <h1 style="font-size:18px; font-weight:800; color:var(--text-1); flex:1;">Уведомления</h1>
+  <button style="font-size:12px; color:var(--primary); font-weight:700; border:none; background:transparent; cursor:pointer; padding:4px 0;">Прочитать всё</button>
+</header>
+
+<main style="padding:16px 20px; display:flex; flex-direction:column; gap:10px;">
+
+  <!-- Section: Сегодня -->
+  <div style="font-size:12px; font-weight:700; color:var(--text-3); text-transform:uppercase; letter-spacing:0.5px; margin-bottom:2px;">Сегодня</div>
+
+  <!-- 1. UNREAD: Task needs approval -->
+  <div style="background:white; border-radius:18px; padding:14px; border:1px solid var(--line); box-shadow:0 4px 16px rgba(33,29,26,0.09); position:relative; overflow:hidden;">
+    <!-- Unread dot -->
+    <div style="position:absolute; top:14px; right:14px; width:8px; height:8px; border-radius:50%; background:var(--primary);"></div>
+    <div style="display:flex; align-items:start; gap:12px; margin-bottom:12px;">
+      <!-- Sender avatar -->
+      <div style="width:40px; height:40px; border-radius:50%; background:#6c9a64; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+        <span style="font-size:16px; font-weight:800; color:white;">С</span>
+      </div>
+      <div style="flex:1;">
+        <p style="font-size:14px; font-weight:700; color:var(--text-1); margin-bottom:2px; padding-right:16px;">Саша выполнила задачу</p>
+        <p style="font-size:12px; color:var(--text-2); margin-bottom:3px;">Убрать в комнате</p>
+        <p style="font-size:11px; color:var(--text-3);">Ждёт твоего одобрения · 5 мин назад</p>
+      </div>
+    </div>
+    <!-- Actions -->
+    <div style="display:flex; gap:8px;">
+      <button style="flex:1; padding:9px; border-radius:12px; background:var(--primary); color:white; border:none; font-size:13px; font-weight:700; cursor:pointer; box-shadow:0 2px 0 var(--on-primary-container);">✓ Одобрить</button>
+      <button style="flex:1; padding:9px; border-radius:12px; border:1.5px solid var(--line); background:white; color:var(--text-2); font-size:13px; font-weight:600; cursor:pointer;">✗ Отклонить</button>
+    </div>
+  </div>
+
+  <!-- 2. UNREAD: Task assigned to me -->
+  <div style="background:white; border-radius:18px; padding:14px; border:1px solid var(--line); box-shadow:0 4px 16px rgba(33,29,26,0.09); position:relative; overflow:hidden;">
+    <div style="position:absolute; top:14px; right:14px; width:8px; height:8px; border-radius:50%; background:var(--primary);"></div>
+    <div style="display:flex; align-items:start; gap:12px; margin-bottom:12px;">
+      <div style="width:40px; height:40px; border-radius:50%; background:var(--primary-soft); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+        <span style="font-size:16px; font-weight:800; color:white;">М</span>
+      </div>
+      <div style="flex:1;">
+        <p style="font-size:14px; font-weight:700; color:var(--text-1); margin-bottom:2px; padding-right:16px;">Тебе назначена задача</p>
+        <div style="display:flex; align-items:center; gap:6px; margin-bottom:3px;">
+          <span style="font-size:12px; color:var(--text-2);">Вымыть посуду · от Мамы</span>
+          <div style="display:inline-flex; align-items:center; gap:3px; background:var(--honey); padding:1px 7px; border-radius:999px;">
+            <span style="font-size:11px;">✨</span>
+            <span style="font-size:11px; font-weight:700; color:var(--on-honey);">15</span>
+          </div>
+        </div>
+        <p style="font-size:11px; color:var(--text-3);">1 час назад · до 20:00</p>
+      </div>
+    </div>
+    <div style="display:flex; gap:8px;">
+      <button style="flex:1; padding:9px; border-radius:12px; background:var(--sage); color:white; border:none; font-size:13px; font-weight:700; cursor:pointer; box-shadow:0 2px 0 #2d4029;">Принять задачу</button>
+      <button style="flex:1; padding:9px; border-radius:12px; border:1.5px solid var(--line); background:white; color:var(--text-2); font-size:13px; font-weight:600; cursor:pointer;">Отложить</button>
+    </div>
+  </div>
+
+  <!-- 3. READ: Task accepted -->
+  <div style="background:var(--surface-1); border-radius:18px; padding:14px; border:1px solid var(--surface-3); display:flex; align-items:start; gap:12px;">
+    <div style="width:40px; height:40px; border-radius:50%; background:var(--honey-line); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+      <span style="font-size:16px; font-weight:800; color:#534611;">К</span>
+    </div>
+    <div style="flex:1;">
+      <p style="font-size:14px; font-weight:600; color:var(--text-2); margin-bottom:2px;">Коля принял задачу</p>
+      <p style="font-size:12px; color:var(--text-3); margin-bottom:2px;">Вынести мусор</p>
+      <p style="font-size:11px; color:var(--text-3);">2 часа назад</p>
+    </div>
+    <span class="material-symbols-outlined" style="font-size:18px; color:var(--text-3); flex-shrink:0; margin-top:2px;">chevron_right</span>
+  </div>
+
+  <!-- 4. READ: Manna received -->
+  <div style="background:var(--surface-1); border-radius:18px; padding:14px; border:1px solid var(--surface-3); display:flex; align-items:start; gap:12px;">
+    <div style="width:40px; height:40px; border-radius:50%; background:var(--honey); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+      <span style="font-size:22px; line-height:1;">✨</span>
+    </div>
+    <div style="flex:1;">
+      <p style="font-size:14px; font-weight:600; color:var(--text-2); margin-bottom:2px;">Начислено <span style="color:var(--on-honey); font-weight:800;">+20 ✨ манны</span></p>
+      <p style="font-size:12px; color:var(--text-3); margin-bottom:2px;">За задачу «Убрать в комнате»</p>
+      <p style="font-size:11px; color:var(--text-3);">Одобрено Мамой · Вчера, 15:30</p>
+    </div>
+  </div>
+
+  <!-- Section: Эта неделя -->
+  <div style="font-size:12px; font-weight:700; color:var(--text-3); text-transform:uppercase; letter-spacing:0.5px; margin-top:6px; margin-bottom:2px;">Эта неделя</div>
+
+  <!-- 5. READ: New reward proposed -->
+  <div style="background:var(--surface-1); border-radius:18px; padding:14px; border:1px solid var(--surface-3); display:flex; align-items:start; gap:12px;">
+    <div style="width:40px; height:40px; border-radius:50%; background:var(--primary-container); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+      <span style="font-size:22px; line-height:1;">🎁</span>
+    </div>
+    <div style="flex:1;">
+      <p style="font-size:14px; font-weight:600; color:var(--text-2); margin-bottom:2px;">Саша добавила новую награду</p>
+      <div style="display:flex; align-items:center; gap:6px; margin-bottom:2px; flex-wrap:wrap;">
+        <span style="font-size:12px; color:var(--text-3);">«Поход в кино»</span>
+        <div style="display:inline-flex; align-items:center; gap:3px; background:var(--honey); padding:1px 7px; border-radius:999px;">
+          <span style="font-size:11px;">✨</span>
+          <span style="font-size:11px; font-weight:700; color:var(--on-honey);">100</span>
+        </div>
+      </div>
+      <p style="font-size:11px; color:var(--text-3);">Пн, 16 июня</p>
+    </div>
+    <span class="material-symbols-outlined" style="font-size:18px; color:var(--text-3); flex-shrink:0; margin-top:2px;">chevron_right</span>
+  </div>
+
+  <!-- Empty state hint -->
+  <div style="text-align:center; padding:24px 0 0;">
+    <p style="font-size:12px; color:var(--text-3);">Это все уведомления за эту неделю</p>
+  </div>
+
+</main>
+
+</body>
+</html>

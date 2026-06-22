@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0" name="viewport"/>
+<title>Новая задача — Hearth</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@400,0&display=swap" rel="stylesheet"/>
+<style>
+  * { font-family: 'Plus Jakarta Sans', sans-serif; box-sizing: border-box; margin: 0; padding: 0; }
+  .material-symbols-outlined { font-family: 'Material Symbols Outlined'; font-variation-settings: "FILL" 0, "wght" 400; }
+  textarea:focus, input:focus { outline: none; border-color: var(--primary) !important; box-shadow: 0 0 0 3px rgba(33,29,26,0.12); }
+  body { background: var(--surface); min-height: 100dvh; padding-bottom: 120px; }
+  .chip { padding:9px 18px; border-radius:999px; font-size:13px; font-weight:700; cursor:pointer; border:1.5px solid var(--line); background:white; color:var(--text-2); }
+  .chip.active { background:var(--primary); color:white; border-color:var(--primary); box-shadow:0 2px 8px rgba(33,29,26,0.25); }
+  .member-avatar { width:44px; height:44px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:17px; font-weight:800; color:white; cursor:pointer; border:2.5px solid transparent; flex-shrink:0; transition:border-color 0.15s; }
+  .member-avatar.selected { border-color:var(--primary); box-shadow:0 0 0 2px rgba(33,29,26,0.2); }
+</style>
+<link rel="stylesheet" href="../assets/hearth.css"/>
+</head>
+<body>
+
+<!-- Top bar -->
+<header style="background:var(--surface); border-bottom:1px solid var(--line); padding:12px 20px; position:sticky; top:0; z-index:50; display:flex; align-items:center; justify-content:space-between; box-shadow:0 2px 12px rgba(33,29,26,0.07);">
+  <button style="width:36px; height:36px; border-radius:50%; border:1.5px solid var(--line); background:white; cursor:pointer; display:flex; align-items:center; justify-content:center;">
+    <span class="material-symbols-outlined" style="font-size:20px; color:var(--text-2);">close</span>
+  </button>
+  <h1 style="font-size:16px; font-weight:800; color:var(--text-1);">Новая задача</h1>
+  <div style="width:36px;"></div>
+</header>
+
+<main style="padding:20px; display:flex; flex-direction:column; gap:22px;">
+
+  <!-- Task name -->
+  <div>
+    <label style="display:block; font-size:11px; font-weight:700; color:var(--text-3); text-transform:uppercase; letter-spacing:0.5px; margin-bottom:8px;">Название</label>
+    <textarea placeholder="Что нужно сделать?" rows="3" style="width:100%; border-radius:16px; border:2px solid var(--line); padding:14px 16px; font-size:17px; font-weight:700; color:var(--text-1); background:white; resize:none; line-height:1.4;"></textarea>
+  </div>
+
+  <!-- Assignee chips -->
+  <div>
+    <label style="display:block; font-size:11px; font-weight:700; color:var(--text-3); text-transform:uppercase; letter-spacing:0.5px; margin-bottom:10px;">Исполнитель</label>
+    <div style="display:flex; gap:8px;">
+      <button class="chip">Я сам</button>
+      <button class="chip active">Другой</button>
+      <button class="chip">Доска</button>
+    </div>
+  </div>
+
+  <!-- Member selector (visible when "Другой" selected) -->
+  <div style="background:white; border-radius:18px; padding:16px; border:1px solid var(--line);">
+    <label style="display:block; font-size:11px; font-weight:700; color:var(--text-3); text-transform:uppercase; letter-spacing:0.5px; margin-bottom:12px;">Кому назначить</label>
+    <div style="display:flex; gap:16px; align-items:center;">
+      <div style="display:flex; flex-direction:column; align-items:center; gap:5px;">
+        <div class="member-avatar selected" style="background:#6c9a64;">С</div>
+        <span style="font-size:11px; font-weight:700; color:var(--primary);">Саша</span>
+      </div>
+      <div style="display:flex; flex-direction:column; align-items:center; gap:5px;">
+        <div class="member-avatar" style="background:var(--honey-line); color:#534611;">К</div>
+        <span style="font-size:11px; color:var(--text-3); font-weight:500;">Коля</span>
+      </div>
+      <div style="display:flex; flex-direction:column; align-items:center; gap:5px;">
+        <div class="member-avatar" style="background:var(--primary-soft);">М</div>
+        <span style="font-size:11px; color:var(--text-3); font-weight:500;">Маша</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Manna reward -->
+  <div>
+    <label style="display:block; font-size:11px; font-weight:700; color:var(--text-3); text-transform:uppercase; letter-spacing:0.5px; margin-bottom:10px;">Награда в манне ✨</label>
+    <div style="display:flex; align-items:center; gap:10px;">
+      <button style="width:40px; height:40px; border-radius:12px; border:1.5px solid var(--line); background:white; font-size:22px; cursor:pointer; color:var(--text-2); display:flex; align-items:center; justify-content:center; font-weight:700;">−</button>
+      <div style="flex:1; height:48px; border-radius:14px; border:2px solid var(--primary); background:#fff8f5; display:flex; align-items:center; justify-content:center; gap:8px; box-shadow:0 0 0 3px rgba(33,29,26,0.1);">
+        <span style="font-size:18px; line-height:1;">✨</span>
+        <span style="font-size:22px; font-weight:800; color:var(--text-1);">15</span>
+      </div>
+      <button style="width:40px; height:40px; border-radius:12px; border:1.5px solid var(--line); background:white; font-size:22px; cursor:pointer; color:var(--text-2); display:flex; align-items:center; justify-content:center; font-weight:700;">+</button>
+    </div>
+    <p style="font-size:11px; color:var(--text-3); margin-top:6px; padding-left:4px;">Манна от тебя · начислится после одобрения выполнения</p>
+  </div>
+
+  <!-- Details expand -->
+  <div>
+    <button style="width:100%; padding:12px 16px; border-radius:16px; border:1.5px solid var(--line); background:white; display:flex; align-items:center; justify-content:space-between; cursor:pointer;">
+      <div style="display:flex; align-items:center; gap:10px;">
+        <span class="material-symbols-outlined" style="font-size:20px; color:var(--text-3);">tune</span>
+        <span style="font-size:14px; font-weight:600; color:var(--text-2);">Подробности</span>
+        <span style="font-size:11px; color:var(--text-3);">(дедлайн, описание)</span>
+      </div>
+      <span class="material-symbols-outlined" style="font-size:20px; color:var(--text-3);">expand_more</span>
+    </button>
+    <div style="margin-top:10px; display:flex; flex-direction:column; gap:12px;">
+      <div style="background:white; border-radius:14px; border:1.5px solid var(--line); padding:12px 14px; display:flex; align-items:center; gap:12px; cursor:pointer;">
+        <span class="material-symbols-outlined" style="font-size:20px; color:var(--text-3);">calendar_today</span>
+        <span style="font-size:13px; font-weight:600; color:var(--text-1); flex:1;">Среда, 18 июня · 20:00</span>
+        <span class="material-symbols-outlined" style="font-size:18px; color:var(--text-3);">edit</span>
+      </div>
+      <textarea placeholder="Описание или инструкция..." rows="2" style="width:100%; border-radius:14px; border:1.5px solid var(--line); padding:12px 14px; font-size:13px; color:var(--text-1); background:white; resize:none;"></textarea>
+    </div>
+  </div>
+
+  <!-- Preview card -->
+  <div style="border-radius:14px; border:1px solid var(--line); padding:14px; border-left:3px solid var(--primary); background:white;">
+    <p style="font-size:11px; font-weight:700; color:var(--text-3); text-transform:uppercase; letter-spacing:0.4px; margin-bottom:8px;">Предпросмотр задачи</p>
+    <div style="display:flex; align-items:center; justify-content:space-between;">
+      <div>
+        <div style="display:flex; align-items:center; gap:6px; margin-bottom:4px;">
+          <span style="background:var(--primary-container); color:var(--on-primary-container); font-size:10px; font-weight:700; padding:2px 8px; border-radius:999px;">С наградой</span>
+          <span style="font-size:11px; color:var(--text-3);">→ Саша</span>
+        </div>
+        <p style="font-size:13px; font-weight:700; color:var(--text-1);">Что нужно сделать?</p>
+      </div>
+      <div style="display:flex; align-items:center; gap:3px; background:var(--honey); padding:4px 10px; border-radius:999px; flex-shrink:0;">
+        <span style="font-size:12px;">✨</span>
+        <span style="font-size:13px; font-weight:800; color:var(--on-honey);">15</span>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<!-- Fixed bottom CTA -->
+<div style="position:fixed; bottom:0; left:0; width:100%; padding:16px 20px 40px; background:var(--surface); border-top:1px solid var(--surface-3);">
+  <button style="width:100%; height:56px; border-radius:18px; background:var(--primary); color:white; border:none; font-size:16px; font-weight:800; cursor:pointer; box-shadow:0 4px 0 var(--on-primary-container); letter-spacing:-0.3px;">
+    Создать задачу
+  </button>
+</div>
+
+</body>
+</html>

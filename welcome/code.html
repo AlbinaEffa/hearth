@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0" name="viewport"/>
+<title>Hearth — Добро пожаловать</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@400,0&display=swap" rel="stylesheet"/>
+<style>
+  * { font-family: 'Plus Jakarta Sans', sans-serif; box-sizing: border-box; margin: 0; padding: 0; }
+  body { min-height: 100dvh; background: var(--surface); display: flex; flex-direction: column; align-items: center; justify-content: center; }
+</style>
+<link rel="stylesheet" href="../assets/hearth.css"/>
+</head>
+<body>
+
+<!-- Decorative background blobs -->
+<div style="position:fixed; top:-80px; right:-80px; width:280px; height:280px; border-radius:50%; background:rgba(33,29,26,0.06); pointer-events:none;"></div>
+<div style="position:fixed; bottom:120px; left:-60px; width:200px; height:200px; border-radius:50%; background:rgba(74,101,69,0.05); pointer-events:none;"></div>
+
+<main style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:0 32px; width:100%; max-width:400px;">
+
+  <!-- Logo illustration -->
+  <div style="width:120px; height:120px; border-radius:32px; background:linear-gradient(135deg, var(--surface-2) 0%, #fff8f5 100%); border:2px solid var(--line); box-shadow:0 12px 40px rgba(33,29,26,0.16), 0 2px 8px rgba(33,29,26,0.08); display:flex; align-items:center; justify-content:center; margin-bottom:28px;">
+    <span style="font-size:64px; line-height:1;">🏡</span>
+  </div>
+
+  <!-- Brand -->
+  <h1 style="font-size:34px; font-weight:800; color:var(--primary); letter-spacing:-1px; margin-bottom:8px;">Hearth</h1>
+  <p style="font-size:15px; font-weight:600; color:var(--text-2); margin-bottom:20px;">Ваш семейный очаг</p>
+
+  <!-- Tagline -->
+  <p style="font-size:14px; color:var(--text-3); text-align:center; line-height:1.6; max-width:260px; margin-bottom:0;">Задачи по дому, семейная манна и награды — всё вместе, для всей семьи</p>
+
+  <!-- Floating features (minimal pill hints) -->
+  <div style="display:flex; gap:8px; flex-wrap:wrap; justify-content:center; margin-top:28px;">
+    <div style="padding:6px 14px; border-radius:999px; background:var(--surface-2); border:1px solid var(--line);">
+      <span style="font-size:12px; color:var(--text-2); font-weight:600;">✅ Задачи</span>
+    </div>
+    <div style="padding:6px 14px; border-radius:999px; background:var(--honey); border:1px solid var(--honey-line);">
+      <span style="font-size:12px; color:var(--on-honey); font-weight:600;">✨ Манна</span>
+    </div>
+    <div style="padding:6px 14px; border-radius:999px; background:var(--sage-container); border:1px solid var(--sage);">
+      <span style="font-size:12px; color:var(--on-sage); font-weight:600;">🎁 Награды</span>
+    </div>
+  </div>
+
+</main>
+
+<!-- Bottom CTA area -->
+<div style="width:100%; max-width:400px; padding:0 24px 48px;">
+  <button style="width:100%; height:56px; border-radius:18px; background:var(--primary); color:white; border:none; font-size:16px; font-weight:800; cursor:pointer; box-shadow:0 4px 0 var(--on-primary-container); letter-spacing:-0.3px; margin-bottom:4px; transition:transform 0.1s;" onmousedown="this.style.transform='translateY(2px)'; this.style.boxShadow='0 2px 0 var(--on-primary-container)'" onmouseup="this.style.transform=''; this.style.boxShadow='0 4px 0 var(--on-primary-container)'">
+    Создать аккаунт
+  </button>
+  <div style="padding:16px 0 0; text-align:center;">
+    <span style="font-size:13px; color:var(--text-3);">Уже есть аккаунт? </span>
+    <a href="#" style="font-size:13px; color:var(--primary); font-weight:700; text-decoration:none;">Войти →</a>
+  </div>
+</div>
+
+</body>
+</html>

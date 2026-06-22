@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0" name="viewport"/>
+<title>Кто дома? — Hearth</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../assets/hearth.css"/>
+</head>
+<body>
+<main style="min-height:100dvh; display:flex; flex-direction:column; justify-content:center; padding:40px 24px; gap:32px;">
+
+  <div style="display:flex; flex-direction:column; align-items:center; gap:12px; text-align:center;">
+    <div class="brand" style="font-size:20px;">
+      <span class="brand-mark"><span class="material-symbols-outlined">local_fire_department</span></span>
+      Hearth
+    </div>
+    <h1 class="h1" style="margin-top:8px;">Кто дома?</h1>
+    <p class="body muted">Выберите профиль, чтобы войти.</p>
+  </div>
+
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+    <!-- profile -->
+    <a href="../enter_your_nook_pin/code.html" class="card" style="display:flex; flex-direction:column; align-items:center; gap:10px; text-decoration:none; padding:22px 16px;">
+      <div class="avatar" style="width:72px; height:72px; background:var(--primary-soft); font-size:26px;">М</div>
+      <div style="text-align:center;">
+        <p class="title">Мама</p>
+        <p class="caption">Взрослый · PIN</p>
+      </div>
+    </a>
+    <a href="../enter_your_nook_pin/code.html" class="card" style="display:flex; flex-direction:column; align-items:center; gap:10px; text-decoration:none; padding:22px 16px;">
+      <div class="avatar" style="width:72px; height:72px; background:var(--sage); font-size:26px;">П</div>
+      <div style="text-align:center;">
+        <p class="title">Папа</p>
+        <p class="caption">Взрослый · PIN</p>
+      </div>
+    </a>
+    <a href="../my_room_child_dashboard/code.html" class="card" style="display:flex; flex-direction:column; align-items:center; gap:10px; text-decoration:none; padding:22px 16px;">
+      <div class="avatar" style="width:72px; height:72px; background:#b1cfa7; color:var(--on-sage); font-size:26px;">С</div>
+      <div style="text-align:center;">
+        <p class="title">Саша</p>
+        <p class="caption">Ребёнок</p>
+      </div>
+    </a>
+    <a href="../my_room_child_dashboard/code.html" class="card" style="display:flex; flex-direction:column; align-items:center; gap:10px; text-decoration:none; padding:22px 16px;">
+      <div class="avatar" style="width:72px; height:72px; background:var(--honey); color:var(--on-honey); font-size:26px;">К</div>
+      <div style="text-align:center;">
+        <p class="title">Кира</p>
+        <p class="caption">Ребёнок</p>
+      </div>
+    </a>
+  </div>
+
+  <a href="#" class="card flat" style="display:flex; align-items:center; justify-content:center; gap:8px; text-decoration:none; border-style:dashed; color:var(--primary); font-weight:700; padding:16px;">
+    <span class="material-symbols-outlined">person_add</span>
+    Добавить участника
+  </a>
+
+</main>
+</body>
+</html>

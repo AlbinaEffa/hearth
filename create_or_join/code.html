@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0" name="viewport"/>
+<title>Создать или вступить — Hearth</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@400,0&display=swap" rel="stylesheet"/>
+<style>
+  * { font-family: 'Plus Jakarta Sans', sans-serif; box-sizing: border-box; margin: 0; padding: 0; }
+  .material-symbols-outlined { font-family: 'Material Symbols Outlined'; font-variation-settings: "FILL" 0, "wght" 400; }
+  body { background: var(--surface); min-height: 100dvh; }
+  .card-hover:hover { transform: scale(1.01); }
+  .card-hover { transition: transform 0.2s; cursor: pointer; }
+</style>
+<link rel="stylesheet" href="../assets/hearth.css"/>
+</head>
+<body>
+
+<!-- Back + Steps -->
+<div style="padding:16px 20px 0; display:flex; align-items:center; justify-content:space-between;">
+  <button style="width:40px; height:40px; border-radius:50%; border:1.5px solid var(--line); background:white; cursor:pointer; display:flex; align-items:center; justify-content:center;">
+    <span class="material-symbols-outlined" style="font-size:20px; color:var(--text-2);">arrow_back</span>
+  </button>
+  <div style="display:flex; gap:6px; align-items:center;">
+    <div style="width:24px; height:6px; border-radius:3px; background:var(--primary);"></div>
+    <div style="width:24px; height:6px; border-radius:3px; background:var(--primary);"></div>
+    <div style="width:24px; height:6px; border-radius:3px; background:var(--primary);"></div>
+    <div style="width:24px; height:6px; border-radius:3px; background:var(--primary);"></div>
+  </div>
+  <div style="width:40px;"></div>
+</div>
+
+<main style="padding:28px 24px;">
+
+  <h1 style="font-size:26px; font-weight:800; color:var(--text-1); letter-spacing:-0.5px; margin-bottom:8px;">Твой очаг</h1>
+  <p style="font-size:14px; color:var(--text-3); line-height:1.5; max-width:280px; margin-bottom:36px;">Создай новый дом или вступи в уже существующий семейный очаг</p>
+
+  <!-- Create home card -->
+  <div class="card-hover" style="border-radius:24px; background:linear-gradient(135deg, var(--primary) 0%, var(--primary-soft) 100%); padding:28px; box-shadow:0 12px 32px rgba(33,29,26,0.3), 0 4px 12px rgba(33,29,26,0.15); margin-bottom:16px; position:relative; overflow:hidden;">
+    <!-- Decorative circles -->
+    <div style="position:absolute; right:-20px; top:-20px; width:120px; height:120px; border-radius:50%; background:rgba(255,255,255,0.08);"></div>
+    <div style="position:absolute; right:20px; bottom:-30px; width:80px; height:80px; border-radius:50%; background:rgba(255,255,255,0.05);"></div>
+    <div style="font-size:48px; margin-bottom:14px; line-height:1;">🏡</div>
+    <div style="display:flex; align-items:flex-start; justify-content:space-between;">
+      <div>
+        <h2 style="font-size:20px; font-weight:800; color:white; margin-bottom:6px; letter-spacing:-0.3px;">Создать новый дом</h2>
+        <p style="font-size:13px; color:rgba(255,255,255,0.82); line-height:1.5; max-width:220px;">Ты станешь хозяином очага и сможешь приглашать семью, ставить задачи и выдавать манну</p>
+      </div>
+      <div style="width:36px; height:36px; border-radius:50%; background:rgba(255,255,255,0.2); display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-left:12px; margin-top:2px;">
+        <span class="material-symbols-outlined" style="font-size:18px; color:white;">arrow_forward</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Join home card -->
+  <div class="card-hover" style="border-radius:24px; background:white; padding:28px; border:2px solid var(--line); box-shadow:0 6px 20px rgba(33,29,26,0.08); margin-bottom:28px;">
+    <div style="font-size:48px; margin-bottom:14px; line-height:1;">🔑</div>
+    <div style="display:flex; align-items:flex-start; justify-content:space-between;">
+      <div>
+        <h2 style="font-size:20px; font-weight:800; color:var(--text-1); margin-bottom:6px; letter-spacing:-0.3px;">Вступить в дом</h2>
+        <p style="font-size:13px; color:var(--text-3); line-height:1.5; max-width:220px;">Введи 6-значный код приглашения от хозяина вашего семейного дома</p>
+      </div>
+      <div style="width:36px; height:36px; border-radius:50%; background:var(--primary); display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-left:12px; margin-top:2px;">
+        <span class="material-symbols-outlined" style="font-size:18px; color:white;">arrow_forward</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Note -->
+  <p style="font-size:12px; color:var(--text-3); text-align:center; line-height:1.6; max-width:280px; margin:0 auto; font-style:italic;">Хозяин дома управляет задачами, наградами и участниками для всей семьи</p>
+
+</main>
+
+</body>
+</html>

@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Hearth — Архитектура интерфейса</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: #fdf9f3; color: #1c1c18; padding: 24px; max-width: 1000px; margin: 0 auto; }
+
+h1 { font-size: 22px; font-weight: 700; margin-bottom: 4px; }
+.subtitle { font-size: 13px; color: #87736c; margin-bottom: 28px; }
+
+/* TABS */
+.tabs { display: flex; gap: 4px; background: #f1ede7; padding: 4px; border-radius: 12px; margin-bottom: 24px; flex-wrap: wrap; }
+.tab { flex: 1; min-width: 100px; text-align: center; padding: 8px 6px; font-size: 12px; font-weight: 600; border-radius: 9px; cursor: pointer; color: #87736c; transition: all .15s; }
+.tab.active { background: #fff; color: #94492d; box-shadow: 0 1px 4px rgba(0,0,0,.1); }
+.panel { display: none; }
+.panel.active { display: block; }
+
+/* SCREEN CARDS */
+.screen-grid { display: flex; flex-direction: column; gap: 12px; }
+.screen-card { border: 1px solid #e6e2dc; border-radius: 12px; overflow: hidden; }
+.screen-head { padding: 12px 16px; display: flex; align-items: flex-start; gap: 12px; }
+.screen-icon { font-size: 22px; flex-shrink: 0; }
+.screen-title { font-size: 14px; font-weight: 700; color: #1c1c18; }
+.screen-desc { font-size: 11px; color: #87736c; margin-top: 2px; }
+.screen-body { border-top: 1px solid #f1ede7; padding: 12px 16px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+.screen-body.cols-2 { grid-template-columns: 1fr 1fr; }
+.screen-body.cols-1 { grid-template-columns: 1fr; }
+
+.col-block { background: #f7f3ed; border-radius: 8px; padding: 9px 11px; }
+.col-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: #87736c; margin-bottom: 5px; }
+.col-items { font-size: 11px; color: #1c1c18; line-height: 1.75; }
+.col-items li { list-style: none; padding-left: 10px; position: relative; }
+.col-items li::before { content: '·'; position: absolute; left: 0; color: #94492d; font-weight: 700; }
+
+/* transitions */
+.transitions { border-top: 1px solid #f1ede7; padding: 10px 16px; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.trans-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: #87736c; margin-right: 4px; }
+.trans-item { font-size: 11px; padding: 3px 9px; border-radius: 20px; }
+.t-push  { background: #f7f3ed; border: 1px solid #dac1b9; color: #54433d; }
+.t-modal { background: #fff; border: 1px dashed #87736c; color: #54433d; }
+.t-back  { background: #e6e2dc; color: #54433d; }
+
+/* note */
+.note { background: #fff8f0; border-left: 3px solid #94492d; border-radius: 0 8px 8px 0; padding: 9px 13px; font-size: 11px; color: #54433d; line-height: 1.65; margin-top: 10px; }
+.note strong { color: #94492d; }
+
+/* open q */
+.open-q { background: #f6e29e; border-radius: 8px; padding: 8px 12px; font-size: 11px; color: #221b00; margin-top: 8px; line-height: 1.6; }
+.open-q strong { color: #6c5d27; }
+
+/* section header */
+.section-header { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: #87736c; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid #e6e2dc; }
+
+/* sub-tab pill */
+.subtabs { display: flex; gap: 5px; flex-wrap: wrap; margin-bottom: 8px; }
+.subtab { font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 20px; background: #ffdbcf; color: #521801; }
+.subtab.green { background: #ccebc2; color: #183115; }
+.subtab.yellow { background: #f6e29e; color: #221b00; }
+.subtab.grey { background: #e6e2dc; color: #54433d; }
+</style>
+</head>
+<body>
+
+<h1>Hearth — Архитектура интерфейса</h1>
+<p class="subtitle">Все экраны с учётом механики: два типа задач, персональная манна, peer-to-peer магазин наград</p>
+
+<div class="tabs">
+  <div class="tab active" onclick="sw('onboarding')">① Онбординг</div>
+  <div class="tab" onclick="sw('global')">② Глобальные</div>
+  <div class="tab" onclick="sw('home')">③ Главная</div>
+  <div class="tab" onclick="sw('tasks')">④ Задачи</div>
+  <div class="tab" onclick="sw('week')">⑤ Неделя</div>
+  <div class="tab" onclick="sw('rewards')">⑥ Награды</div>
+</div>
+
+<!-- ONBOARDING -->
+<div class="panel active" id="panel-onboarding">
+<div class="section-header">Один раз при первом запуске</div>
+<div class="screen-grid">
+
+  <div class="screen-card">
+    <div class="screen-head">
+      <div class="screen-icon">🌅</div>
+      <div>
+        <div class="screen-title">1. Приветствие</div>
+        <div class="screen-desc">Первый экран. Эмоциональный, не информационный.</div>
+      </div>
+    </div>
+    <div class="screen-body cols-2">
+      <div class="col-block">
+        <div class="col-label">Что на экране</div>
+        <ul class="col-items">
+          <li>Иллюстрация / логотип Hearth</li>
+          <li>Одна строка — суть продукта</li>
+          <li>Кнопка «Создать аккаунт»</li>
+          <li>Ссылка «Уже есть аккаунт»</li>
+        </ul>
+      </div>
+      <div class="col-block">
+        <div class="col-label">Чего нет</div>
+        <ul class="col-items">
+          <li>Feature tour / карусель слайдов</li>
+          <li>Объяснений механики</li>
+          <li>Permission-запросов</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="screen-card">
+    <div class="screen-head">
+      <div class="screen-icon">🔑</div>
+      <div>
+        <div class="screen-title">2. Регистрация / Вход</div>
+        <div class="screen-desc">Уже готово — не трогаем.</div>
+      </div>
+    </div>
+    <div class="screen-body cols-1">
+      <div class="col-block">
+        <div class="col-label">Статус</div>
+        <div class="col-items" style="padding-left:0;">Экраны login и sign_up существуют. Оставляем как есть.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="screen-card">
+    <div class="screen-head">
+      <div class="screen-icon">🪪</div>
+      <div>
+        <div class="screen-title">3. Имя и аватар</div>
+        <div class="screen-desc">Как тебя будет видеть семья.</div>
+      </div>
+    </div>
+    <div class="screen-body cols-2">
+      <div class="col-block">
+        <div class="col-label">Что на экране</div>
+        <ul class="col-items">
+          <li>Поле: имя (как в приложении)</li>
+          <li>Выбор аватара из набора</li>
+          <li>Возможность загрузить фото</li>
+        </ul>
+      </div>
+      <div class="col-block">
+        <div class="col-label">Примечание</div>
+        <ul class="col-items">
+          <li>Прототипы edit_profile_avatar уже есть</li>
+          <li>Без выбора роли — роль не нужна в механике</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="screen-card">
+    <div class="screen-head">
+      <div class="screen-icon">🏠</div>
+      <div>
+        <div class="screen-title">4. Создать дом или вступить</div>
+        <div class="screen-desc">Ключевой экран — определяет кто хозяин.</div>
+      </div>
+    </div>
+    <div class="screen-body cols-2">
+      <div class="col-block">
+        <div class="col-label">Создать дом</div>
+        <ul class="col-items">
+          <li>Название дома</li>
+          <li>Аватар / иллюстрация дома</li>
+          <li>Кнопка «Создать» → ты хозяин</li>
+        </ul>
+      </div>
+      <div class="col-block">
+        <div class="col-label">Вступить</div>
+        <ul class="col-items">
+          <li>Поле ввода кода-приглашения</li>
+          <li>Или QR-скан</li>
+          <li>После — ты участник, не хозяин</li>
+        </ul>
+      </div>
+    </div>
+    <div class="transitions">
+      <span class="trans-label">Права хозяина:</span>
+      <span class="trans-item t-back">настройки дома</span>
+      <span class="trans-item t-back">приглашать участников</span>
+      <span class="trans-item t-back">удалять задачи любого</span>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- GLOBAL -->
+<div class="panel" id="panel-global">
+<div class="section-header">Доступны с любого экрана — топ-бар и FAB</div>
+<div class="screen-grid">
+
+  <div class="screen-card">
+    <div class="screen-head">
+      <div class="screen-icon">➕</div>
+      <div>
+        <div class="screen-title">Создать задачу (FAB)</div>
+        <div class="screen-desc">Центральная кнопка нижнего бара. Один экран — два режима.</div>
+      </div>
+    </div>
+    <div class="screen-body cols-2">
+      <div class="col-block">
+        <div class="col-label">🔴 Базовый минимум (сверху)</div>
+        <ul class="col-items">
+          <li>Название задачи</li>
+          <li>Исполнитель: я / другой / доска</li>
+          <li>← если я → личная задача, цены нет</li>
+          <li>← если другой → задача с наградой</li>
+          <li>Цена в манне (только для наград)</li>
+        </ul>
+      </div>
+      <div class="col-block">
+        <div class="col-label">⚪ Расширенный максимум (снизу)</div>
+        <ul class="col-items">
+          <li>Срочность: Anytime / Scheduled / Urgent</li>
+          <li>Дата и время</li>
+          <li>Адрес / место</li>
+          <li>Travel time буфер</li>
+          <li>Описание / инструкция</li>
+        </ul>
+      </div>
+    </div>
+    <div class="transitions">
+      <span class="trans-label">Тип задачи:</span>
+      <span class="trans-item t-push">исполнитель = я → личная</span>
+      <span class="trans-item t-modal">исполнитель = другой → с наградой</span>
+    </div>
+  </div>
+
+  <div class="screen-card">
+    <div class="screen-head">
+      <div class="screen-icon">🔔</div>
+      <div>
+        <div class="screen-title">Уведомления</div>
+        <div class="screen-desc">Колокольчик в топ-баре. Все события системы.</div>
+      </div>
+    </div>
+    <div class="screen-body cols-2">
+      <div class="col-block">
+        <div class="col-label">Типы уведомлений</div>
+        <ul class="col-items">
+          <li>Тебе назначена задача (Proposed)</li>
+          <li>Задача принята исполнителем</li>
+          <li>Задача выполнена — нужен Approve</li>
+          <li>Твой Approve → манна начислена</li>
+          <li>Предложена новая награда</li>
+          <li>Куплена твоя награда</li>
+        </ul>
+      </div>
+      <div class="col-block">
+        <div class="col-label">Действия прямо из уведомления</div>
+        <ul class="col-items">
+          <li>Approve / Reject задачи</li>
+          <li>Принять задачу</li>
+          <li>Одобрить предложение награды</li>
+          <li>Перейти к объекту</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="screen-card">
+    <div class="screen-head">
+      <div class="screen-icon">👤</div>
+      <div>
+        <div class="screen-title">Профиль</div>
+        <div class="screen-desc">Аватар в топ-баре. Личное + управление домом.</div>
+      </div>
+    </div>
+    <div class="screen-body cols-2">
+      <div class="col-block">
+        <div class="col-label">Для всех</div>
+        <ul class="col-items">
+          <li>Имя и аватар</li>
+          <li>Общий баланс манны</li>
+          <li>История задач</li>
+          <li>Настройки уведомлений</li>
+          <li>Управление семьёй (участники, приглашения)</li>
+        </ul>
+      </div>
+      <div class="col-block">
+        <div class="col-label">Только для хозяина дома</div>
+        <ul class="col-items">
+          <li>Настройки дома (название, аватар)</li>
+          <li>Удаление участника</li>
+          <li>Удаление любой задачи</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- HOME -->
+<div class="panel" id="panel-home">
+<div class="section-header">Таб 1 — Главная: твой командный центр на сегодня</div>
+<div class="screen-grid">
+
+  <div class="screen-card">
+    <div class="screen-head">
+      <div class="screen-icon">🏠</div>
+      <div>
+        <div class="screen-title">Главная</div>
+        <div class="screen-desc">Один экран для всех — содержимое адаптируется под то что актуально для тебя прямо сейчас.</div>
+      </div>
+    </div>
+    <div class="screen-body cols-2">
+      <div class="col-block">
+        <div class="col-label">Секция 1 — Срочное</div>
+        <ul class="col-items">
+          <li>Задачи со статусом Urgent</li>
+          <li>Задачи Completed, ждущие моего Approve</li>
+          <li>Просроченные задачи</li>
+        </ul>
+      </div>
+      <div class="col-block">
+        <div class="col-label">Секция 2 — Сегодня</div>
+        <ul class="col-items">
+          <li>Мои задачи на сегодня (Scheduled)</li>
+          <li>Личные задачи из тасктрекера</li>
+          <li>Полоска семейного календаря</li>
+        </ul>
+      </div>
+    </div>
+    <div class="screen-body cols-2" style="border-top: none; padding-top: 0;">
+      <div class="col-block">
+        <div class="col-label">Секция 3 — Манна</div>
+        <ul class="col-items">
+          <li>Мой суммарный баланс манны</li>
+          <li>Чья манна и сколько (мини-карточки)</li>
+          <li>Тап → переход в Награды / магазин этого человека</li>
+        </ul>
+      </div>
+      <div class="col-block">
+        <div class="col-label">Секция 4 — Семья</div>
+        <ul class="col-items">
+          <li>Участники и их активные задачи</li>
+          <li>Кто что сейчас делает</li>
+        </ul>
+      </div>
+    </div>
+    <div class="transitions">
+      <span class="trans-label">Переходы:</span>
+      <span class="trans-item t-modal">Детали задачи</span>
+      <span class="trans-item t-modal">Approve / Reject</span>
+      <span class="trans-item t-push">Магазин человека</span>
+    </div>
+  </div>
+
+</div>
+<div class="note">
+  <strong>Принцип:</strong> Главная — это «что требует внимания прямо сейчас», не полный обзор всего. Длинные списки живут в Задачах и Наградах.
+</div>
+</div>
+
+<!-- TASKS -->
+<div class="panel" id="panel-tasks">
+<div class="section-header">Таб 2 — Задачи: два типа, три суб-таба</div>
+<div class="screen-grid">
+
+  <div class="screen-card">
+    <div class="screen-head">
+      <div class="screen-icon">✅</div>
+      <div>
+        <div class="screen-title">Задачи — суб-таб «Мои»</div>
+        <div class="screen-desc">Всё что назначено мне + мои личные задачи.</div>
+      </div>
+    </div>
+    <div class="screen-body cols-2">
+      <div class="col-block">
+        <div class="col-label">Личные задачи (создатель = я)</div>
+        <ul class="col-items">
+          <li>Простой чекбокс-список</li>
+          <li>Без манны, без Approve</li>
+          <li>Статусы: В работе / Готово</li>
+          <li>Возможно отдельная секция сверху</li>
+        </ul>
+      </div>
+      <div class="col-block">
+        <div class="col-label">Задачи с наградой (я — исполнитель)</div>
+        <ul class="col-items">
+          <li>Статус: Proposed / Accepted / Overdue</li>
+          <li>Кто создал + цена манны</li>
+          <li>Принять / Отметить готовым</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="screen-card">
+    <div class="screen-head">
+      <div class="screen-icon">📋</div>
+      <div>
+        <div class="screen-title">Задачи — суб-таб «Доска»</div>
+        <div class="screen-desc">Unassigned задачи — может взять любой.</div>
+      </div>
+    </div>
+    <div class="screen-body cols-2">
+      <div class="col-block">
+        <div class="col-label">Что отображается</div>
+        <ul class="col-items">
+          <li>Все задачи со статусом Unassigned</li>
+          <li>Кто создал + цена манны</li>
+          <li>Срочность</li>
+          <li>Кнопка «Взять»</li>
+        </ul>
+      </div>
+      <div class="col-block">
+        <div class="col-label">После «Взять»</div>
+        <ul class="col-items">
+          <li>Задача переходит в Proposed</li>
+          <li>Появляется в «Мои»</li>
+          <li>Создатель получает уведомление</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="screen-card">
+    <div class="screen-head">
+      <div class="screen-icon">⏳</div>
+      <div>
+        <div class="screen-title">Задачи — суб-таб «Жду ответа»</div>
+        <div class="screen-desc">Задачи которые я создал и которые ждут моего действия.</div>
+      </div>
+    </div>
+    <div class="screen-body cols-2">
+      <div class="col-block">
+        <div class="col-label">Что здесь</div>
+        <ul class="col-items">
+          <li>Completed — жду моего Approve</li>
+          <li>Proposed — исполнитель ещё не принял</li>
+          <li>Accepted — в работе у исполнителя</li>
+        </ul>
+      </div>
+      <div class="col-block">
+        <div class="col-label">Действия</div>
+        <ul class="col-items">
+          <li>Approve → манна начислена</li>
+          <li>Reject → задача назад в Accepted + комментарий</li>
+          <li>Редактировать / удалить (если ещё не принята)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="screen-card">
+    <div class="screen-head">
+      <div class="screen-icon">📄</div>
+      <div>
+        <div class="screen-title">Детали задачи</div>
+        <div class="screen-desc">Push-экран. Разный в зависимости от типа задачи и роли.</div>
+      </div>
+    </div>
+    <div class="screen-body cols-2">
+      <div class="col-block">
+        <div class="col-label">Если я — исполнитель</div>
+        <ul class="col-items">
+          <li>Название, описание, инструкция</li>
+          <li>Кто создал + цена манны</li>
+          <li>Срок, место, travel time</li>
+          <li>Кнопки: Принять / Отметить готовым</li>
+        </ul>
+      </div>
+      <div class="col-block">
+        <div class="col-label">Если я — создатель</div>
+        <ul class="col-items">
+          <li>Статус исполнения</li>
+          <li>Кто исполнитель</li>
+          <li>Кнопки: Approve / Reject (если Completed)</li>
+          <li>Редактировать / удалить</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- WEEK -->
+<div class="panel" id="panel-week">
+<div class="section-header">Таб 3 — Неделя: семейная логистика</div>
+<div class="screen-grid">
+
+  <div class="screen-card">
+    <div class="screen-head">
+      <div class="screen-icon">📅</div>
+      <div>
+        <div class="screen-title">Неделя</div>
+        <div class="screen-desc">Семейный календарь с travel time буфером. Одинаков для всех участников.</div>
+      </div>
+    </div>
+    <div class="screen-body cols-2">
+      <div class="col-block">
+        <div class="col-label">Основной вид</div>
+        <ul class="col-items">
+          <li>Горизонтальная полоса дней (7 дней)</li>
+          <li>Временная сетка по вертикали</li>
+          <li>Цвет события = цвет участника</li>
+          <li>Аватары участников на событии</li>
+        </ul>
+      </div>
+      <div class="col-block">
+        <div class="col-label">Travel time</div>
+        <ul class="col-items">
+          <li>Буфер перед событием с адресом</li>
+          <li>Тап на адрес → навигатор</li>
+          <li>Настраивается при создании события</li>
+        </ul>
+      </div>
+    </div>
+    <div class="transitions">
+      <span class="trans-label">Переходы:</span>
+      <span class="trans-item t-modal">Детали события</span>
+      <span class="trans-item t-modal">Создать событие</span>
+    </div>
+  </div>
+
+</div>
+<div class="open-q">
+  <strong>Открытый вопрос:</strong> Задачи с дедлайном — они тоже отображаются в календаре как события, или только в Задачах?
+</div>
+</div>
+
+<!-- REWARDS -->
+<div class="panel" id="panel-rewards">
+<div class="section-header">Таб 4 — Награды: peer-to-peer магазин на основе персональной манны</div>
+<div class="screen-grid">
+
+  <div class="screen-card">
+    <div class="screen-head">
+      <div class="screen-icon">🏆</div>
+      <div>
+        <div class="screen-title">Награды — главный экран</div>
+        <div class="screen-desc">Два раздела: моя манна (чужие магазины) + мой магазин.</div>
+      </div>
+    </div>
+    <div class="screen-body cols-2">
+      <div class="col-block">
+        <div class="col-label">Секция «Моя манна»</div>
+        <ul class="col-items">
+          <li>Карточка каждого участника семьи</li>
+          <li>На карточке: аватар + баланс его манны у меня</li>
+          <li>Тап → Магазин этого человека</li>
+          <li>Нулевой баланс = нет доступных наград</li>
+        </ul>
+      </div>
+      <div class="col-block">
+        <div class="col-label">Секция «Мой магазин»</div>
+        <ul class="col-items">
+          <li>Награды которые я выставил</li>
+          <li>Каждая: название, цена, кол-во покупок</li>
+          <li>Кнопка «Добавить награду»</li>
+          <li>Входящие предложения наград от других</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="screen-card">
+    <div class="screen-head">
+      <div class="screen-icon">🛍️</div>
+      <div>
+        <div class="screen-title">Магазин участника</div>
+        <div class="screen-desc">Push-экран. Открывается тапом на карточку манны.</div>
+      </div>
+    </div>
+    <div class="screen-body cols-2">
+      <div class="col-block">
+        <div class="col-label">Что видно</div>
+        <ul class="col-items">
+          <li>Имя и аватар участника</li>
+          <li>Мой баланс его манны (сколько могу потратить)</li>
+          <li>Список его наград с ценами</li>
+          <li>Кнопка «Купить» — активна если хватает манны</li>
+        </ul>
+      </div>
+      <div class="col-block">
+        <div class="col-label">После покупки</div>
+        <ul class="col-items">
+          <li>Моя манна этого человека уменьшается</li>
+          <li>Манна сгорает (не переходит к нему)</li>
+          <li>Владелец магазина получает уведомление</li>
+          <li>Выполняет обещание в реальной жизни</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="screen-card">
+    <div class="screen-head">
+      <div class="screen-icon">💡</div>
+      <div>
+        <div class="screen-title">Предложить награду</div>
+        <div class="screen-desc">Модал. Просишь кого-то добавить нужную тебе награду в свой магазин.</div>
+      </div>
+    </div>
+    <div class="screen-body cols-2">
+      <div class="col-block">
+        <div class="col-label">Форма</div>
+        <ul class="col-items">
+          <li>Название желаемой награды</li>
+          <li>Описание (почему хочу)</li>
+          <li>Кому предлагаю (участник)</li>
+        </ul>
+      </div>
+      <div class="col-block">
+        <div class="col-label">Что происходит</div>
+        <ul class="col-items">
+          <li>Уведомление получателю</li>
+          <li>Получатель одобряет + ставит цену</li>
+          <li>Награда появляется в его магазине</li>
+          <li>Предложивший видит статус «Ожидает»</li>
+        </ul>
+      </div>
+    </div>
+    <div class="open-q" style="margin: 0 16px 12px;">
+      <strong>Открытый вопрос:</strong> Кто может одобрять предложения наград — только хозяин дома, или любой участник чьему магазину предложили?
+    </div>
+  </div>
+
+  <div class="screen-card">
+    <div class="screen-head">
+      <div class="screen-icon">✏️</div>
+      <div>
+        <div class="screen-title">Создать / редактировать награду</div>
+        <div class="screen-desc">Модал. Добавление награды в свой магазин.</div>
+      </div>
+    </div>
+    <div class="screen-body cols-1">
+      <div class="col-block">
+        <div class="col-label">Поля</div>
+        <ul class="col-items" style="columns: 2; gap: 16px;">
+          <li>Название</li>
+          <li>Описание</li>
+          <li>Цена в моей манне</li>
+          <li>Иконка / картинка</li>
+          <li>Лимит покупок (необязательно)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="note">
+  <strong>Ключевая идея Наград:</strong> Это не один общий магазин — это набор персональных магазинов. Ты тратишь манну Маши только в Машином магазине, манну Папы — только в Папином. Каждый сам решает что предложить в обмен на выполнение своих задач.
+</div>
+</div>
+
+<script>
+function sw(id) {
+  document.querySelectorAll('.tab').forEach((t,i) => {
+    const ids = ['onboarding','global','home','tasks','week','rewards'];
+    t.classList.toggle('active', ids[i] === id);
+  });
+  document.querySelectorAll('.panel').forEach(p => {
+    p.classList.toggle('active', p.id === 'panel-' + id);
+  });
+}
+</script>
+
+</body>
+</html>

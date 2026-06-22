@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0" name="viewport"/>
+<title>Моя комната — Hearth</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../assets/hearth.css"/>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark"><span class="material-symbols-outlined">local_fire_department</span></span>
+      Hearth
+    </div>
+    <div class="avatar" style="width:34px; height:34px; background:#b1cfa7; color:var(--on-sage); font-size:14px;">С</div>
+  </header>
+
+  <main class="screen">
+
+    <!-- Greeting + coins -->
+    <section class="between">
+      <div>
+        <h1 class="h1">Привет, Саша! 👋</h1>
+        <p class="body muted">Сегодня 3 дела</p>
+      </div>
+    </section>
+
+    <!-- Coin balance card -->
+    <section class="card hero" style="background:var(--reward-container); border-color:#eccf86; display:flex; align-items:center; justify-content:space-between;">
+      <div>
+        <p class="caption" style="color:var(--on-reward);">Моя копилка</p>
+        <p style="font-size:40px; font-weight:800; color:var(--on-reward); line-height:1; margin:4px 0; font-variant-numeric:tabular-nums;">450</p>
+        <p class="caption" style="color:var(--on-reward);">монет · на мечту и сладости</p>
+      </div>
+      <div class="avatar" style="width:64px; height:64px; background:var(--reward); color:#fff;">
+        <span class="material-symbols-outlined" style="font-size:34px; font-variation-settings:'FILL' 1;">savings</span>
+      </div>
+    </section>
+
+    <!-- Encouragement -->
+    <section class="card tight" style="display:flex; align-items:center; gap:12px; background:var(--surface-2); border:none;">
+      <div class="avatar" style="width:40px; height:40px; background:var(--sage-container); color:var(--sage);">
+        <span class="material-symbols-outlined" style="font-size:22px; font-variation-settings:'FILL' 1;">eco</span>
+      </div>
+      <p class="body" style="font-size:14px;">Ты молодец! Ещё пара дел — и получишь награду. ✨</p>
+    </section>
+
+    <!-- Today's tasks -->
+    <section>
+      <h2 class="h3" style="margin-bottom:12px;">Мои дела сегодня</h2>
+
+      <div class="card tight accent-reward" style="display:flex; align-items:center; justify-content:space-between; margin-bottom:10px;">
+        <div class="row" style="gap:12px;">
+          <div class="avatar" style="width:40px; height:40px; background:var(--sage-container); color:var(--sage);"><span class="material-symbols-outlined" style="font-size:22px;">cleaning_services</span></div>
+          <div>
+            <p class="title" style="font-size:15px;">Убрать в комнате</p>
+            <p class="caption">Сложить игрушки на полки</p>
+          </div>
+        </div>
+        <div class="stack" style="align-items:flex-end; gap:6px;">
+          <span class="coin"><span class="material-symbols-outlined">paid</span>15</span>
+          <button class="icon-btn" style="width:30px; height:30px; background:var(--surface-2); color:var(--primary);"><span class="material-symbols-outlined" style="font-size:18px;">radio_button_unchecked</span></button>
+        </div>
+      </div>
+
+      <div class="card tight accent-reward" style="display:flex; align-items:center; justify-content:space-between; margin-bottom:10px; background:var(--reward-container); border-color:#eccf86;">
+        <div class="row" style="gap:12px;">
+          <div class="avatar" style="width:40px; height:40px; background:#f1d99a; color:var(--on-reward);"><span class="material-symbols-outlined" style="font-size:22px;">pets</span></div>
+          <div>
+            <p class="title" style="font-size:15px;">Покормить кота</p>
+            <p class="caption" style="color:var(--on-reward);">В процессе…</p>
+          </div>
+        </div>
+        <div class="stack" style="align-items:flex-end; gap:6px;">
+          <span class="coin"><span class="material-symbols-outlined">paid</span>10</span>
+          <span class="material-symbols-outlined" style="font-size:26px; color:var(--reward);">hourglass_top</span>
+        </div>
+      </div>
+
+      <div class="card tight" style="display:flex; align-items:center; justify-content:space-between; opacity:.7;">
+        <div class="row" style="gap:12px;">
+          <div class="avatar" style="width:40px; height:40px; background:var(--sage-container); color:var(--sage);"><span class="material-symbols-outlined" style="font-size:22px;">menu_book</span></div>
+          <div>
+            <p class="title" style="font-size:15px; text-decoration:line-through; color:var(--text-3);">Сделать уроки</p>
+            <p class="caption" style="color:var(--sage); font-weight:700;">Выполнено · +50 монет</p>
+          </div>
+        </div>
+        <span class="material-symbols-outlined" style="font-size:26px; color:var(--sage); font-variation-settings:'FILL' 1;">check_circle</span>
+      </div>
+    </section>
+
+    <a href="../job_board/code.html" class="btn btn-primary btn-block">Найти ещё задания на Доске</a>
+
+  </main>
+
+  <!-- Child bottom nav -->
+  <nav class="bottom-nav">
+    <a href="../my_room_child_dashboard/code.html" class="nav-item active"><span class="material-symbols-outlined">home</span>Главная</a>
+    <a href="../job_board/code.html" class="nav-item"><span class="material-symbols-outlined">assignment</span>Задачи</a>
+    <a href="../the_pantry_rewards/code.html" class="nav-item"><span class="material-symbols-outlined">storefront</span>Кладовая</a>
+    <a href="../my_wallet/code.html" class="nav-item"><span class="material-symbols-outlined">savings</span>Кошелёк</a>
+  </nav>
+
+</body>
+</html>

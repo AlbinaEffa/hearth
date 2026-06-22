@@ -1,0 +1,25 @@
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: hearth-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: hearth
+      POSTGRES_PASSWORD: hearth
+      POSTGRES_DB: hearth
+    # Host port is set via HEARTH_DB_PORT (a free one is chosen so we never grab a busy port).
+    ports:
+      - "${HEARTH_DB_PORT:-5499}:5432"
+    volumes:
+      - hearth-pgdata:/var/lib/postgresql/data
+      # auto-applied on first init, in order (schema before seed). rls.sql is Supabase-only, not loaded here.
+      - ./db/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+      - ./db/seed.sql:/docker-entrypoint-initdb.d/02-seed.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U hearth -d hearth"]
+      interval: 5s
+      timeout: 3s
+      retries: 12
+
+volumes:
+  hearth-pgdata:

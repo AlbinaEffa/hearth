@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0" name="viewport"/>
+<title>Детали задачи — Hearth</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@400,0&display=swap" rel="stylesheet"/>
+<style>
+  * { font-family: 'Plus Jakarta Sans', sans-serif; box-sizing: border-box; margin: 0; padding: 0; }
+  .material-symbols-outlined { font-family: 'Material Symbols Outlined'; font-variation-settings: "FILL" 0, "wght" 400; }
+  body { background: var(--surface); min-height: 100dvh; padding-bottom: 120px; }
+  .fluffy { box-shadow: 0 8px 24px -4px rgba(33,29,26,0.12); }
+  .timeline-done { width:20px; height:20px; border-radius:50%; background:var(--sage); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .timeline-current { width:20px; height:20px; border-radius:50%; background:var(--primary); display:flex; align-items:center; justify-content:center; flex-shrink:0; box-shadow:0 0 0 4px rgba(33,29,26,0.2); }
+  .timeline-pending { width:20px; height:20px; border-radius:50%; border:2px solid var(--line); background:white; flex-shrink:0; }
+  .timeline-line { width:2px; height:24px; background:var(--surface-3); margin:3px auto; }
+</style>
+<link rel="stylesheet" href="../assets/hearth.css"/>
+</head>
+<body>
+
+<!-- Top bar -->
+<header style="background:var(--surface); border-bottom:1px solid var(--line); padding:12px 20px; position:sticky; top:0; z-index:50; display:flex; align-items:center; justify-content:space-between; box-shadow:0 2px 12px rgba(33,29,26,0.07);">
+  <button style="width:36px; height:36px; border-radius:50%; border:1.5px solid var(--line); background:white; cursor:pointer; display:flex; align-items:center; justify-content:center;">
+    <span class="material-symbols-outlined" style="font-size:20px; color:var(--text-2);">arrow_back</span>
+  </button>
+  <h1 style="font-size:16px; font-weight:800; color:var(--text-1);">Задача</h1>
+  <button style="width:36px; height:36px; border-radius:50%; border:none; background:transparent; cursor:pointer; display:flex; align-items:center; justify-content:center;">
+    <span class="material-symbols-outlined" style="font-size:22px; color:var(--text-3);">more_vert</span>
+  </button>
+</header>
+
+<main style="padding:16px 20px; display:flex; flex-direction:column; gap:12px;">
+
+  <!-- Header card -->
+  <div class="fluffy" style="background:white; border-radius:20px; padding:20px; border:1px solid var(--line); border-left:3px solid var(--primary);">
+    <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:10px;">
+      <span style="background:var(--primary-container); color:var(--on-primary-container); font-size:11px; font-weight:700; padding:3px 10px; border-radius:999px;">С наградой</span>
+      <div style="display:flex; align-items:center; gap:4px; background:var(--honey); padding:4px 12px; border-radius:999px;">
+        <span style="font-size:13px;">✨</span>
+        <span style="font-size:14px; font-weight:800; color:var(--on-honey);">20</span>
+      </div>
+    </div>
+    <h1 style="font-size:22px; font-weight:800; color:var(--text-1); letter-spacing:-0.4px; margin-bottom:6px;">Убрать в комнате</h1>
+    <div style="display:flex; align-items:center; gap:6px;">
+      <div style="width:22px; height:22px; border-radius:50%; background:var(--primary-soft); display:flex; align-items:center; justify-content:center;">
+        <span style="font-size:10px; font-weight:800; color:white;">М</span>
+      </div>
+      <span style="font-size:12px; color:var(--text-3);">Создала Мама · Среда, 18 июня</span>
+    </div>
+  </div>
+
+  <!-- Status timeline -->
+  <div style="background:white; border-radius:20px; padding:18px 20px; border:1px solid var(--line);">
+    <h2 style="font-size:12px; font-weight:700; color:var(--text-3); text-transform:uppercase; letter-spacing:0.5px; margin-bottom:16px;">Статус задачи</h2>
+
+    <!-- Step 1: Created -->
+    <div style="display:flex; align-items:flex-start; gap:14px;">
+      <div style="display:flex; flex-direction:column; align-items:center;">
+        <div class="timeline-done">
+          <span class="material-symbols-outlined" style="font-size:12px; color:white; font-variation-settings:'FILL' 1;">check</span>
+        </div>
+        <div class="timeline-line"></div>
+      </div>
+      <div style="flex:1; padding-bottom:20px;">
+        <div style="display:flex; justify-content:space-between; align-items:baseline;">
+          <span style="font-size:13px; font-weight:700; color:var(--sage);">Создана</span>
+          <span style="font-size:11px; color:var(--text-3);">10:30</span>
+        </div>
+        <span style="font-size:11px; color:var(--text-3);">Мама создала задачу</span>
+      </div>
+    </div>
+
+    <!-- Step 2: Assigned -->
+    <div style="display:flex; align-items:flex-start; gap:14px;">
+      <div style="display:flex; flex-direction:column; align-items:center;">
+        <div class="timeline-done">
+          <span class="material-symbols-outlined" style="font-size:12px; color:white; font-variation-settings:'FILL' 1;">check</span>
+        </div>
+        <div class="timeline-line"></div>
+      </div>
+      <div style="flex:1; padding-bottom:20px;">
+        <div style="display:flex; justify-content:space-between; align-items:baseline;">
+          <span style="font-size:13px; font-weight:700; color:var(--sage);">Назначена</span>
+          <span style="font-size:11px; color:var(--text-3);">10:31</span>
+        </div>
+        <span style="font-size:11px; color:var(--text-3);">Назначена Саше</span>
+      </div>
+    </div>
+
+    <!-- Step 3: Accepted -->
+    <div style="display:flex; align-items:flex-start; gap:14px;">
+      <div style="display:flex; flex-direction:column; align-items:center;">
+        <div class="timeline-done">
+          <span class="material-symbols-outlined" style="font-size:12px; color:white; font-variation-settings:'FILL' 1;">check</span>
+        </div>
+        <div class="timeline-line"></div>
+      </div>
+      <div style="flex:1; padding-bottom:20px;">
+        <div style="display:flex; justify-content:space-between; align-items:baseline;">
+          <span style="font-size:13px; font-weight:700; color:var(--sage);">Принята</span>
+          <span style="font-size:11px; color:var(--text-3);">11:00</span>
+        </div>
+        <span style="font-size:11px; color:var(--text-3);">Саша приняла задачу</span>
+      </div>
+    </div>
+
+    <!-- Step 4: Completed — CURRENT -->
+    <div style="display:flex; align-items:flex-start; gap:14px;">
+      <div style="display:flex; flex-direction:column; align-items:center;">
+        <div class="timeline-current">
+          <span class="material-symbols-outlined" style="font-size:12px; color:white; font-variation-settings:'FILL' 1;">check</span>
+        </div>
+        <div class="timeline-line"></div>
+      </div>
+      <div style="flex:1; padding-bottom:20px;">
+        <div style="display:flex; justify-content:space-between; align-items:baseline;">
+          <span style="font-size:13px; font-weight:800; color:var(--primary);">Выполнена ●</span>
+          <span style="font-size:11px; color:var(--text-3);">14:45</span>
+        </div>
+        <span style="font-size:11px; color:var(--text-2); font-weight:500;">Саша отметила задачу выполненной</span>
+      </div>
+    </div>
+
+    <!-- Step 5: Approved — pending -->
+    <div style="display:flex; align-items:flex-start; gap:14px;">
+      <div style="display:flex; flex-direction:column; align-items:center;">
+        <div class="timeline-pending"></div>
+      </div>
+      <div style="flex:1;">
+        <div style="display:flex; justify-content:space-between; align-items:baseline;">
+          <span style="font-size:13px; font-weight:600; color:var(--text-3);">Ждёт одобрения</span>
+          <span style="font-size:11px; color:var(--text-3);">—</span>
+        </div>
+        <span style="font-size:11px; color:var(--text-3);">Нужно твоё подтверждение</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- People -->
+  <div style="background:white; border-radius:20px; padding:18px 20px; border:1px solid var(--line); display:flex; flex-direction:column; gap:14px;">
+    <!-- Creator -->
+    <div style="display:flex; align-items:center; gap:12px;">
+      <div style="width:44px; height:44px; border-radius:50%; background:linear-gradient(135deg, var(--primary-soft), var(--primary)); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+        <span style="font-size:18px; font-weight:800; color:white;">М</span>
+      </div>
+      <div style="flex:1;">
+        <div style="display:flex; align-items:center; gap:6px; margin-bottom:2px;">
+          <span style="font-size:14px; font-weight:700; color:var(--text-1);">Мама</span>
+          <span style="font-size:10px; font-weight:700; padding:2px 7px; border-radius:999px; background:var(--primary-container); color:var(--on-primary-container);">👑 Хозяйка</span>
+        </div>
+        <span style="font-size:11px; color:var(--text-3);">Создатель задачи</span>
+      </div>
+    </div>
+    <!-- Executor -->
+    <div style="display:flex; align-items:center; gap:12px; padding-top:14px; border-top:1px solid var(--surface-2);">
+      <div style="width:44px; height:44px; border-radius:50%; background:#6c9a64; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+        <span style="font-size:18px; font-weight:800; color:white;">С</span>
+      </div>
+      <div style="flex:1;">
+        <div style="display:flex; align-items:center; gap:6px; margin-bottom:2px;">
+          <span style="font-size:14px; font-weight:700; color:var(--text-1);">Саша</span>
+          <span style="font-size:10px; font-weight:700; padding:2px 7px; border-radius:999px; background:var(--sage-container); color:var(--on-sage);">Выполнила ✓</span>
+        </div>
+        <span style="font-size:11px; color:var(--text-3);">Исполнитель задачи</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Details -->
+  <div style="background:white; border-radius:20px; padding:18px 20px; border:1px solid var(--line); display:flex; flex-direction:column; gap:12px;">
+    <div style="display:flex; align-items:center; gap:12px;">
+      <span class="material-symbols-outlined" style="font-size:20px; color:var(--text-3); flex-shrink:0;">calendar_today</span>
+      <div>
+        <p style="font-size:11px; color:var(--text-3); margin-bottom:1px;">Дедлайн</p>
+        <p style="font-size:14px; font-weight:600; color:var(--text-1);">Среда, 18 июня · до 20:00</p>
+      </div>
+    </div>
+    <div style="border-top:1px solid var(--surface-2); padding-top:12px; display:flex; align-items:flex-start; gap:12px;">
+      <span class="material-symbols-outlined" style="font-size:20px; color:var(--text-3); flex-shrink:0; margin-top:2px;">notes</span>
+      <div>
+        <p style="font-size:11px; color:var(--text-3); margin-bottom:3px;">Описание</p>
+        <p style="font-size:14px; color:var(--text-1); line-height:1.5; font-style:italic;">Не забудь под кроватью! Пылесос в кладовке 🧹</p>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<!-- Fixed action buttons -->
+<div style="position:fixed; bottom:0; left:0; width:100%; padding:16px 20px 40px; background:var(--surface); border-top:1px solid var(--surface-3);">
+  <button style="width:100%; height:56px; border-radius:18px; background:var(--primary); color:white; border:none; font-size:16px; font-weight:800; cursor:pointer; box-shadow:0 4px 0 var(--on-primary-container); letter-spacing:-0.3px; margin-bottom:4px;">
+    ✓ Одобрить выполнение
+  </button>
+  <div style="text-align:center; padding-top:10px;">
+    <button style="font-size:13px; color:var(--text-3); font-weight:600; border:none; background:transparent; cursor:pointer;">Отклонить</button>
+  </div>
+</div>
+
+</body>
+</html>

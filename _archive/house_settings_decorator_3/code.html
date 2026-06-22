@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-variant": "#e6e2dc",
+                    "tertiary": "#4a6545",
+                    "on-background": "#1c1c18",
+                    "surface": "#fdf9f3",
+                    "on-error": "#ffffff",
+                    "tertiary-fixed-dim": "#b1cfa7",
+                    "on-tertiary-fixed": "#082007",
+                    "on-tertiary-container": "#183115",
+                    "tertiary-container": "#7d9a76",
+                    "on-error-container": "#93000a",
+                    "outline-variant": "#dac1b9",
+                    "surface-container-highest": "#e6e2dc",
+                    "on-secondary-fixed-variant": "#534611",
+                    "surface-container-low": "#f7f3ed",
+                    "on-secondary": "#ffffff",
+                    "on-primary-fixed": "#380d00",
+                    "on-surface": "#1c1c18",
+                    "secondary-fixed": "#f6e29e",
+                    "background": "#fdf9f3",
+                    "surface-tint": "#94492d",
+                    "primary": "#94492d",
+                    "surface-container-high": "#ebe8e2",
+                    "primary-container": "#d37b5b",
+                    "on-primary": "#ffffff",
+                    "secondary-fixed-dim": "#d9c684",
+                    "outline": "#87736c",
+                    "error-container": "#ffdad6",
+                    "secondary": "#6c5d27",
+                    "inverse-surface": "#31302d",
+                    "inverse-primary": "#ffb59b",
+                    "surface-dim": "#dddad4",
+                    "primary-fixed-dim": "#ffb59b",
+                    "on-primary-fixed-variant": "#763218",
+                    "tertiary-fixed": "#ccebc2",
+                    "primary-fixed": "#ffdbcf",
+                    "surface-container": "#f1ede7",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary": "#ffffff",
+                    "on-tertiary-fixed-variant": "#334d2f",
+                    "on-secondary-container": "#72632c",
+                    "error": "#ba1a1a",
+                    "inverse-on-surface": "#f4f0ea",
+                    "secondary-container": "#f6e29e",
+                    "on-secondary-fixed": "#221b00",
+                    "on-surface-variant": "#54433d",
+                    "on-primary-container": "#521801",
+                    "surface-bright": "#fdf9f3"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "md": "24px",
+                    "lg": "40px",
+                    "base": "8px",
+                    "sm": "12px",
+                    "xs": "4px",
+                    "margin": "20px",
+                    "gutter": "16px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "label-md": ["Plus Jakarta Sans"],
+                    "caption": ["Plus Jakarta Sans"],
+                    "body-md": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "30px", "fontWeight": "600"}],
+                    "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "caption": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .fluffy-shadow {
+            box-shadow: 0 10px 25px -5px rgba(148, 73, 45, 0.15);
+        }
+        .stitched-border {
+            border: 2px dashed #dac1b9;
+        }
+        .fabric-texture {
+            background-image: radial-gradient(#e5d3c0 0.5px, transparent 0.5px);
+            background-size: 8px 8px;
+        }
+        .thick-button {
+            border-bottom: 3px solid #763218;
+        }
+        .soft-well {
+            box-shadow: inset 2px 2px 5px rgba(0,0,0,0.05);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background font-body-md text-on-background selection:bg-primary-fixed min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="bg-[#FAF7F2] dark:bg-stone-950 border-b-2 border-dashed border-[#E5D3C0] dark:border-stone-800 shadow-sm fixed top-0 left-0 right-0 z-50">
+<div class="flex justify-between items-center w-full px-5 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-primary-container border-2 border-primary">
+<img alt="Mascot" class="w-full h-full object-cover" data-alt="A charming, round Corgi mascot with a friendly expression, styled in a warm illustrative digital art style. The Corgi is wearing a tiny embroidered neckerchief, sitting comfortably on a soft linen texture. The color palette features creamy whites, warm oranges, and soft browns, reflecting a cozy, domestic hygge aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsy0jmenA7B1fznOHzkWBDgq-1w2lQgFUIxRqxzpMNKUq5jM6b9hDmryEk9YNrB9AZyWqgS33P9m33b63w63L15Mwv0snmynODoVafD6ZRr0ol0pwjfDpKqUE6yqxlr6H4Gwmmz5PbgaoaVaBGOnz7giNUW9lqSCOrie1aYTMvNlHFstVPbHTZTBESh5JiRWZAxUXBA7ZhbKgjcrpBHrBS6KcV7YGVXznuOsMqbA0C9dBEhtaZcPzxEHIr8T_PJDQi6tU1w0dDrjs"/>
+</div>
+<h1 class="font-['Plus_Jakarta_Sans'] font-semibold tracking-tight text-[#D37B5B] text-2xl italic drop-shadow-[1px_1px_0px_rgba(0,0,0,0.1)]">Hearth</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-full hover:bg-[#F2E8DF] transition-colors active:scale-95 duration-150">
+<span class="material-symbols-outlined text-[#D37B5B]">menu</span>
+</button>
+</div>
+</div>
+</header>
+<main class="mt-24 px-margin max-w-screen-xl mx-auto space-y-lg">
+<!-- Header Section -->
+<section class="space-y-xs">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Decorator's Studio</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md">Tailor your digital sanctuary with warmth, texture, and your favorite companion.</p>
+</section>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Atmosphere: Color Themes & Fonts (Bento Card Large) -->
+<section class="md:col-span-8 bg-surface-container rounded-xl p-md fluffy-shadow border border-surface-variant relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4 opacity-10">
+<span class="material-symbols-outlined text-[120px]">palette</span>
+</div>
+<div class="relative z-10 space-y-md">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary">auto_awesome</span>
+<h3 class="font-headline-md text-headline-md">Atmosphere</h3>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-sm">
+<!-- Theme Tile 1 -->
+<div class="bg-surface p-sm rounded-lg border-2 border-primary ring-4 ring-primary/10 space-y-base cursor-pointer">
+<div class="h-20 w-full rounded flex overflow-hidden">
+<div class="w-1/3 bg-[#94492d]"></div>
+<div class="w-1/3 bg-[#fdf9f3]"></div>
+<div class="w-1/3 bg-[#4a6545]"></div>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-label-md text-label-md">Harvest Hearth</span>
+<span class="material-symbols-outlined text-primary text-sm" style='font-variation-settings: "FILL" 1;'>check_circle</span>
+</div>
+</div>
+<!-- Theme Tile 2 -->
+<div class="bg-surface p-sm rounded-lg border border-outline-variant space-y-base hover:border-primary transition-colors cursor-pointer group">
+<div class="h-20 w-full rounded flex overflow-hidden">
+<div class="w-1/3 bg-[#2D4263]"></div>
+<div class="w-1/3 bg-[#C84B31]"></div>
+<div class="w-1/3 bg-[#ECDBBA]"></div>
+</div>
+<span class="font-label-md text-label-md group-hover:text-primary">Midnight Tea</span>
+</div>
+<!-- Theme Tile 3 -->
+<div class="bg-surface p-sm rounded-lg border border-outline-variant space-y-base hover:border-primary transition-colors cursor-pointer group">
+<div class="h-20 w-full rounded flex overflow-hidden">
+<div class="w-1/3 bg-[#7D9A76]"></div>
+<div class="w-1/3 bg-[#E5D3C0]"></div>
+<div class="w-1/3 bg-[#534611]"></div>
+</div>
+<span class="font-label-md text-label-md group-hover:text-primary">Botanical Study</span>
+</div>
+</div>
+<div class="pt-sm space-y-sm">
+<p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Typography Style</p>
+<div class="flex flex-wrap gap-sm">
+<button class="px-md py-sm rounded-full bg-surface border border-outline-variant font-['Plus_Jakarta_Sans'] text-on-surface hover:border-primary transition-all">Modern Sans</button>
+<button class="px-md py-sm rounded-full bg-primary text-on-primary font-serif font-bold italic stitched-border shadow-sm">Nostalgic Serif</button>
+<button class="px-md py-sm rounded-full bg-surface border border-outline-variant font-mono text-on-surface hover:border-primary transition-all">Typewriter</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Mascot Selection (Bento Card Tall) -->
+<section class="md:col-span-4 bg-surface-container-high rounded-xl p-md fluffy-shadow border border-surface-variant flex flex-col space-y-md">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary">pets</span>
+<h3 class="font-headline-md text-headline-md">Mascot</h3>
+</div>
+<div class="flex-grow space-y-sm">
+<!-- Corgi (Selected) -->
+<div class="bg-surface border-2 border-primary rounded-xl p-base flex items-center gap-md group cursor-pointer relative overflow-hidden">
+<div class="absolute inset-0 bg-primary/5 opacity-100"></div>
+<div class="w-16 h-16 rounded-full bg-primary-fixed-dim border-2 border-primary overflow-hidden flex-shrink-0 relative z-10">
+<img alt="Corgi" class="w-full h-full object-cover" data-alt="A detailed digital illustration of a plump, happy Corgi mascot with its tongue out. The dog is rendered in soft, painterly strokes with warm terracotta and cream fur, wearing a tiny dark brown sweater. The background is a soft beige with subtle floating leaf patterns, maintaining a cozy and supportive atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhrst3OrfbjZNG45B_Djr9cbzK0oTAEPml1qMgViiqGqjHIKuKQEqmMGDfqCDfPQKyrcJBM3PUYjSw6XMFw6ahqbNs9yIQXBV_OCUu6a-tM5wQkRZhPaFcCpuODlwL3lb1OeiNDZ8DHjGFbp3PQ4rSpnHP9Gdism1i1_2bxaKVN6dmrqo1rEt_K-Za2jiBAWU-h5GO-2ajhOqQvQzaWQSp_mcPvuGVBvCdgzmNThccktmVKv8fn5uHPwRVm2-cqj-iBQLxm-KuJI4"/>
+</div>
+<div class="relative z-10">
+<p class="font-label-md text-label-md text-primary">Oliver the Corgi</p>
+<p class="text-caption text-on-surface-variant">Gentle &amp; Encouraging</p>
+</div>
+<span class="material-symbols-outlined absolute right-4 text-primary" style='font-variation-settings: "FILL" 1;'>stars</span>
+</div>
+<!-- Cat -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-base flex items-center gap-md hover:border-primary transition-colors cursor-pointer group">
+<div class="w-16 h-16 rounded-full bg-surface-variant overflow-hidden flex-shrink-0 grayscale group-hover:grayscale-0 transition-all">
+<img alt="Cat" class="w-full h-full object-cover" data-alt="A sophisticated, sleepy calico cat mascot curled into a perfect circle on a woven rug. The art style is soft and skeuomorphic, with visible fur textures and a warm, inviting glow from a nearby fireplace that isn't seen. The colors are rich creams, deep charcoals, and soft ginger patches, fitting the hygge theme." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYfFAISShkSzNmDsRXGdDSLoxU06XUubXgjUwJOG3_P2RGIUF-xWon4I0pFMHFk8379uc1NbFZBgRXGkwQObA6Z7v-K9jVrUWzDUiI6nRH_2dI25MAEJJHofMMXMM478seoQhCjkgE4f9aazRi_OGIdZv0sVQGgqKsmcUsg6kSDNUdr45v9XwzCIBoxa4gJwaYbiGa0EYEVuv-mHq83iujEczRGzwxxH_A_OO3T_0tAjXZv5sNLwyhsBM8GyO5r3u4qVy4epWYJ6s"/>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Luna the Cat</p>
+<p class="text-caption text-on-surface-variant">Calm &amp; Observant</p>
+</div>
+</div>
+<!-- Fox -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-base flex items-center gap-md hover:border-primary transition-colors cursor-pointer group">
+<div class="w-16 h-16 rounded-full bg-surface-variant overflow-hidden flex-shrink-0 grayscale group-hover:grayscale-0 transition-all">
+<img alt="Fox" class="w-full h-full object-cover" data-alt="A whimsical red fox mascot with a bushy white-tipped tail, sitting upright with a curious expression. The fox is wearing a small stitched scarf in a forest green shade. The digital painting style is rich and tactile, suggesting a handcrafted embroidery look, set against a warm, neutral background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQPD3hBVUQKtfadNO0NCi93FVx-tI2yi9UaqdOzjWg_T3CYAwv_Ciz6jI_Ehu7h3jWhq_j30FSldUtIUM-XLU0Nb_WEEKZI7y3JgUuhhh5QBVHfT6VMQqortDup5fYIARnTLi1coYXO8rk3DsPLSwjvFcm-JHInjlqY3DdI8-oszeUZHqZRBwlFVtt8d7Rb4j6m2V1kuk3iv-xLyriq70iCq4sAKBEgezYKMoqfWV-QPL2GUwt3Qya8a6MyRPkQOgW84tcHn5TOOg"/>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Felix the Fox</p>
+<p class="text-caption text-on-surface-variant">Clever &amp; Creative</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Digital Renovation (Full Width / Interactive) -->
+<section class="md:col-span-12 bg-surface p-md rounded-xl border border-outline-variant fabric-texture space-y-md">
+<div class="space-y-xs">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary">group</span>
+<h3 class="font-headline-md text-headline-md">Invite Your Kin</h3>
+</div>
+<p class="text-body-md text-on-surface-variant">Share your secret hearth code with those who belong in your digital sanctuary.</p>
+</div>
+<div class="flex flex-col items-center justify-center py-lg">
+<div class="bg-primary-container p-lg rounded-xl stitched-border shadow-md text-center max-w-sm w-full relative overflow-hidden">
+<!-- Wood Grain Pattern Overlay (Subtle) -->
+<div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: linear-gradient(0deg, transparent 50%, rgba(0,0,0,0.1) 50%); background-size: 100% 4px;"></div>
+<p class="font-label-md text-on-primary-container uppercase tracking-widest mb-sm relative z-10">Secret Family Code</p>
+<div class="font-serif text-3xl font-bold tracking-[0.5em] text-on-primary-container bg-surface/30 py-md px-lg rounded-lg border border-on-primary-container/20 shadow-inner relative z-10">1234</div>
+</div>
+</div>
+<div class="flex flex-wrap gap-md justify-center">
+<button class="flex-1 sm:flex-none min-w-[140px] bg-surface-container-high text-on-surface-variant px-lg py-sm rounded-lg font-label-md border-2 border-outline-variant hover:bg-surface-variant transition-colors flex items-center justify-center gap-sm active:scale-95">
+<span class="material-symbols-outlined text-sm">content_copy</span>
+            Copy Code
+        </button>
+<button class="flex-1 sm:flex-none min-w-[140px] bg-primary text-on-primary px-lg py-sm rounded-lg font-label-md thick-button shadow-md flex items-center justify-center gap-sm active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-sm">send</span>
+            Send Invite
+        </button>
+</div>
+</section>
+</div>
+<!-- Setting Toggles -->
+<section class="bg-surface-container-low rounded-xl p-md border border-surface-variant space-y-md">
+<h3 class="font-label-md text-label-md uppercase tracking-widest text-primary">Tactile Experience</h3>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-md">
+<div class="flex items-center justify-between p-sm bg-surface rounded-lg soft-well">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-tertiary">vibration</span>
+<div>
+<p class="font-label-md">Haptic Textures</p>
+<p class="text-caption text-on-surface-variant">Feel the surfaces on scroll</p>
+</div>
+</div>
+<div class="w-12 h-6 bg-primary rounded-full relative p-1 flex items-center justify-end">
+<div class="w-4 h-4 bg-white rounded-full shadow-sm"></div>
+</div>
+</div>
+<div class="flex items-center justify-between p-sm bg-surface rounded-lg soft-well">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-tertiary">sound_detection_dog_barking</span>
+<div>
+<p class="font-label-md">Ambient Hearth</p>
+<p class="text-caption text-on-surface-variant">Soft background fireplace sounds</p>
+</div>
+</div>
+<div class="w-12 h-6 bg-surface-variant rounded-full relative p-1 flex items-center justify-start">
+<div class="w-4 h-4 bg-white rounded-full shadow-sm"></div>
+</div>
+</div>
+</div>
+</section>
+<div class="pt-md pb-lg flex justify-center"><button class="w-full max-w-sm bg-primary text-on-primary px-lg py-4 rounded-xl font-headline-md thick-button shadow-md flex items-center justify-center gap-sm active:scale-95 transition-transform">Get Started</button></div></main>
+<!-- BottomNavBar -->
+</body></html>

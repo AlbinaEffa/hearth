@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Hearth - House Settings: The Blueprint</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #fdf9f3;
+            background-image: radial-gradient(#e5d3c0 0.5px, transparent 0.5px);
+            background-size: 24px 24px;
+        }
+        .fluffy-shadow {
+            box-shadow: 0 10px 25px -5px rgba(148, 73, 45, 0.1), 0 8px 10px -6px rgba(148, 73, 45, 0.05);
+        }
+        .fabric-texture {
+            background-image: repeating-linear-gradient(45deg, rgba(0,0,0,0.01) 0px, rgba(0,0,0,0.01) 1px, transparent 1px, transparent 10px);
+        }
+        .wood-divider {
+            height: 4px;
+            background: linear-gradient(to right, #C4A484, #E5D3C0, #C4A484);
+            border-radius: 2px;
+        }
+        .stitched-border {
+            border: 2px dashed #dac1b9;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-variant": "#e6e2dc",
+                      "tertiary": "#4a6545",
+                      "on-background": "#1c1c18",
+                      "surface": "#fdf9f3",
+                      "on-error": "#ffffff",
+                      "tertiary-fixed-dim": "#b1cfa7",
+                      "on-tertiary-fixed": "#082007",
+                      "on-tertiary-container": "#183115",
+                      "tertiary-container": "#7d9a76",
+                      "on-error-container": "#93000a",
+                      "outline-variant": "#dac1b9",
+                      "surface-container-highest": "#e6e2dc",
+                      "on-secondary-fixed-variant": "#534611",
+                      "surface-container-low": "#f7f3ed",
+                      "on-secondary": "#ffffff",
+                      "on-primary-fixed": "#380d00",
+                      "on-surface": "#1c1c18",
+                      "secondary-fixed": "#f6e29e",
+                      "background": "#fdf9f3",
+                      "surface-tint": "#94492d",
+                      "primary": "#94492d",
+                      "surface-container-high": "#ebe8e2",
+                      "primary-container": "#d37b5b",
+                      "on-primary": "#ffffff",
+                      "secondary-fixed-dim": "#d9c684",
+                      "outline": "#87736c",
+                      "error-container": "#ffdad6",
+                      "secondary": "#6c5d27",
+                      "inverse-surface": "#31302d",
+                      "inverse-primary": "#ffb59b",
+                      "surface-dim": "#dddad4",
+                      "primary-fixed-dim": "#ffb59b",
+                      "on-primary-fixed-variant": "#763218",
+                      "tertiary-fixed": "#ccebc2",
+                      "primary-fixed": "#ffdbcf",
+                      "surface-container": "#f1ede7",
+                      "surface-container-lowest": "#ffffff",
+                      "on-tertiary": "#ffffff",
+                      "on-tertiary-fixed-variant": "#334d2f",
+                      "on-secondary-container": "#72632c",
+                      "error": "#ba1a1a",
+                      "inverse-on-surface": "#f4f0ea",
+                      "secondary-container": "#f6e29e",
+                      "on-secondary-fixed": "#221b00",
+                      "on-surface-variant": "#54433d",
+                      "on-primary-container": "#521801",
+                      "surface-bright": "#fdf9f3"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "md": "24px",
+                      "lg": "40px",
+                      "base": "8px",
+                      "sm": "12px",
+                      "xs": "4px",
+                      "margin": "20px",
+                      "gutter": "16px"
+              },
+              "fontFamily": {
+                      "body-lg": ["Plus Jakarta Sans"],
+                      "headline-md": ["Plus Jakarta Sans"],
+                      "headline-lg": ["Plus Jakarta Sans"],
+                      "label-md": ["Plus Jakarta Sans"],
+                      "caption": ["Plus Jakarta Sans"],
+                      "body-md": ["Plus Jakarta Sans"]
+              },
+              "fontSize": {
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "headline-md": ["24px", {"lineHeight": "30px", "fontWeight": "600"}],
+                      "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                      "caption": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen pb-32">
+<!-- TopAppBar from JSON -->
+<header class="bg-[#FAF7F2] dark:bg-stone-950 border-b-2 border-dashed border-[#E5D3C0] dark:border-stone-800 shadow-sm docked full-width top-0 z-40">
+<div class="flex justify-between items-center w-full px-5 py-4">
+<div class="flex items-center gap-4">
+<button class="text-[#D37B5B] dark:text-[#E6A085] hover:bg-[#F2E8DF] dark:hover:bg-stone-800 transition-colors active:scale-95 duration-150 p-2 rounded-full">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="font-['Plus_Jakarta_Sans'] font-semibold tracking-tight text-[#D37B5B] dark:text-[#E6A085] text-2xl font-black italic drop-shadow-[1px_1px_0px_rgba(0,0,0,0.1)]">Hearth</h1>
+</div>
+<div class="flex items-center">
+<div class="w-10 h-10 rounded-full border-2 border-[#D37B5B] overflow-hidden">
+<img alt="Round Corgi mascot profile" class="w-full h-full object-cover" data-alt="A charming and round Corgi mascot with soft orange and white fur, wearing a tiny green scarf, smiling gently against a warm cream background. The artistic style is soft-focus, illustrative, and warm, matching a cozy home-centric digital theme with gentle lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCITyydFSgRxpZTW4wpuUe5Pn1Yekf9YpqwlM0mDyP9qbx2uFBPwkgrgdvNhoiqjDTntY20z_kYBF-q_5Q_RbivVTu959AtuMIqkrBJvFLO5TDbwo2xrIwzD2dcbmhSdtKf639gZ6opSi5-Xp69DxRB9qu0js6Pr4SeN-VunMUZsXYGtm2EvcxkDy63JSIa-GLNRYoD2Eph914BzV-g5_fC9KR_WmpZmaGPoUoPwI35-VJdgma8M_IyjgxDXZ5UkMUd1JJ6h3r_kD0"/>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-md mx-auto px-margin mt-8">
+<!-- Header Section -->
+<section class="mb-8">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-2">House Blueprint</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Review and manage the structural soul of your home.</p>
+</section>
+<!-- Home Identity Section -->
+<section class="mb-10">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-primary">cottage</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Home Identity</h3>
+</div>
+<div class="bg-surface-container-low p-6 rounded-xl fluffy-shadow fabric-texture border-b-4 border-[#C4A484]">
+<div class="space-y-6">
+<div>
+<label class="block font-label-md text-label-md text-outline mb-2">House Name</label>
+<div class="bg-surface p-4 rounded-lg inner-shadow border-2 border-[#F2E8DF] flex items-center justify-between">
+<span class="font-body-lg text-body-lg text-on-surface">The Oak &amp; Hearth</span>
+<span class="material-symbols-outlined text-outline text-sm">edit</span>
+</div>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-outline mb-2">Location</label>
+<div class="bg-surface rounded-lg overflow-hidden border-2 border-[#F2E8DF]">
+<img alt="Map of Home Location" class="w-full h-32 object-cover" data-alt="A stylized, warm-toned map showing a cozy neighborhood with small cottage icons and green park areas. The map uses a palette of soft creams, sage greens, and terracotta browns, perfectly matching the hygge brand aesthetic and feeling more like an illustration than a clinical satellite map." data-location="Cotswolds, UK" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUzYGZ4JoNURQIFL70O7f3V9lqCXxrfEVDcuOTvkFkOo_PdjaoD8B02kVtQ5VUaezCS2M68NPG0GN1rxbrvaZamLEzrHBXgHp87lwl-_HGXdo-nh6LjYHDTcrhnEN77mycmkZRKiF_2NZQ-wZCIZ02pHwHPO7tj70W1Qef0YjNPkvQqBh-t0W_AdlmoFdaTCxSoYbNBjSc5UFqLATertzarZNOBf10j7LppYxnPITO5KS7TpIm2igIltdnMfBG-evHxksP8xBX4HE"/>
+<div class="p-4 flex items-center justify-between">
+<span class="font-body-md text-body-md text-on-surface">Maplewood Grove, NY</span>
+<span class="material-symbols-outlined text-outline text-sm">map</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<div class="wood-divider mb-10"></div>
+<!-- Resident Registry Section -->
+<section class="mb-10">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">groups</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Resident Registry</h3>
+</div>
+<button class="bg-primary text-on-primary px-4 py-1.5 rounded-full font-label-md text-label-md border-b-2 border-[#763218] active:translate-y-0.5 transition-all">Add Member</button>
+</div>
+<div class="space-y-3">
+<!-- Member Card -->
+<div class="bg-surface border-2 border-[#F2E8DF] p-4 rounded-xl flex items-center gap-4 hover:border-primary-container transition-colors">
+<div class="w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container font-bold">EM</div>
+<div class="flex-1">
+<p class="font-label-md text-label-md text-on-surface">Eleanor Miller</p>
+<p class="font-caption text-caption text-outline">Primary Caretaker</p>
+</div>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</div>
+<!-- Member Card -->
+<div class="bg-surface border-2 border-[#F2E8DF] p-4 rounded-xl flex items-center gap-4 hover:border-primary-container transition-colors">
+<div class="w-12 h-12 rounded-full bg-tertiary-fixed flex items-center justify-center text-on-tertiary-fixed-variant font-bold">JM</div>
+<div class="flex-1">
+<p class="font-label-md text-label-md text-on-surface">Julian Miller</p>
+<p class="font-caption text-caption text-outline">Resident</p>
+</div>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</div>
+<!-- Member Card (Guest) -->
+<div class="bg-surface-container-highest border-2 border-dashed border-[#dac1b9] p-4 rounded-xl flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-surface-variant flex items-center justify-center text-outline">
+<span class="material-symbols-outlined">person_add</span>
+</div>
+<div class="flex-1">
+<p class="font-label-md text-label-md text-on-surface-variant italic">Invite a guest...</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Room Architecture (Bento Style) -->
+<section class="mb-10">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary">chair</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Room Architecture</h3>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<!-- Room Card 1 -->
+<div class="col-span-2 bg-surface border-2 border-[#F2E8DF] rounded-2xl p-5 fluffy-shadow relative overflow-hidden h-40 flex flex-col justify-end">
+<div class="absolute top-4 left-4 bg-primary-container/20 p-2 rounded-lg">
+<span class="material-symbols-outlined text-primary">skillet</span>
+</div>
+<div class="z-10">
+<p class="font-headline-md text-headline-md text-on-surface">Kitchen</p>
+<p class="font-caption text-caption text-primary">8 active rules • 12 items</p>
+</div>
+<div class="absolute -right-4 -top-4 opacity-10">
+<span class="material-symbols-outlined text-[120px]">restaurant</span>
+</div>
+</div>
+<!-- Room Card 2 -->
+<div class="bg-surface border-2 border-[#F2E8DF] rounded-2xl p-5 fluffy-shadow flex flex-col items-center text-center gap-2">
+<span class="material-symbols-outlined text-tertiary text-3xl">bed</span>
+<p class="font-label-md text-label-md text-on-surface">Master Bedroom</p>
+</div>
+<!-- Room Card 3 -->
+<div class="bg-surface border-2 border-[#F2E8DF] rounded-2xl p-5 fluffy-shadow flex flex-col items-center text-center gap-2">
+<span class="material-symbols-outlined text-primary text-3xl">bathtub</span>
+<p class="font-label-md text-label-md text-on-surface">Guest Bath</p>
+</div>
+<!-- Add Room -->
+<div class="col-span-2 border-2 border-dashed border-[#dac1b9] rounded-2xl p-4 flex items-center justify-center gap-2 text-outline hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined">add_circle</span>
+<span class="font-label-md text-label-md">Add New Space</span>
+</div>
+</div>
+</section>
+<!-- House Laws Section -->
+<section class="mb-10">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-primary">gavel</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">House Laws</h3>
+</div>
+<div class="bg-surface-container-high rounded-2xl p-6 border-2 border-[#E5D3C0]">
+<div class="space-y-4">
+<div class="flex items-start gap-4 p-3 bg-surface rounded-xl border-l-4 border-tertiary">
+<span class="material-symbols-outlined text-tertiary mt-1">check_circle</span>
+<div>
+<p class="font-label-md text-label-md text-on-surface">The 10:00 PM Quiet Rule</p>
+<p class="font-caption text-caption text-outline">Low volume music and voices after dark.</p>
+</div>
+</div>
+<div class="flex items-start gap-4 p-3 bg-surface rounded-xl border-l-4 border-primary">
+<span class="material-symbols-outlined text-primary mt-1">local_laundry_service</span>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Sunday Reset</p>
+<p class="font-caption text-caption text-outline">All shared linens to be washed by 5:00 PM.</p>
+</div>
+</div>
+<div class="pt-4 text-center">
+<a class="font-label-md text-label-md text-primary underline decoration-dashed underline-offset-4" href="#">View All 14 Laws</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Empty State with Corgi -->
+<div class="mt-12 text-center py-10">
+<div class="w-32 h-32 mx-auto mb-4 relative">
+<img alt="Sleeping Corgi Mascot" class="w-full h-full object-contain" data-alt="A small, fluffy orange and white Corgi curled up in a tight ball, sleeping peacefully on a small woven rug. The lighting is golden and warm, suggesting a sunny afternoon nap in a cozy home. The style is painterly and soft, evoking feelings of safety and comfort." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMmhLFyjORntwNC3bhvq6UbrvSwkGorcEVDzMbtt7e7aPtuePS_i1K9Wy9V9JRxqYfJOoT-nO_ugkIcsqSniXsXGfETvJ3DftBSrho2Zceyy3k7E7UbY09KzilEtTHAHl91buMJdcusjqxFY7PmnwSOzjFUo2BxPuIFXt4t8GzCNdq8Yx35Ps1hVvTyFyvbkYRJKmwcLfaxQpRh2Coqz4t7U1il8sc-FYkLKUgjB-r47N3P2ay7tijAssZdC5hP_TUo46ZsAgGcX8"/>
+</div>
+<p class="font-body-md text-body-md text-outline italic">Everything is in its place. Take a breather.</p>
+</div>
+</main>
+<!-- BottomNavBar from JSON -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-6 pt-3 pb-6 bg-[#E5D3C0] dark:bg-stone-900 rounded-t-[2rem] border-t-4 border-[#C4A484] dark:border-stone-800 shadow-[0_-10px_25px_rgba(211,123,91,0.1)] transition-all duration-300 ease-out">
+<div class="flex flex-col items-center justify-center text-stone-600 dark:text-stone-400 opacity-70 hover:opacity-100">
+<span class="material-symbols-outlined">cottage</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[11px] font-bold uppercase tracking-widest mt-1">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-stone-600 dark:text-stone-400 opacity-70 hover:opacity-100">
+<span class="material-symbols-outlined">chair</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[11px] font-bold uppercase tracking-widest mt-1">Rooms</span>
+</div>
+<div class="flex flex-col items-center justify-center text-stone-600 dark:text-stone-400 opacity-70 hover:opacity-100">
+<span class="material-symbols-outlined">gavel</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[11px] font-bold uppercase tracking-widest mt-1">Rules</span>
+</div>
+<!-- Active Tab: Settings -->
+<div class="flex flex-col items-center justify-center text-[#D37B5B] drop-shadow-[0_0_10px_rgba(211,123,91,0.4)] scale-110">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[11px] font-bold uppercase tracking-widest mt-1">Settings</span>
+</div>
+</nav>
+</body></html>

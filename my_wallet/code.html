@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0" name="viewport"/>
+<title>Кошелёк — Hearth</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../assets/hearth.css"/>
+</head>
+<body>
+
+  <header class="topbar">
+    <span class="title">Мой кошелёк</span>
+    <div class="avatar" style="width:34px; height:34px; background:#b1cfa7; color:var(--on-sage); font-size:14px;">С</div>
+  </header>
+
+  <main class="screen">
+
+    <!-- Balance -->
+    <section class="card hero" style="background:var(--reward-container); border-color:#eccf86; text-align:center;">
+      <p class="caption" style="color:var(--on-reward);">Текущий баланс</p>
+      <div class="row" style="justify-content:center; gap:8px; margin:8px 0;">
+        <span class="material-symbols-outlined" style="font-size:36px; color:var(--reward); font-variation-settings:'FILL' 1;">paid</span>
+        <span style="font-size:44px; font-weight:800; color:var(--on-reward); line-height:1; font-variant-numeric:tabular-nums;">450</span>
+      </div>
+      <p class="caption" style="color:var(--on-reward);">монет</p>
+      <div class="row" style="gap:10px; margin-top:16px;">
+        <a href="../job_board/code.html" class="btn btn-secondary" style="flex:1;">Заработать</a>
+        <a href="../the_pantry_rewards/code.html" class="btn btn-primary" style="flex:1;">Потратить</a>
+      </div>
+    </section>
+
+    <!-- Goal progress -->
+    <section class="card">
+      <div class="between" style="margin-bottom:10px;">
+        <p class="title" style="font-size:15px;">Цель: новые наушники</p>
+        <span class="caption">450 / 800</span>
+      </div>
+      <div class="track reward"><span style="width:56%;"></span></div>
+      <p class="caption" style="margin-top:8px;">Осталось накопить 350 монет</p>
+    </section>
+
+    <!-- History -->
+    <section>
+      <div class="between" style="margin-bottom:12px;">
+        <h2 class="h3">История</h2>
+        <a href="#" class="caption" style="color:var(--primary); font-weight:600; text-decoration:none;">Всё →</a>
+      </div>
+
+      <div class="card tight" style="display:flex; align-items:center; justify-content:space-between; margin-bottom:10px;">
+        <div class="row" style="gap:12px;">
+          <div class="avatar" style="width:38px; height:38px; background:var(--sage-container); color:var(--sage);"><span class="material-symbols-outlined" style="font-size:20px;">pets</span></div>
+          <div>
+            <p class="title" style="font-size:14px;">Выгулял собаку</p>
+            <p class="caption">Сегодня, 14:45 · задание выполнено</p>
+          </div>
+        </div>
+        <span style="font-weight:800; color:var(--sage);">+50</span>
+      </div>
+
+      <div class="card tight" style="display:flex; align-items:center; justify-content:space-between; margin-bottom:10px;">
+        <div class="row" style="gap:12px;">
+          <div class="avatar" style="width:38px; height:38px; background:var(--primary-container); color:var(--primary);"><span class="material-symbols-outlined" style="font-size:20px;">movie</span></div>
+          <div>
+            <p class="title" style="font-size:14px;">Вечер кино</p>
+            <p class="caption">Вчера, 20:15 · награда получена</p>
+          </div>
+        </div>
+        <span style="font-weight:800; color:var(--primary);">−100</span>
+      </div>
+
+      <div class="card tight" style="display:flex; align-items:center; justify-content:space-between;">
+        <div class="row" style="gap:12px;">
+          <div class="avatar" style="width:38px; height:38px; background:var(--sage-container); color:var(--sage);"><span class="material-symbols-outlined" style="font-size:20px;">menu_book</span></div>
+          <div>
+            <p class="title" style="font-size:14px;">Сделал уроки</p>
+            <p class="caption">Вчера, 17:00 · задание выполнено</p>
+          </div>
+        </div>
+        <span style="font-weight:800; color:var(--sage);">+50</span>
+      </div>
+    </section>
+
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="../my_room_child_dashboard/code.html" class="nav-item"><span class="material-symbols-outlined">home</span>Главная</a>
+    <a href="../job_board/code.html" class="nav-item"><span class="material-symbols-outlined">assignment</span>Задачи</a>
+    <a href="../the_pantry_rewards/code.html" class="nav-item"><span class="material-symbols-outlined">storefront</span>Кладовая</a>
+    <a href="../my_wallet/code.html" class="nav-item active"><span class="material-symbols-outlined">savings</span>Кошелёк</a>
+  </nav>
+
+</body>
+</html>

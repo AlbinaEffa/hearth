@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0" name="viewport"/>
+<title>Кладовая — Hearth</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../assets/hearth.css"/>
+</head>
+<body>
+
+  <header class="topbar">
+    <span class="title">Кладовая</span>
+    <span class="coin"><span class="material-symbols-outlined">paid</span>450</span>
+  </header>
+
+  <main class="screen">
+
+    <section>
+      <h1 class="h1">Кладовая наград</h1>
+      <p class="body muted">Обменивай заработанные монеты на приятности.</p>
+    </section>
+
+    <!-- Reward: affordable -->
+    <section class="card">
+      <div class="between" style="align-items:flex-start;">
+        <div style="flex:1;">
+          <span class="chip chip-honey" style="margin-bottom:8px;">Развлечение</span>
+          <p class="title">Вечер кино</p>
+          <p class="body muted" style="font-size:13px; margin-top:2px;">Ты выбираешь фильм, родители — попкорн.</p>
+        </div>
+      </div>
+      <div class="between" style="margin-top:14px;">
+        <span class="coin"><span class="material-symbols-outlined">paid</span>300</span>
+        <button class="btn btn-primary btn-sm">Хочу!</button>
+      </div>
+    </section>
+
+    <!-- Reward: in progress -->
+    <section class="card">
+      <span class="chip chip-sage" style="margin-bottom:8px;">Привилегия</span>
+      <p class="title">Выходной от посуды</p>
+      <p class="body muted" style="font-size:13px; margin-top:2px;">Один день без мытья посуды.</p>
+      <div class="track reward" style="margin-top:14px;"><span style="width:60%;"></span></div>
+      <div class="between" style="margin-top:10px;">
+        <span class="caption">450 / 750 монет</span>
+        <button class="btn btn-secondary btn-sm" disabled>Ещё 300</button>
+      </div>
+    </section>
+
+    <!-- Reward: savings -->
+    <section class="card">
+      <span class="chip" style="margin-bottom:8px;">Накопления</span>
+      <p class="title">Карманные деньги</p>
+      <p class="body muted" style="font-size:13px; margin-top:2px;">Обменять 400 монет на реальные 200 ₽.</p>
+      <div class="between" style="margin-top:14px;">
+        <span class="coin"><span class="material-symbols-outlined">paid</span>400</span>
+        <button class="btn btn-primary btn-sm">Хочу!</button>
+      </div>
+    </section>
+
+    <a href="../my_wallet/code.html" class="btn btn-ghost btn-block">Открыть кошелёк</a>
+
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="../my_room_child_dashboard/code.html" class="nav-item"><span class="material-symbols-outlined">home</span>Главная</a>
+    <a href="../job_board/code.html" class="nav-item"><span class="material-symbols-outlined">assignment</span>Задачи</a>
+    <a href="../the_pantry_rewards/code.html" class="nav-item active"><span class="material-symbols-outlined">storefront</span>Кладовая</a>
+    <a href="../my_wallet/code.html" class="nav-item"><span class="material-symbols-outlined">savings</span>Кошелёк</a>
+  </nav>
+
+</body>
+</html>

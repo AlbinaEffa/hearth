@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary": "#4a6545",
+                      "on-primary-fixed": "#380d00",
+                      "on-secondary-container": "#72632c",
+                      "tertiary-fixed-dim": "#b1cfa7",
+                      "tertiary-container": "#7d9a76",
+                      "secondary-container": "#f6e29e",
+                      "on-error-container": "#93000a",
+                      "error-container": "#ffdad6",
+                      "surface-tint": "#94492d",
+                      "surface-container-low": "#f7f3ed",
+                      "on-surface": "#1c1c18",
+                      "error": "#ba1a1a",
+                      "surface-container-high": "#ebe8e2",
+                      "surface-bright": "#fdf9f3",
+                      "on-tertiary-fixed": "#082007",
+                      "surface-container-highest": "#e6e2dc",
+                      "surface": "#fdf9f3",
+                      "surface-variant": "#e6e2dc",
+                      "inverse-surface": "#31302d",
+                      "inverse-on-surface": "#f4f0ea",
+                      "primary-fixed-dim": "#ffb59b",
+                      "inverse-primary": "#ffb59b",
+                      "on-secondary-fixed-variant": "#534611",
+                      "on-primary-container": "#521801",
+                      "outline-variant": "#dac1b9",
+                      "on-surface-variant": "#54433d",
+                      "on-secondary-fixed": "#221b00",
+                      "on-primary-fixed-variant": "#763218",
+                      "tertiary-fixed": "#ccebc2",
+                      "background": "#fdf9f3",
+                      "surface-dim": "#dddad4",
+                      "surface-container": "#f1ede7",
+                      "secondary-fixed": "#f6e29e",
+                      "on-tertiary-container": "#183115",
+                      "on-error": "#ffffff",
+                      "primary": "#94492d",
+                      "secondary-fixed-dim": "#d9c684",
+                      "primary-container": "#d37b5b",
+                      "secondary": "#6c5d27",
+                      "surface-container-lowest": "#ffffff",
+                      "on-primary": "#ffffff",
+                      "on-tertiary-fixed-variant": "#334d2f",
+                      "on-secondary": "#ffffff",
+                      "on-background": "#1c1c18",
+                      "on-tertiary": "#ffffff",
+                      "outline": "#87736c",
+                      "primary-fixed": "#ffdbcf"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "lg": "40px",
+                      "gutter": "16px",
+                      "xs": "4px",
+                      "md": "24px",
+                      "margin": "20px",
+                      "base": "8px",
+                      "sm": "12px"
+              },
+              "fontFamily": {
+                      "label-md": ["Plus Jakarta Sans"],
+                      "headline-lg": ["Plus Jakarta Sans"],
+                      "caption": ["Plus Jakarta Sans"],
+                      "headline-md": ["Plus Jakarta Sans"],
+                      "body-lg": ["Plus Jakarta Sans"],
+                      "body-md": ["Plus Jakarta Sans"]
+              },
+              "fontSize": {
+                      "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                      "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "caption": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                      "headline-md": ["24px", {"lineHeight": "30px", "fontWeight": "600"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .fluffy-shadow {
+            box-shadow: 0 10px 30px -5px rgba(148, 73, 45, 0.15);
+        }
+        .wood-grain {
+            background-color: #fdf9f3;
+            background-image: radial-gradient(#e6e2dc 0.5px, transparent 0.5px);
+            background-size: 24px 24px;
+        }
+        .fabric-texture {
+            background-image: linear-gradient(90deg, rgba(218,193,185,0.05) 1px, transparent 1px),
+                              linear-gradient(rgba(218,193,185,0.05) 1px, transparent 1px);
+            background-size: 4px 4px;
+        }
+        .pressed-button {
+            border-bottom-width: 3px;
+            border-bottom-color: #763218;
+        }
+        .safe-well {
+            box-shadow: inset 0 2px 8px rgba(0,0,0,0.1);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md wood-grain min-h-screen pb-32">
+<!-- TopAppBar from JSON -->
+<header class="bg-[#FCF9F7] dark:bg-stone-900 border-b-2 border-stone-200/60 dark:border-stone-800 shadow-[0_4px_12px_rgba(211,123,91,0.08)] sticky top-0 z-50">
+<div class="flex items-center justify-between px-6 py-4 w-full">
+<div class="flex items-center gap-4">
+<button class="active:scale-95 duration-200 ease-in-out text-[#D37B5B] hover:bg-stone-100 dark:hover:bg-stone-800 p-2 rounded-full">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+</div>
+<h1 class="font-plus-jakarta-sans font-semibold tracking-tight text-xl font-black text-[#D37B5B] drop-shadow-sm">Stitch &amp; Den</h1>
+<div class="w-10"></div> <!-- Spacer for center alignment -->
+</div>
+</header>
+<main class="max-w-md mx-auto px-margin pt-base">
+<!-- Hero Section: Character Selection Carousel -->
+<section class="py-md">
+<div class="text-center mb-md">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-xs">Whose Nook is this?</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Choose your profile to enter the cozy den.</p>
+</div>
+<div class="relative flex overflow-x-auto gap-gutter snap-x snap-mandatory no-scrollbar pb-base">
+<!-- Character Card 1 -->
+<div class="snap-center shrink-0 w-64 bg-surface-container rounded-[2rem] p-base fluffy-shadow border-2 border-primary-container/20 overflow-hidden">
+<div class="aspect-square rounded-[1.5rem] overflow-hidden mb-sm relative">
+<img class="w-full h-full object-cover" data-alt="A portrait of a soft-furred, cream-colored Corgi wearing a tiny woven scarf. The dog is sitting on a plush, oatmeal-colored wool rug in a sun-drenched room with light oak furniture. The atmosphere is warm and gentle, reflecting a cozy house aesthetic with a soft terracotta and cream palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRtB2X4JLizeSBuRG3rYH77zCnQsRCSGmQdFLTQv9Nihy09ViKWVUqRld2I_qCIBvKHM7FH_Y-qrC6k_vZR_NDfaGqCM8tiZRbbkcWQq9pVQpRb8qR66Rtww5eVT9Nj9frTIwp5QloFYEqp7IREbS5PTHHLUsopH_LWlP__r4StfCFeqWwTY4QHjNrxKyA0BCSgnMFCuK4uLXfwaTfQu6-9eY4ZN7akwzrW5QzFToKfc3ZrRubbgSaHuCyI9YL5CPvmwkLdHMy7Bk"/>
+<div class="absolute bottom-2 right-2 bg-secondary text-on-secondary px-sm py-xs rounded-full font-label-md text-label-md">Active</div>
+</div>
+<div class="text-center pb-sm">
+<h3 class="font-headline-md text-headline-md text-primary">Barkley</h3>
+<p class="font-caption text-caption text-tertiary">Head of Household</p>
+</div>
+</div>
+<!-- Character Card 2 -->
+<div class="snap-center shrink-0 w-64 bg-surface-container rounded-[2rem] p-base fluffy-shadow border-2 border-stone-200 opacity-60 grayscale-[0.5]">
+<div class="aspect-square rounded-[1.5rem] overflow-hidden mb-sm">
+<img class="w-full h-full object-cover" data-alt="A fluffy ginger tabby cat curled up in a handmade wicker basket filled with linen blankets. Soft window light illuminates the scene, highlighting the warm wooden floors and ceramic vases in the background. The style is skeuomorphic and tactile, using a rich palette of terracotta, beige, and sage green." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDiZgtCJ3unazuBDnGQAJTRurJ4sfsOb4ihbWZQijnKE3pJ5SjJK5h6af7aVX9czKzRCdCYjUCn4m3WPnW3al_rlpHrqi4TFG7w6U7FE36sS07FMUpGa-k7etJtJYWhuM6TEOOeUwunt0Ez3I6peNikYlUJbXvQqNYiScdVJZssc2EOkexnj2Nzz52t2rQWNSRPSe2FAYaX4yVx1MzXV5HyBgsQnTxeYIY9UU1uyXqfS9xqQe8BQr__U0L14QcPJFWu4IRm0tDrnSg"/>
+</div>
+<div class="text-center pb-sm">
+<h3 class="font-headline-md text-headline-md text-on-surface">Whiskers</h3>
+<p class="font-caption text-caption text-on-surface-variant">Nap Professional</p>
+</div>
+</div>
+<!-- Character Card 3 -->
+<div class="snap-center shrink-0 w-64 bg-surface-container rounded-[2rem] p-base fluffy-shadow border-2 border-stone-200 opacity-60 grayscale-[0.5]">
+<div class="aspect-square rounded-[1.5rem] overflow-hidden mb-sm">
+<img class="w-full h-full object-cover" data-alt="A golden retriever dog resting its head on a soft, moss-green velvet cushion. The setting is a cozy living room with a crackling fireplace and wooden bookshelves. The lighting is low-key and amber-toned, creating a nostalgic and supportive mood. The visual tokens of terracotta and warm wood are prominent." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDCHaJXGGlP5scrddsZaShoeh3ibfE3Wf-4_LTqz9PgCmrsuUcBHdHVnqz3hU6Z0GZ2fJCUbiIGTRPQbHdow5hgR-ScVC8kPpQCgP2nQXemuk0I6GEEDVjxg5MP_5jzrnLHk0QVERfB4hGXvZfFFusIs2mWj5gblO1R0MJBLxZS6_a2VBFffzl6Pn3fJMUk3q1YfsFO6IEwArn3vdex7tySaMoKbRlO53p0tj91yFuEAdEPzXJVok6IJ9AATY2oBXJgMduO8YJ40o"/>
+</div>
+<div class="text-center pb-sm">
+<h3 class="font-headline-md text-headline-md text-on-surface">Sunny</h3>
+<p class="font-caption text-caption text-on-surface-variant">The Explorer</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Role Section with Bento Cards -->
+<section class="py-md">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-md">Select your focus</h2>
+<div class="grid grid-cols-2 gap-gutter">
+<div class="col-span-2 bg-tertiary-container text-on-tertiary rounded-xl p-md fluffy-shadow relative overflow-hidden fabric-texture">
+<span class="material-symbols-outlined absolute -right-4 -bottom-4 text-8xl opacity-10" data-icon="house">house</span>
+<h4 class="font-headline-md text-headline-md mb-xs">Home Keeper</h4>
+<p class="font-body-md text-body-md opacity-90">Manage schedules, chores, and the warmth of your den.</p>
+</div>
+<div class="bg-secondary-container text-on-secondary-container rounded-xl p-md fluffy-shadow fabric-texture">
+<span class="material-symbols-outlined text-primary text-3xl mb-sm" data-icon="brush">brush</span>
+<h4 class="font-label-md text-label-md">Decorator</h4>
+<p class="font-caption text-caption opacity-80">Style and curate the aesthetic of every room.</p>
+</div>
+<div class="bg-surface-container-highest text-on-surface rounded-xl p-md border-dashed border-2 border-outline-variant flex flex-col justify-center items-center text-center">
+<span class="material-symbols-outlined text-outline text-3xl mb-xs" data-icon="add_circle">add_circle</span>
+<p class="font-label-md text-label-md text-outline">Custom Role</p>
+</div>
+</div>
+</section>
+<!-- PIN Input / Door Keypad Section -->
+<section class="py-lg mb-lg">
+<div class="bg-[#8B5A2B] p-md rounded-[2.5rem] shadow-[inset_0_4px_10px_rgba(0,0,0,0.4),0_10px_25px_rgba(139,90,43,0.3)] border-8 border-[#5D3A1A] relative">
+<!-- Door Handle/Safe Dial Detail -->
+<div class="absolute -left-4 top-1/2 -translate-y-1/2 w-12 h-24 bg-gradient-to-r from-secondary to-on-secondary-fixed-variant rounded-full border-2 border-on-secondary-fixed shadow-lg"></div>
+<div class="text-center mb-md">
+<div class="inline-block px-md py-sm bg-stone-900 rounded-lg safe-well mb-sm">
+<div class="flex gap-sm">
+<div class="w-4 h-4 rounded-full bg-primary animate-pulse"></div>
+<div class="w-4 h-4 rounded-full bg-stone-700"></div>
+<div class="w-4 h-4 rounded-full bg-stone-700"></div>
+<div class="w-4 h-4 rounded-full bg-stone-700"></div>
+</div>
+</div>
+<p class="font-label-md text-label-md text-surface-container-lowest tracking-widest uppercase">Enter Secure Nook PIN</p>
+</div>
+<div class="grid grid-cols-3 gap-sm max-w-[240px] mx-auto">
+<!-- Keypad Buttons -->
+<button class="w-16 h-16 rounded-full bg-surface-container-low text-on-surface font-headline-md flex items-center justify-center pressed-button active:translate-y-1 active:border-b-0 transition-all">1</button>
+<button class="w-16 h-16 rounded-full bg-surface-container-low text-on-surface font-headline-md flex items-center justify-center pressed-button active:translate-y-1 active:border-b-0 transition-all">2</button>
+<button class="w-16 h-16 rounded-full bg-surface-container-low text-on-surface font-headline-md flex items-center justify-center pressed-button active:translate-y-1 active:border-b-0 transition-all">3</button>
+<button class="w-16 h-16 rounded-full bg-surface-container-low text-on-surface font-headline-md flex items-center justify-center pressed-button active:translate-y-1 active:border-b-0 transition-all">4</button>
+<button class="w-16 h-16 rounded-full bg-surface-container-low text-on-surface font-headline-md flex items-center justify-center pressed-button active:translate-y-1 active:border-b-0 transition-all">5</button>
+<button class="w-16 h-16 rounded-full bg-surface-container-low text-on-surface font-headline-md flex items-center justify-center pressed-button active:translate-y-1 active:border-b-0 transition-all">6</button>
+<button class="w-16 h-16 rounded-full bg-surface-container-low text-on-surface font-headline-md flex items-center justify-center pressed-button active:translate-y-1 active:border-b-0 transition-all">7</button>
+<button class="w-16 h-16 rounded-full bg-surface-container-low text-on-surface font-headline-md flex items-center justify-center pressed-button active:translate-y-1 active:border-b-0 transition-all">8</button>
+<button class="w-16 h-16 rounded-full bg-surface-container-low text-on-surface font-headline-md flex items-center justify-center pressed-button active:translate-y-1 active:border-b-0 transition-all">9</button>
+<button class="w-16 h-16 rounded-full bg-error-container text-on-error-container font-headline-md flex items-center justify-center pressed-button active:translate-y-1 active:border-b-0 transition-all">
+<span class="material-symbols-outlined" data-icon="backspace">backspace</span>
+</button>
+<button class="w-16 h-16 rounded-full bg-surface-container-low text-on-surface font-headline-md flex items-center justify-center pressed-button active:translate-y-1 active:border-b-0 transition-all">0</button>
+<button class="w-16 h-16 rounded-full bg-tertiary-container text-on-tertiary font-headline-md flex items-center justify-center pressed-button active:translate-y-1 active:border-b-0 transition-all">
+<span class="material-symbols-outlined" data-icon="check_circle">check_circle</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Empty State Mascot -->
+<div class="flex flex-col items-center py-lg opacity-40">
+<div class="w-32 h-32 mb-sm relative">
+<!-- Round Corgi Mascot Placeholder -->
+<img class="w-full h-full object-cover rounded-full" data-alt="A round, stylized Corgi mascot curled up into a perfect ball on a soft, cream-colored knitted throw. The dog has its eyes closed peacefully, and a small pink tongue is slightly peeking out. The art style is soft and 2D with thick outlines, perfectly fitting the digital hygge theme. The background is a gentle terracotta and wood texture." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdEDVk-rVcV7do55TuQJW7ZfpB6Tb50AnAJhc-9BX7azdePdx9RFJompj9z2BTWsNYD1vp7TWoNcvIlTJV9ubJ2Ll9kqppG3PFxUoduIpVCkGYHrUbqk3EHkkZTr7lvq-DhG76jhcxmi7s_MLXIuP5ug6v21vdsQa7U2MCGHg9XWEJQTlhMDmuJmkH5u9NqVeejBmPmQa6TkRUOF1yHbhvg_O65ZsvSNJO-v61NX47z5DY3H5s63uB3YnhJvcgwqqpk91SnUYAlPE"/>
+</div>
+<p class="font-caption text-caption text-on-surface-variant italic">Barkley is waiting for you inside...</p>
+</div>
+</main>
+<!-- BottomNavBar from JSON -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pt-3 pb-8 bg-[#FCF9F7]/95 dark:bg-stone-900/95 backdrop-blur-md border-t-2 border-stone-200/40 dark:border-stone-800 shadow-[0_-8px_24px_rgba(211,123,91,0.12)] rounded-t-[2rem]">
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 px-4 py-2 hover:text-[#D37B5B] dark:hover:text-[#E29578] active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-plus-jakarta-sans text-[11px] font-medium">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#D37B5B] bg-[#D37B5B]/10 rounded-2xl px-4 py-2 shadow-inner active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="family_restroom">family_restroom</span>
+<span class="font-plus-jakarta-sans text-[11px] font-medium">Family</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 px-4 py-2 hover:text-[#D37B5B] dark:hover:text-[#E29578] active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="auto_stories">auto_stories</span>
+<span class="font-plus-jakarta-sans text-[11px] font-medium">Nook</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 px-4 py-2 hover:text-[#D37B5B] dark:hover:text-[#E29578] active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-plus-jakarta-sans text-[11px] font-medium">Settings</span>
+</a>
+</nav>
+<style>
+        /* Custom styles for components not covered by Tailwind */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</body></html>

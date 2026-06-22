@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0" name="viewport"/>
+<title>Создать дом — Hearth</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@400,0&display=swap" rel="stylesheet"/>
+<style>
+  * { font-family: 'Plus Jakarta Sans', sans-serif; box-sizing: border-box; margin: 0; padding: 0; }
+  .material-symbols-outlined { font-family: 'Material Symbols Outlined'; font-variation-settings: "FILL" 0, "wght" 400; }
+  input:focus { outline: none; border-color: var(--primary) !important; box-shadow: 0 0 0 3px rgba(33,29,26,0.12); }
+  body { background: var(--surface); min-height: 100dvh; padding-bottom: 120px; }
+</style>
+<link rel="stylesheet" href="../assets/hearth.css"/>
+</head>
+<body>
+
+<!-- Back button -->
+<div style="padding:16px 20px 0;">
+  <button style="width:40px; height:40px; border-radius:50%; border:1.5px solid var(--line); background:white; cursor:pointer; display:flex; align-items:center; justify-content:center;">
+    <span class="material-symbols-outlined" style="font-size:20px; color:var(--text-2);">arrow_back</span>
+  </button>
+</div>
+
+<main style="padding:28px 24px 0;">
+
+  <h1 style="font-size:26px; font-weight:800; color:var(--text-1); letter-spacing:-0.5px; margin-bottom:6px;">Создай очаг</h1>
+  <p style="font-size:14px; color:var(--text-3); line-height:1.5; margin-bottom:32px;">Назови ваш дом и выбери его образ</p>
+
+  <!-- Home avatar picker -->
+  <div style="margin-bottom:32px;">
+    <label style="display:block; font-size:12px; font-weight:700; color:var(--text-3); text-transform:uppercase; letter-spacing:0.5px; margin-bottom:14px;">Образ вашего дома</label>
+    <div style="display:flex; gap:12px; overflow-x:auto; padding-bottom:4px;">
+
+      <!-- Selected -->
+      <div style="flex-shrink:0; width:80px; height:80px; border-radius:20px; background:#fff8f5; border:3px solid var(--primary); box-shadow:0 0 0 3px rgba(33,29,26,0.15); display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:42px; line-height:1;">🏡</div>
+      <div style="flex-shrink:0; width:80px; height:80px; border-radius:20px; background:var(--surface-2); border:2px solid #e0d5cc; display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:42px; line-height:1;">🏠</div>
+      <div style="flex-shrink:0; width:80px; height:80px; border-radius:20px; background:var(--surface-2); border:2px solid #e0d5cc; display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:42px; line-height:1;">🏘️</div>
+      <div style="flex-shrink:0; width:80px; height:80px; border-radius:20px; background:var(--sage-container); border:2px solid #e0d5cc; display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:42px; line-height:1;">🌿</div>
+      <div style="flex-shrink:0; width:80px; height:80px; border-radius:20px; background:var(--honey); border:2px solid #e0d5cc; display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:42px; line-height:1;">⭐</div>
+    </div>
+  </div>
+
+  <!-- Home name input -->
+  <div style="margin-bottom:24px;">
+    <label style="display:block; font-size:12px; font-weight:700; color:var(--text-3); text-transform:uppercase; letter-spacing:0.5px; margin-bottom:8px;">Название дома</label>
+    <input type="text" value="Дом Гарипових" style="width:100%; height:56px; border-radius:16px; border:2px solid var(--primary); box-shadow:0 0 0 3px rgba(33,29,26,0.12); padding:0 16px; font-size:18px; font-weight:700; color:var(--text-1); background:white; transition:all 0.2s;"/>
+    <p style="font-size:11px; color:var(--text-3); margin-top:6px; padding-left:4px;">Это имя увидит вся семья</p>
+  </div>
+
+  <!-- Invite info card -->
+  <div style="background:var(--honey); border-radius:18px; padding:16px 18px; border:1px solid var(--honey-line); display:flex; gap:12px; align-items:flex-start; margin-bottom:24px;">
+    <span class="material-symbols-outlined" style="font-size:22px; color:var(--on-honey); flex-shrink:0; margin-top:1px;">info</span>
+    <div>
+      <p style="font-size:13px; font-weight:700; color:var(--on-honey); margin-bottom:3px;">После создания</p>
+      <p style="font-size:12px; color:var(--text-2); line-height:1.5;">Ты получишь 6-значный код приглашения — поделись им с семьёй, чтобы они вступили в ваш очаг ✨</p>
+    </div>
+  </div>
+
+  <!-- Permissions info -->
+  <div style="background:#fff8f5; border-radius:18px; padding:16px 18px; border:1px solid var(--primary-container);">
+    <p style="font-size:12px; font-weight:700; color:var(--on-primary-container); margin-bottom:8px;">👑 Права хозяина дома</p>
+    <div style="display:flex; flex-direction:column; gap:5px;">
+      <div style="display:flex; align-items:center; gap:8px;">
+        <div style="width:6px; height:6px; border-radius:50%; background:var(--primary); flex-shrink:0;"></div>
+        <span style="font-size:12px; color:var(--text-2);">Приглашать и удалять участников</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:8px;">
+        <div style="width:6px; height:6px; border-radius:50%; background:var(--primary); flex-shrink:0;"></div>
+        <span style="font-size:12px; color:var(--text-2);">Управлять настройками дома</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:8px;">
+        <div style="width:6px; height:6px; border-radius:50%; background:var(--primary); flex-shrink:0;"></div>
+        <span style="font-size:12px; color:var(--text-2);">Одобрять любые задачи и награды</span>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<!-- Fixed bottom -->
+<div style="position:fixed; bottom:0; left:0; width:100%; padding:16px 24px 40px; background:var(--surface); border-top:1px solid var(--surface-3);">
+  <button style="width:100%; height:56px; border-radius:18px; background:var(--primary); color:white; border:none; font-size:16px; font-weight:800; cursor:pointer; box-shadow:0 4px 0 var(--on-primary-container); letter-spacing:-0.3px;">
+    Создать дом 🏡
+  </button>
+</div>
+
+</body>
+</html>

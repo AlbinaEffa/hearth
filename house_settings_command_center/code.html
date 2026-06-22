@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0" name="viewport"/>
+<title>Настройки дома — Hearth</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../assets/hearth.css"/>
+</head>
+<body style="padding-bottom:24px;">
+
+  <header class="topbar">
+    <a href="../profile/code.html" class="icon-btn"><span class="material-symbols-outlined">arrow_back</span></a>
+    <span class="title">Настройки дома</span>
+    <span style="width:38px;"></span>
+  </header>
+
+  <main class="screen" style="padding-bottom:24px;">
+
+    <section>
+      <h1 class="h1">Семья «Ивановы»</h1>
+      <p class="body muted">Управление общим домом и доступами.</p>
+    </section>
+
+    <!-- Shared household -->
+    <section>
+      <h2 class="h3" style="margin-bottom:10px;">Общий дом</h2>
+      <div class="list">
+        <div class="list-row">
+          <div class="avatar" style="width:38px; height:38px; background:var(--honey); color:var(--on-honey);"><span class="material-symbols-outlined" style="font-size:20px;">inventory_2</span></div>
+          <div class="grow">
+            <p class="title" style="font-size:15px;">Уведомления о запасах</p>
+            <p class="caption">Напоминать, когда что-то заканчивается</p>
+          </div>
+          <label class="switch"><input type="checkbox" checked/><span></span></label>
+        </div>
+        <div class="list-row">
+          <div class="avatar" style="width:38px; height:38px; background:var(--sage-container); color:var(--sage);"><span class="material-symbols-outlined" style="font-size:20px;">restart_alt</span></div>
+          <div class="grow">
+            <p class="title" style="font-size:15px;">Авто-сброс доски заданий</p>
+            <p class="caption">Каждый понедельник обновлять задания</p>
+          </div>
+          <label class="switch"><input type="checkbox"/><span></span></label>
+        </div>
+      </div>
+    </section>
+
+    <!-- Security -->
+    <section>
+      <h2 class="h3" style="margin-bottom:10px;">Безопасность и PIN</h2>
+      <div class="list">
+        <a href="#" class="list-row" style="text-decoration:none; color:inherit;">
+          <div class="avatar" style="width:38px; height:38px; background:var(--primary-container); color:var(--primary);"><span class="material-symbols-outlined" style="font-size:20px;">lock</span></div>
+          <div class="grow">
+            <p class="title" style="font-size:15px;">Семейный PIN</p>
+            <p class="caption">Защита родительских действий</p>
+          </div>
+          <span class="material-symbols-outlined" style="color:var(--text-3);">chevron_right</span>
+        </a>
+        <div class="list-row">
+          <div class="avatar" style="width:38px; height:38px; background:var(--primary-container); color:var(--primary);"><span class="material-symbols-outlined" style="font-size:20px;">verified_user</span></div>
+          <div class="grow">
+            <p class="title" style="font-size:15px;">Подтверждать награды</p>
+            <p class="caption">Списание монет требует PIN</p>
+          </div>
+          <label class="switch"><input type="checkbox" checked/><span></span></label>
+        </div>
+      </div>
+    </section>
+
+    <!-- Broadcasts -->
+    <section>
+      <h2 class="h3" style="margin-bottom:10px;">Оповещения для всех</h2>
+      <div class="list">
+        <div class="list-row">
+          <div class="avatar" style="width:38px; height:38px; background:var(--honey); color:var(--on-honey);"><span class="material-symbols-outlined" style="font-size:20px;">notifications_active</span></div>
+          <div class="grow"><p class="title" style="font-size:15px;">«К столу!»</p><p class="caption">Зовёт всех на ужин</p></div>
+          <label class="switch"><input type="checkbox" checked/><span></span></label>
+        </div>
+        <div class="list-row">
+          <div class="avatar" style="width:38px; height:38px; background:var(--sage-container); color:var(--sage);"><span class="material-symbols-outlined" style="font-size:20px;">cleaning_services</span></div>
+          <div class="grow"><p class="title" style="font-size:15px;">Напоминания о делах</p><p class="caption">Мягкий пинг по задачам</p></div>
+          <label class="switch"><input type="checkbox" checked/><span></span></label>
+        </div>
+        <div class="list-row">
+          <div class="avatar" style="width:38px; height:38px; background:var(--error-container); color:var(--error);"><span class="material-symbols-outlined" style="font-size:20px;">priority_high</span></div>
+          <div class="grow"><p class="title" style="font-size:15px;">Срочные оповещения</p><p class="caption">Только для важного</p></div>
+          <label class="switch"><input type="checkbox"/><span></span></label>
+        </div>
+      </div>
+    </section>
+
+    <!-- Invite -->
+    <section class="card" style="text-align:center;">
+      <p class="caption">Код приглашения в дом</p>
+      <p style="font-size:30px; font-weight:800; letter-spacing:8px; color:var(--primary); margin:8px 0; font-variant-numeric:tabular-nums;">H34RTH</p>
+      <div class="row" style="gap:10px;">
+        <button class="btn btn-secondary" style="flex:1;"><span class="material-symbols-outlined" style="font-size:20px;">content_copy</span>Копировать</button>
+        <button class="btn btn-primary" style="flex:1;"><span class="material-symbols-outlined" style="font-size:20px;">ios_share</span>Поделиться</button>
+      </div>
+    </section>
+
+  </main>
+</body>
+</html>

@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+
+<html lang="ru"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Cozy House - Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-tint": "#94492d",
+                      "surface-container-high": "#ebe8e2",
+                      "on-background": "#1c1c18",
+                      "secondary": "#6c5d27",
+                      "on-secondary": "#ffffff",
+                      "on-secondary-fixed-variant": "#534611",
+                      "outline-variant": "#dac1b9",
+                      "on-tertiary-fixed": "#082007",
+                      "surface-variant": "#e6e2dc",
+                      "secondary-container": "#f6e29e",
+                      "on-secondary-fixed": "#221b00",
+                      "on-error": "#ffffff",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-container": "#f1ede7",
+                      "on-primary-fixed-variant": "#763218",
+                      "error-container": "#ffdad6",
+                      "background": "#fdf9f3",
+                      "primary-fixed-dim": "#ffb59b",
+                      "on-primary-container": "#521801",
+                      "inverse-primary": "#ffb59b",
+                      "on-secondary-container": "#72632c",
+                      "on-error-container": "#93000a",
+                      "error": "#ba1a1a",
+                      "outline": "#87736c",
+                      "tertiary-container": "#7d9a76",
+                      "secondary-fixed-dim": "#d9c684",
+                      "on-primary-fixed": "#380d00",
+                      "on-surface": "#1c1c18",
+                      "on-surface-variant": "#54433d",
+                      "primary-container": "#d37b5b",
+                      "surface-dim": "#dddad4",
+                      "inverse-on-surface": "#f4f0ea",
+                      "surface-container-highest": "#e6e2dc",
+                      "on-tertiary-fixed-variant": "#334d2f",
+                      "primary": "#94492d",
+                      "surface-container-low": "#f7f3ed",
+                      "tertiary": "#4a6545",
+                      "surface-bright": "#fdf9f3",
+                      "tertiary-fixed-dim": "#b1cfa7",
+                      "primary-fixed": "#ffdbcf",
+                      "inverse-surface": "#31302d",
+                      "on-tertiary-container": "#183115",
+                      "surface": "#fdf9f3",
+                      "tertiary-fixed": "#ccebc2",
+                      "secondary-fixed": "#f6e29e",
+                      "on-primary": "#ffffff",
+                      "on-tertiary": "#ffffff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "md": "24px",
+                      "lg": "40px",
+                      "gutter": "16px",
+                      "base": "8px",
+                      "sm": "12px",
+                      "xs": "4px",
+                      "margin": "20px"
+              },
+              "fontFamily": {
+                      "body-lg": ["Plus Jakarta Sans"],
+                      "label-md": ["Plus Jakarta Sans"],
+                      "body-md": ["Plus Jakarta Sans"],
+                      "headline-lg": ["Plus Jakarta Sans"],
+                      "caption": ["Plus Jakarta Sans"],
+                      "headline-md": ["Plus Jakarta Sans"]
+              },
+              "fontSize": {
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "caption": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                      "headline-md": ["24px", {"lineHeight": "30px", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .refrigerator-texture {
+            background-color: #f7f3ed;
+            background-image: radial-gradient(#d3cbc4 0.5px, transparent 0.5px);
+            background-size: 24px 24px;
+        }
+        .fluffy-shadow {
+            box-shadow: 0 10px 30px -5px rgba(148, 73, 45, 0.12);
+        }
+        .stitch-border {
+            border-style: dashed;
+            border-width: 2px;
+            border-color: rgba(148, 73, 45, 0.2);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="bg-[#FAF9F6] dark:bg-[#1A1614] border-b border-[#E5E1DA] dark:border-[#2D2825] shadow-[0_4px_20px_-5px_rgba(211,123,91,0.15)] sticky top-0 z-50 flex justify-between items-center w-full px-5 py-3">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-container">
+<img alt="Papa Bear Avatar" class="w-full h-auto" data-alt="Stylized 3D render of a friendly papa bear character with soft fur texture and warm lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBEBpryjgYoJNKJBGrVGenED0-DcTU-de94rewl7mvHdBwXyd75mpPA4S8hHwQxvXYO2ikLtBn9Gtd3PMryMrUBWK3cp1qvyR_wFnx4DM4ZEdEW6xdF07rDIIT1KVGNUaoBfUiwqUDephGsCkccc-4yXImhgM6ofKpz1tyhcJzH7gtStA30WgPgaIqkbKhaL-AS6EhNuA_TdtsCGNoiqwGRwoTmRRaiMwguPomS7K3cnS2jgrKQPNKXJzngZFDNNqrUxMWHScJfrAU"/>
+</div>
+<h1 class="font-['Plus_Jakarta_Sans'] font-semibold text-2xl font-bold text-[#D37B5B] drop-shadow-[0_1px_1px_rgba(0,0,0,0.2)]">Cozy House</h1>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-[#F2EFE9] dark:hover:bg-[#2D2825] transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined text-[#D37B5B] dark:text-[#E29578]" data-icon="notifications">notifications</span>
+</button>
+</header>
+<main class="px-margin space-y-lg mt-md">
+<!-- Greeting & Status -->
+<section class="space-y-xs">
+<h2 class="font-headline-lg text-headline-lg text-primary">Доброе утро, Папа!</h2>
+<div class="inline-flex items-center px-4 py-2 bg-secondary-container rounded-full text-on-secondary-container fluffy-shadow border-b-2 border-secondary">
+<span class="material-symbols-outlined mr-2" data-icon="assignment_turned_in">assignment_turned_in</span>
+<span class="font-label-md text-label-md">3 задачи осталось на сегодня</span>
+</div>
+</section>
+<!-- Family Calendar Strip -->
+<section class="space-y-sm">
+<div class="flex justify-between items-center">
+<h3 class="font-headline-md text-headline-md text-on-surface">Семейный Календарь</h3>
+<span class="material-symbols-outlined text-outline" data-icon="arrow_forward">arrow_forward</span>
+</div>
+<div class="flex gap-4 overflow-x-auto pb-4 scrollbar-hide">
+<!-- Previous Days -->
+<div class="flex-shrink-0 w-16 h-20 flex flex-col items-center justify-center rounded-2xl bg-surface-container-low opacity-50 border border-outline-variant">
+<span class="text-caption font-caption opacity-60">Пн</span>
+<span class="text-body-lg font-bold">12</span>
+</div>
+<!-- Active Day -->
+<div class="flex-shrink-0 w-16 h-20 flex flex-col items-center justify-center rounded-2xl bg-primary-container text-white fluffy-shadow ring-4 ring-primary-fixed">
+<span class="text-caption font-caption">Вт</span>
+<span class="text-body-lg font-bold">13</span>
+<div class="flex gap-1 mt-1">
+<div class="w-1.5 h-1.5 rounded-full bg-red-400"></div>
+<div class="w-1.5 h-1.5 rounded-full bg-blue-400"></div>
+</div>
+</div>
+<!-- Future Days -->
+<div class="flex-shrink-0 w-16 h-20 flex flex-col items-center justify-center rounded-2xl bg-surface-container border border-outline-variant">
+<span class="text-caption font-caption">Ср</span>
+<span class="text-body-lg font-bold">14</span>
+<div class="flex gap-1 mt-1">
+<div class="w-1.5 h-1.5 rounded-full bg-green-400"></div>
+</div>
+</div>
+<div class="flex-shrink-0 w-16 h-20 flex flex-col items-center justify-center rounded-2xl bg-surface-container border border-outline-variant">
+<span class="text-caption font-caption">Чт</span>
+<span class="text-body-lg font-bold">15</span>
+</div>
+<div class="flex-shrink-0 w-16 h-20 flex flex-col items-center justify-center rounded-2xl bg-surface-container border border-outline-variant">
+<span class="text-caption font-caption">Пт</span>
+<span class="text-body-lg font-bold">16</span>
+<div class="flex gap-1 mt-1">
+<div class="w-1.5 h-1.5 rounded-full bg-red-400"></div>
+</div>
+</div>
+<div class="flex-shrink-0 w-16 h-20 flex flex-col items-center justify-center rounded-2xl bg-surface-container border border-outline-variant">
+<span class="text-caption font-caption">Сб</span>
+<span class="text-body-lg font-bold">17</span>
+</div>
+</div>
+</section>
+<!-- Requires Attention (Fridge Notes) -->
+<section class="refrigerator-texture rounded-[2rem] p-6 shadow-inner space-y-md border border-outline-variant">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="push_pin">push_pin</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Требует внимания</h3>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<!-- Sticky Note 1 -->
+<div class="bg-[#FFF9C4] p-4 rotate-[-2deg] fluffy-shadow rounded-sm border-b-4 border-yellow-200/50 min-h-[140px] flex flex-col justify-between">
+<div>
+<div class="w-4 h-4 rounded-full bg-orange-400 mx-auto -mt-6 mb-2 shadow-sm"></div>
+<p class="font-label-md text-label-md text-on-surface">Закончилось молоко и хлеб!</p>
+</div>
+<div class="text-right">
+<span class="material-symbols-outlined text-orange-400 opacity-50" data-icon="shopping_cart">shopping_cart</span>
+</div>
+</div>
+<!-- Sticky Note 2 -->
+<div class="bg-[#FFE0B2] p-4 rotate-[3deg] fluffy-shadow rounded-sm border-b-4 border-orange-200/50 min-h-[140px] flex flex-col justify-between">
+<div>
+<div class="w-4 h-4 rounded-full bg-orange-500 mx-auto -mt-6 mb-2 shadow-sm"></div>
+<p class="font-label-md text-label-md text-on-surface">Оплата кружка по рисованию до 15.03</p>
+</div>
+<div class="text-right">
+<span class="material-symbols-outlined text-orange-500 opacity-50" data-icon="payments">payments</span>
+</div>
+</div>
+<!-- Sticky Note 3 (Spans full width or asymmetric) -->
+<div class="col-span-2 bg-white p-4 rotate-[0.5deg] fluffy-shadow rounded-sm border-b-4 border-gray-100 min-h-[100px] flex items-center gap-4">
+<div class="w-12 h-12 bg-primary-fixed rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="vaccines">vaccines</span>
+</div>
+<div class="flex-1">
+<p class="font-label-md text-label-md text-on-surface font-bold">Запись к стоматологу</p>
+<p class="text-caption font-caption text-outline">Завтра в 10:00, Малыш Лис</p>
+</div>
+<div class="w-4 h-4 rounded-full bg-orange-400 shadow-sm"></div>
+</div>
+</div>
+</section>
+<!-- Family Balances -->
+<section class="space-y-sm">
+<h3 class="font-headline-md text-headline-md text-on-surface">Балансы семьи</h3>
+<div class="bg-surface-container-high rounded-3xl p-5 stitch-border flex flex-col gap-4">
+<!-- Mama Fox -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-full border-2 border-white bg-secondary-fixed flex items-center justify-center overflow-hidden">
+<img alt="Mama Fox" class="w-10 h-10" data-alt="Charming 3D rendered mother fox character with soft orange fur and a gentle expression" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmNvxB4ddLkBqgoExFqKHyBzPBNY3V7yxx6q7bGGnOv-aBbY64UYdAO3qUcAVUBD7Xoj0hyevHgNPrXjpHaqpPdZkJjZUjvFv-FEpnk351sEhfdKVW0J92mvvKKEfcp0OxxVO3s_t4v7MrucX2cdt0wXpJ2WrdpJMab9duI3aaQaiN2qqWK0YHEN2LYGTG7RtKitNLsJXs0fEanFDHLJn5P7AKItUW0f8iLuud5tOGJhUh8G4JuhoDSlmeOdrvqQKUGnfPzhCQTAU"/>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Мама Лиса</p>
+<span class="text-caption font-caption text-outline">Общий кошелек</span>
+</div>
+</div>
+<div class="flex items-center gap-2 bg-white px-3 py-1.5 rounded-full shadow-sm">
+<span class="material-symbols-outlined text-yellow-600 text-[20px]" data-icon="savings">savings</span>
+<span class="font-bold text-on-surface">12,450 ₸</span>
+</div>
+</div>
+<!-- Kids / Others -->
+<div class="grid grid-cols-2 gap-4 pt-2 border-t border-outline-variant border-dashed">
+<div class="flex items-center gap-2">
+<div class="w-10 h-10 rounded-full bg-tertiary-fixed flex items-center justify-center overflow-hidden">
+<img alt="Baby Hamster" class="w-8 h-8" data-alt="Small cute 3D hamster character curled into a ball, soft lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4Ha3099gZQEA7GswD0QoxTnItl1VGpq24UQtRME_tEInQUg9uZfC1vKmDAVGRDtcIove38JewZ7vG-ptFJN2UPfsAVAF6AOvddnpfke_BQYgRMoY9xDOnlPRnUiSjqJTbPw3JjmbSEgdAN48xRmDNGnXNUdm9gSRv_EA5WZwQK3RP3lBD-yApN7H6-Gh6QHydqi8IrOyPMD62BLPqrQQsjAJPre7-3DkXWrcgFx_WwSm-fzgoaA4sVxhJyYx8e0kkBO3jELi6z8w"/>
+</div>
+<div>
+<p class="text-caption font-bold">Малыш Хомяк</p>
+<p class="text-[10px] text-tertiary flex items-center">
+<span class="material-symbols-outlined text-[12px] mr-1" data-icon="monetization_on">monetization_on</span> 450 ₸
+                            </p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center overflow-hidden">
+<img alt="Baby Chick" class="w-8 h-8" data-alt="Small cute 3D chick character with fuzzy yellow feathers" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcoP-_U09sWati-3wT2AMH6XpoxRPZ_4ao7WtN5tDYVoRNPj7gHCe-lQYE4oQ8zv00ucPshu1gY6D0H4UDMPXPYVRZqJYx7YkRtyEeope1s9JHiizMKwnb4UZ4fLI5JuZbM07Av-S3mokn1AGW4eOHqX3L_dRy5rD9JmYrL5VZwBHhB_s0q0ELYuUomvLrly7P7HWlzEyf_0gWqvN_DpvAdGKVrPoL09X7gmpfsOIx1QttWu1usE9jm9B8QC3YJzR-P3MtyqGkzrM"/>
+</div>
+<div>
+<p class="text-caption font-bold">Крошка Цып</p>
+<p class="text-[10px] text-primary flex items-center">
+<span class="material-symbols-outlined text-[12px] mr-1" data-icon="monetization_on">monetization_on</span> 200 ₸
+                            </p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Bento Grid Stats / Quick Actions -->
+<section class="grid grid-cols-2 gap-4">
+<div class="bg-tertiary-container text-on-tertiary-container p-5 rounded-[2rem] fluffy-shadow flex flex-col justify-between min-h-[160px]">
+<span class="material-symbols-outlined text-3xl" data-icon="eco">eco</span>
+<div>
+<p class="font-headline-md text-headline-md leading-tight">12</p>
+<p class="text-caption opacity-80">Деревьев посажено в этом месяце</p>
+</div>
+</div>
+<div class="bg-surface-container-highest p-5 rounded-[2rem] border border-outline-variant flex flex-col justify-between min-h-[160px]">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-secondary" data-icon="home_health">home_health</span>
+<span class="text-[10px] bg-secondary-container text-on-secondary-container px-2 py-0.5 rounded-full">OK</span>
+</div>
+<div>
+<p class="font-label-md text-label-md">Чистота дома</p>
+<div class="w-full bg-outline-variant h-1.5 rounded-full mt-2 overflow-hidden">
+<div class="bg-secondary h-full w-[85%] rounded-full"></div>
+</div>
+<p class="text-[10px] mt-1 text-outline">Пора помыть окна</p>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pt-3 pb-6 bg-[#EFE9E1] dark:bg-[#231F1D] rounded-t-[2rem] border-t border-[#D7CCC8] dark:border-[#3E3632] shadow-[0_-8px_30px_rgba(0,0,0,0.05)]">
+<a class="flex flex-col items-center justify-center text-[#D37B5B] dark:text-[#E29578] drop-shadow-[0_0_8px_rgba(211,123,91,0.4)] transition-opacity" href="#">
+<span class="material-symbols-outlined text-2xl" data-icon="home_app_fill" style="font-variation-settings: 'FILL' 1;">home_filled</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[11px] font-medium tracking-wide mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#8C8279] dark:text-[#A69D95] opacity-80 hover:opacity-100 transition-opacity" href="#">
+<span class="material-symbols-outlined text-2xl" data-icon="bedroom_baby">bedroom_baby</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[11px] font-medium tracking-wide mt-1">Kids</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#8C8279] dark:text-[#A69D95] opacity-80 hover:opacity-100 transition-opacity" href="#">
+<span class="material-symbols-outlined text-2xl" data-icon="calendar_today">calendar_today</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[11px] font-medium tracking-wide mt-1">Events</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#8C8279] dark:text-[#A69D95] opacity-80 hover:opacity-100 transition-opacity" href="#">
+<span class="material-symbols-outlined text-2xl" data-icon="savings">savings</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[11px] font-medium tracking-wide mt-1">Banks</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#8C8279] dark:text-[#A69D95] opacity-80 hover:opacity-100 transition-opacity" href="#">
+<span class="material-symbols-outlined text-2xl" data-icon="grid_view">grid_view</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[11px] font-medium tracking-wide mt-1">More</span>
+</a>
+</nav>
+<!-- Floating Action Button (FAB) -->
+<div class="fixed bottom-24 right-6">
+<button class="w-14 h-14 bg-primary text-white rounded-2xl shadow-lg border-b-4 border-[#763218] flex items-center justify-center active:translate-y-0.5 duration-150 transition-all">
+<span class="material-symbols-outlined text-3xl" data-icon="add">add</span>
+</button>
+</div>
+</body></html>

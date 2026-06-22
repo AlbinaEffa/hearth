@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Hearth — Прототип</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="assets/hearth.css"/>
+<style>
+  .wrap { max-width: 920px; margin: 0 auto; padding: 32px 20px 64px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+  .tile { display: flex; align-items: center; gap: 12px; padding: 14px 16px; text-decoration: none; color: var(--text-1); background: var(--white); border: 1px solid var(--line); border-radius: var(--r-lg); box-shadow: var(--elev-1); transition: transform var(--dur-fast) var(--ease), box-shadow var(--dur-fast) var(--ease); }
+  .tile:hover { transform: translateY(-2px); box-shadow: var(--elev-2); }
+  .tile .ic { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .tile .ic .material-symbols-outlined { font-size: 22px; }
+  .tile small { display: block; color: var(--text-3); font-size: 12px; font-weight: 500; }
+  .sec-h { display: flex; align-items: center; gap: 10px; margin: 30px 0 12px; }
+  .sec-h .material-symbols-outlined { color: var(--primary); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header style="display:flex; flex-direction:column; align-items:center; gap:12px; text-align:center; margin-bottom:8px;">
+    <div class="brand-mark" style="width:64px; height:64px;"><span class="material-symbols-outlined" style="font-size:34px;">local_fire_department</span></div>
+    <div>
+      <h1 class="h1">Hearth — прототип</h1>
+      <p class="body muted">Кликабельная карта экранов. Открой любой — внутри работают переходы.</p>
+    </div>
+  </header>
+
+  <div class="sec-h"><span class="material-symbols-outlined">door_open</span><h2 class="h2">Онбординг и вход</h2></div>
+  <div class="grid">
+    <a class="tile" href="welcome/code.html"><span class="ic" style="background:var(--primary-container); color:var(--primary);"><span class="material-symbols-outlined">waving_hand</span></span><div>Приветствие<small>welcome</small></div></a>
+    <a class="tile" href="create_or_join/code.html"><span class="ic" style="background:var(--primary-container); color:var(--primary);"><span class="material-symbols-outlined">cottage</span></span><div>Создать / вступить<small>create_or_join</small></div></a>
+    <a class="tile" href="create_home/code.html"><span class="ic" style="background:var(--primary-container); color:var(--primary);"><span class="material-symbols-outlined">add_home</span></span><div>Создать дом<small>create_home</small></div></a>
+    <a class="tile" href="join_home/code.html"><span class="ic" style="background:var(--primary-container); color:var(--primary);"><span class="material-symbols-outlined">key</span></span><div>Войти в дом<small>join_home</small></div></a>
+    <a class="tile" href="hearth_house_created_simple/code.html"><span class="ic" style="background:var(--sage-container); color:var(--sage);"><span class="material-symbols-outlined">celebration</span></span><div>Дом создан<small>hearth_house_created_simple</small></div></a>
+    <a class="tile" href="sign_up/code.html"><span class="ic" style="background:var(--primary-container); color:var(--primary);"><span class="material-symbols-outlined">person_add</span></span><div>Регистрация<small>sign_up</small></div></a>
+    <a class="tile" href="login/code.html"><span class="ic" style="background:var(--primary-container); color:var(--primary);"><span class="material-symbols-outlined">login</span></span><div>Вход<small>login</small></div></a>
+    <a class="tile" href="who_s_home_profile_selection/code.html"><span class="ic" style="background:var(--primary-container); color:var(--primary);"><span class="material-symbols-outlined">groups</span></span><div>Кто дома?<small>who_s_home</small></div></a>
+    <a class="tile" href="enter_your_nook_pin/code.html"><span class="ic" style="background:var(--primary-container); color:var(--primary);"><span class="material-symbols-outlined">pin</span></span><div>Ввод PIN<small>enter_your_nook_pin</small></div></a>
+    <a class="tile" href="setup_profile/code.html"><span class="ic" style="background:var(--primary-container); color:var(--primary);"><span class="material-symbols-outlined">manage_accounts</span></span><div>Настройка профиля<small>setup_profile</small></div></a>
+  </div>
+
+  <div class="sec-h"><span class="material-symbols-outlined">family_restroom</span><h2 class="h2">Взрослый</h2></div>
+  <div class="grid">
+    <a class="tile" href="home_dashboard/code.html"><span class="ic" style="background:var(--primary-container); color:var(--primary);"><span class="material-symbols-outlined">home</span></span><div>Главная<small>home_dashboard</small></div></a>
+    <a class="tile" href="tasks_list/code.html"><span class="ic" style="background:var(--primary-container); color:var(--primary);"><span class="material-symbols-outlined">assignment</span></span><div>Задачи<small>tasks_list</small></div></a>
+    <a class="tile" href="task_details/code.html"><span class="ic" style="background:var(--primary-container); color:var(--primary);"><span class="material-symbols-outlined">checklist</span></span><div>Детали задачи<small>task_details</small></div></a>
+    <a class="tile" href="new_task/code.html"><span class="ic" style="background:var(--primary-container); color:var(--primary);"><span class="material-symbols-outlined">add_task</span></span><div>Новая задача<small>new_task</small></div></a>
+    <a class="tile" href="week_view/code.html"><span class="ic" style="background:var(--primary-container); color:var(--primary);"><span class="material-symbols-outlined">calendar_month</span></span><div>Неделя<small>week_view</small></div></a>
+    <a class="tile" href="rewards_store/code.html"><span class="ic" style="background:var(--primary-container); color:var(--primary);"><span class="material-symbols-outlined">redeem</span></span><div>Награды<small>rewards_store</small></div></a>
+    <a class="tile" href="notifications/code.html"><span class="ic" style="background:var(--primary-container); color:var(--primary);"><span class="material-symbols-outlined">notifications</span></span><div>Уведомления<small>notifications</small></div></a>
+    <a class="tile" href="profile/code.html"><span class="ic" style="background:var(--primary-container); color:var(--primary);"><span class="material-symbols-outlined">account_circle</span></span><div>Профиль<small>profile</small></div></a>
+    <a class="tile" href="edit_profile_avatar/code.html"><span class="ic" style="background:var(--primary-container); color:var(--primary);"><span class="material-symbols-outlined">edit</span></span><div>Профиль и аватар<small>edit_profile_avatar</small></div></a>
+    <a class="tile" href="house_settings_command_center/code.html"><span class="ic" style="background:var(--primary-container); color:var(--primary);"><span class="material-symbols-outlined">settings</span></span><div>Настройки дома<small>house_settings</small></div></a>
+  </div>
+
+  <div class="sec-h"><span class="material-symbols-outlined">child_care</span><h2 class="h2">Ребёнок</h2></div>
+  <div class="grid">
+    <a class="tile" href="my_room_child_dashboard/code.html"><span class="ic" style="background:var(--reward-container); color:var(--on-reward);"><span class="material-symbols-outlined">home</span></span><div>Моя комната<small>my_room_child_dashboard</small></div></a>
+    <a class="tile" href="job_board/code.html"><span class="ic" style="background:var(--reward-container); color:var(--on-reward);"><span class="material-symbols-outlined">assignment</span></span><div>Доска заданий<small>job_board</small></div></a>
+    <a class="tile" href="the_pantry_rewards/code.html"><span class="ic" style="background:var(--reward-container); color:var(--on-reward);"><span class="material-symbols-outlined">storefront</span></span><div>Кладовая<small>the_pantry_rewards</small></div></a>
+    <a class="tile" href="my_wallet/code.html"><span class="ic" style="background:var(--reward-container); color:var(--on-reward);"><span class="material-symbols-outlined">savings</span></span><div>Кошелёк<small>my_wallet</small></div></a>
+  </div>
+
+  <p class="caption" style="text-align:center; margin-top:40px;">Hearth · единая дизайн-система <code>assets/hearth.css</code></p>
+
+</div>
+</body>
+</html>
